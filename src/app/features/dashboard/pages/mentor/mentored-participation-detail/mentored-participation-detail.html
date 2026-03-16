@@ -1,5 +1,4 @@
 <div class="pb-20">
-  <!-- Back -->
   @if (mentorshipStore.selectedParticipation()?.project) {
   <a
     [routerLink]="['/dashboard/mentor/mentored-projects', projectId]"
@@ -15,7 +14,6 @@
     Retour aux projets
   </a>
   } @if (mentorshipStore.isLoadingDetail()) {
-  <!-- Skeleton -->
   <div class="space-y-4 animate-pulse">
     <div class="dashboard-card p-6">
       <div class="flex gap-4">
@@ -35,14 +33,12 @@
 
   } @else { @if (mentorshipStore.selectedParticipation(); as participation) { @let project = participation.project;
 
-  <!-- ─── Participant header ─── -->
   <div class="dashboard-card-elevated p-6 mb-6 relative overflow-hidden">
     <div
-      class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary-400/10 to-indigo-400/10 rounded-full blur-3xl -z-0"></div>
+      class="absolute top-0 right-0 w-64 h-64 bg-linear-to-br from-primary-400/10 to-indigo-400/10 rounded-full blur-3xl z-0"></div>
     <div class="relative z-10 flex flex-col sm:flex-row sm:items-start gap-4">
-      <!-- Avatar -->
       <div
-        class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md flex-shrink-0 bg-primary-100 flex items-center justify-center">
+        class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0 bg-primary-100 flex items-center justify-center">
         @if (participation.user) {
         <img
           [src]="participation.user | apiIMG:'user'"
@@ -76,9 +72,8 @@
         </div>
       </div>
 
-      <!-- Upvotes -->
       @if (participation.upvotesCount !== undefined) {
-      <div class="flex-shrink-0 text-center">
+      <div class="shrink-0 text-center">
         <div
           class="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex flex-col items-center justify-center">
           <ui-icon class="text-primary-600 text-base" name="thumb_up" />
@@ -94,15 +89,14 @@
     <div class="col-span-12 md:col-span-5">
       <div class="dashboard-card p-5 h-full">
         <div class="flex items-center gap-2 mb-4">
-          <div
-            class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
+          <div class="w-8 h-8 rounded-lg bg-linear-to-br from-amber-500 to-orange-600 flex items-center justify-center">
             <ui-icon class="text-white text-sm" name="business" />
           </div>
           <h2 class="dashboard-heading-5">Startup / Venture</h2>
         </div>
 
         <div class="flex items-center gap-3">
-          <div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-slate-100">
+          <div class="w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-slate-100">
             <img
               [src]="participation.venture | apiIMG:'venture'"
               [alt]="participation.venture.name"
@@ -142,12 +136,11 @@
     </div>
     }
 
-    <!-- ─── Progress through phases ─── -->
     <div [ngClass]="participation.venture ? 'col-span-12 md:col-span-7' : 'col-span-12'">
       <div class="dashboard-card p-5">
         <div class="flex items-center gap-2 mb-4">
           <div
-            class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
+            class="w-8 h-8 rounded-lg bg-linear-to-br from-primary-500 to-primary-700 flex items-center justify-center">
             <ui-icon class="text-white text-sm" name="layers" />
           </div>
           <h2 class="dashboard-heading-5">Progression par phase</h2>
@@ -157,7 +150,6 @@
         </div>
 
         @if (project.phases.length) {
-        <!-- Overall progress bar -->
         <div class="mb-4">
           @let pct = project.phases.length > 0 ? ((participation.phases?.length ?? 0) / project.phases.length) * 100 :
           0;
@@ -173,7 +165,6 @@
           </div>
         </div>
 
-        <!-- Phase list -->
         <ul class="space-y-2">
           @for (phase of project.phases; track phase.id) { @let status = getPhaseStatus(phase.id, phase.started_at,
           phase.ended_at); @let submission = getSubmissionForPhase(phase.id);
@@ -184,17 +175,16 @@
                     'bg-primary-50 border-primary-200': status === 'active',
                     'bg-slate-50 border-slate-200': status === 'future' || status === 'past'
                   }">
-            <!-- Status icon -->
             <div
-              class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
+              class="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
               [ngClass]="{
                       'bg-emerald-500': status === 'completed',
                       'bg-primary-500 animate-pulse': status === 'active',
                       'bg-slate-300': status === 'future' || status === 'past'
                     }">
-              @if (status === 'completed') { <ui-icon class="text-white text-sm" name="check" /> } @if (status
-              === 'active') { <ui-icon class="text-white text-sm" name="play_arrow" /> } @if (status ===
-              'future') { <ui-icon class="text-white text-sm" name="schedule" /> } @if (status === 'past') {
+              @if (status === 'completed') { <ui-icon class="text-white text-sm" name="check" /> } @if (status ===
+              'active') { <ui-icon class="text-white text-sm" name="play_arrow" /> } @if (status === 'future') {
+              <ui-icon class="text-white text-sm" name="schedule" /> } @if (status === 'past') {
               <ui-icon class="text-white text-sm" name="block" /> }
             </div>
 
@@ -205,18 +195,17 @@
               </p>
             </div>
 
-            <!-- Deliverable submission -->
             @if (submission) {
             <a
               [href]="getFileUrl(submission.file)"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-1 text-xs text-primary-600 hover:underline flex-shrink-0">
+              class="flex items-center gap-1 text-xs text-primary-600 hover:underline shrink-0">
               <ui-icon class="text-sm" name="picture_as_pdf" />
               Livrable
             </a>
-            } @else if (phase.deliverables.length) {
-            <span class="text-xs text-slate-400 flex-shrink-0 flex items-center gap-1">
+            } @else if (hasDeliverables(phase)) {
+            <span class="text-xs text-slate-400 shrink-0 flex items-center gap-1">
               <ui-icon class="text-sm" name="upload_file" />
               Non soumis
             </span>

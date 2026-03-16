@@ -45,6 +45,10 @@ export class MentoredParticipationDetail implements OnInit, OnDestroy {
     );
   }
 
+  hasDeliverables(phase: { deliverables?: unknown[] }): boolean {
+    return Array.isArray(phase.deliverables) && phase.deliverables.length > 0;
+  }
+
   getFileUrl(filename: string): string {
     return `${this.apiUrl}uploads/deliverables/${filename}`;
   }
