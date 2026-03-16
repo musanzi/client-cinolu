@@ -1,28 +1,16 @@
-import {
-  Component,
-  input,
-  output,
-  signal,
-  ChangeDetectionStrategy,
-  inject,
-  effect,
-  DestroyRef
-} from '@angular/core';
+import { Component, input, output, signal, ChangeDetectionStrategy, inject, effect, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { filter } from 'rxjs';
 import { AuthStore } from '@core/auth/auth.store';
-import { IconComponent } from '@shared/ui';
-import {
-  USER_MENU_CONFIG,
-  isUserMenuActive
-} from '../../config/user-menu.config';
+import { LucideAngularModule, BadgeCheck, X, ChevronDown, LogOut } from 'lucide-angular';
+import { USER_MENU_CONFIG, isUserMenuActive } from '../../config/user-menu.config';
 import type { MenuItem } from '@features/dashboard/config/menu.config';
 
 @Component({
   selector: 'app-user-dashboard-sidebar',
-  imports: [NgClass, RouterModule, IconComponent],
+  imports: [NgClass, RouterModule, LucideAngularModule],
   templateUrl: './user-dashboard-sidebar.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -41,6 +29,13 @@ export class UserDashboardSidebar {
   expandedMenus = signal<Set<string>>(new Set());
 
   readonly menuConfig = USER_MENU_CONFIG;
+
+  readonly icons = {
+    verified: BadgeCheck,
+    close: X,
+    chevronDown: ChevronDown,
+    logout: LogOut
+  };
 
   constructor() {
     this.router.events

@@ -16,7 +16,7 @@
     <a [routerLink]="['/']" class="flex items-center gap-2.5 group">
       <div
         class="w-9 h-9 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-200">
-        <ui-icon class="text-white text-xl" name="verified" />
+        <i-lucide [name]="icons.verified" class="w-5 h-5 text-white" />
       </div>
       <span
         class="text-xl font-black tracking-tight text-slate-900 uppercase group-hover:text-primary-600 transition-colors"
@@ -27,7 +27,7 @@
     <a [routerLink]="['/']" class="flex items-center justify-center group">
       <div
         class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-200">
-        <ui-icon class="text-white text-2xl" name="verified" />
+        <i-lucide [name]="icons.verified" class="w-6 h-6 text-white" />
       </div>
     </a>
     } @if (isMobile()) {
@@ -35,7 +35,7 @@
       (click)="closeSidebar.emit()"
       type="button"
       class="min-h-[44px] min-w-[44px] flex items-center justify-center hover:bg-slate-100 rounded-lg transition-colors">
-      <ui-icon class="text-slate-600 text-xl" name="close" />
+      <i-lucide [name]="icons.close" class="w-5 h-5 text-slate-600" />
     </button>
     }
   </div>
@@ -72,10 +72,10 @@
               'bg-slate-100 group-hover:bg-primary-50': !isActive(item)
             }"
             class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0">
-            <ui-icon
+            <i-lucide
+              [name]="item.icon"
               [ngClass]="{ 'text-primary-600': isActive(item), 'text-slate-600 group-hover:text-primary-600': !isActive(item) }"
-              class="text-xl"
-               [name]="item.icon" />
+              class="w-5 h-5" />
           </div>
 
           @if (!isCollapsed() || isMobile()) {
@@ -84,10 +84,10 @@
         </div>
 
         @if (!isCollapsed() || isMobile()) {
-        <ui-icon
+        <i-lucide
+          [name]="icons.chevronDown"
           [ngClass]="{ 'rotate-180': isMenuExpanded(item.id) }"
-          class="text-lg transition-transform duration-200 flex-shrink-0"
-           name="expand_more" />
+          class="w-4 h-4 transition-transform duration-200 flex-shrink-0" />
         } @if (item.badge && (!isCollapsed() || isMobile())) {
         <span
           [ngClass]="getBadgeColorClass(item.badge.color)"
@@ -115,13 +115,13 @@
               'opacity-50 cursor-not-allowed pointer-events-none': child.disabled
             }"
             class="flex items-center gap-2.5 px-3 py-2 min-h-[44px] rounded-lg transition-all duration-200 group">
-            <ui-icon
+            <i-lucide
+              [name]="child.icon"
               [ngClass]="{
                 'text-primary-600': isChildActive(child),
                 'text-slate-600 group-hover:text-slate-700': !isChildActive(child)
               }"
-              class="text-lg flex-shrink-0"
-               [name]="child.icon" />
+              class="w-4 h-4 flex-shrink-0" />
 
             @if (!isCollapsed() || isMobile()) {
             <span class="text-sm truncate">{{ child.label }}</span>
@@ -156,13 +156,13 @@
             'bg-slate-100 group-hover:bg-primary-50': !isActive(item)
           }"
           class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0">
-          <ui-icon
+          <i-lucide
+            [name]="item.icon"
             [ngClass]="{
               'text-primary-600': isActive(item),
               'text-slate-600 group-hover:text-primary-600': !isActive(item)
             }"
-            class="text-xl"
-             [name]="item.icon" />
+            class="w-5 h-5" />
         </div>
 
         @if (!isCollapsed() || isMobile()) {
@@ -191,7 +191,7 @@
         'justify-start': !isCollapsed() || isMobile()
       }"
       class="w-full flex items-center gap-2.5 px-3 py-2.5 min-h-[44px] bg-red-50 hover:bg-red-600 text-red-600 hover:text-white rounded-lg transition-all duration-200 border border-red-200 hover:border-red-600 group">
-      <ui-icon class="text-xl" name="logout" />
+      <i-lucide [name]="icons.logout" class="w-5 h-5" />
       @if (!isCollapsed() || isMobile()) {
       <span class="font-semibold text-sm">Déconnexion</span>
       }

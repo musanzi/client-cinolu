@@ -15,17 +15,44 @@ import { AuthStore } from '@core/auth/auth.store';
 import { RightsService } from '@core/auth/rights.service';
 import { ApiImgPipe } from '@shared/pipes';
 import { environment } from '@environments/environment';
-import { IconComponent } from '@shared/ui';
+import {
+  LucideAngularModule,
+  Menu,
+  Clock3,
+  ShieldCheck,
+  KeyRound,
+  CircleQuestionMark,
+  ChevronDown,
+  BadgeCheck,
+  CircleUser,
+  Shield,
+  UserRoundPlus,
+  LogOut
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-user-dashboard-header',
-  imports: [NgClass, NgOptimizedImage, ApiImgPipe, RouterLink, IconComponent],
+  imports: [NgClass, NgOptimizedImage, ApiImgPipe, RouterLink, LucideAngularModule],
   templateUrl: './user-dashboard-header.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserDashboardHeader implements OnDestroy {
   private authStore = inject(AuthStore);
   private rightsService = inject(RightsService);
+
+  readonly icons = {
+    menu: Menu,
+    clock: Clock3,
+    adminPanel: ShieldCheck,
+    key: KeyRound,
+    help: CircleQuestionMark,
+    chevronDown: ChevronDown,
+    verified: BadgeCheck,
+    accountCircle: CircleUser,
+    security: Shield,
+    groupAdd: UserRoundPlus,
+    logout: LogOut
+  };
 
   isMobile = input<boolean>(false);
 

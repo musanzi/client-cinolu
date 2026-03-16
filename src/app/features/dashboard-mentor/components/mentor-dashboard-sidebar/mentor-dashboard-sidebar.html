@@ -16,7 +16,7 @@
     <a [routerLink]="['/']" class="flex items-center gap-2.5 group">
       <div
         class="w-9 h-9 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-200">
-        <ui-icon class="text-white text-xl" name="verified" />
+        <i-lucide [name]="icons.verified" class="w-5 h-5 text-white" />
       </div>
       <span
         class="text-xl font-black tracking-tight text-slate-900 uppercase group-hover:text-primary-600 transition-colors"
@@ -27,7 +27,7 @@
     <a [routerLink]="['/']" class="flex items-center justify-center group">
       <div
         class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-200">
-        <ui-icon class="text-white text-2xl" name="verified" />
+        <i-lucide [name]="icons.verified" class="w-6 h-6 text-white" />
       </div>
     </a>
     } @if (isMobile()) {
@@ -35,54 +35,51 @@
       (click)="closeSidebar.emit()"
       type="button"
       class="min-h-[44px] min-w-[44px] flex items-center justify-center hover:bg-slate-100 rounded-lg transition-colors">
-      <ui-icon class="text-slate-600 text-xl" name="close" />
+      <i-lucide [name]="icons.close" class="w-5 h-5 text-slate-600" />
     </button>
     }
   </div>
 
   <nav class="flex-1 overflow-y-auto py-4 px-2 space-y-1">
-    @for (section of menuConfig; track section.title) {
-      @if (section.title && (!isCollapsed() || isMobile())) {
-      <div
-        class="px-3 pt-4 pb-2 text-xs uppercase tracking-widest text-slate-600 font-bold flex items-center gap-2"
-        role="presentation">
-        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
-        <span>{{ section.title }}</span>
-      </div>
-      }
-      @for (item of section.items; track item.id) {
-      <div class="relative">
-        <a
-          [routerLink]="item.path"
-          (click)="isMobile() && closeSidebar.emit()"
-          [title]="item.tooltip || item.label"
-          [ngClass]="{
+    @for (section of menuConfig; track section.title) { @if (section.title && (!isCollapsed() || isMobile())) {
+    <div
+      class="px-3 pt-4 pb-2 text-xs uppercase tracking-widest text-slate-600 font-bold flex items-center gap-2"
+      role="presentation">
+      <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+      <span>{{ section.title }}</span>
+    </div>
+    } @for (item of section.items; track item.id) {
+    <div class="relative">
+      <a
+        [routerLink]="item.path"
+        (click)="isMobile() && closeSidebar.emit()"
+        [title]="item.tooltip || item.label"
+        [ngClass]="{
             'bg-primary-50 text-primary-700 font-semibold': isActive(item),
             'text-slate-600 hover:text-slate-900 hover:bg-slate-50': !isActive(item),
             'justify-center': isCollapsed() && !isMobile()
           }"
-          class="w-full flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg transition-all duration-200 group">
-          <div
-            [ngClass]="{
+        class="w-full flex items-center gap-3 px-3 py-2.5 min-h-[44px] rounded-lg transition-all duration-200 group">
+        <div
+          [ngClass]="{
               'bg-primary-100': isActive(item),
               'bg-slate-100 group-hover:bg-primary-50': !isActive(item)
             }"
-            class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0">
-            <ui-icon
-              [ngClass]="{
+          class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0">
+          <i-lucide
+            [name]="item.icon"
+            [ngClass]="{
                 'text-primary-600': isActive(item),
                 'text-slate-600 group-hover:text-primary-600': !isActive(item)
               }"
-              class="text-xl"
-               [name]="item.icon" />
-          </div>
-          @if (!isCollapsed() || isMobile()) {
-          <span class="font-medium text-sm truncate flex-1">{{ item.label }}</span>
-          }
-        </a>
-      </div>
-      }
-    }
+            class="w-5 h-5" />
+        </div>
+        @if (!isCollapsed() || isMobile()) {
+        <span class="font-medium text-sm truncate flex-1">{{ item.label }}</span>
+        }
+      </a>
+    </div>
+    } }
   </nav>
 
   <div class="border-t border-slate-200 p-3 flex-shrink-0 space-y-1">
@@ -94,7 +91,7 @@
         'justify-start': !isCollapsed() || isMobile()
       }"
       class="w-full flex items-center gap-2.5 px-3 py-2.5 min-h-[44px] bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-lg transition-all duration-200 border border-slate-200">
-      <ui-icon class="text-xl" name="person" />
+      <i-lucide [name]="icons.person" class="w-5 h-5" />
       @if (!isCollapsed() || isMobile()) {
       <span class="font-semibold text-sm">Tableau de bord</span>
       }
@@ -107,7 +104,7 @@
         'justify-start': !isCollapsed() || isMobile()
       }"
       class="w-full flex items-center gap-2.5 px-3 py-2.5 min-h-[44px] bg-red-50 hover:bg-red-600 text-red-600 hover:text-white rounded-lg transition-all duration-200 border border-red-200 hover:border-red-600 group">
-      <ui-icon class="text-xl" name="logout" />
+      <i-lucide [name]="icons.logout" class="w-5 h-5" />
       @if (!isCollapsed() || isMobile()) {
       <span class="font-semibold text-sm">Déconnexion</span>
       }
