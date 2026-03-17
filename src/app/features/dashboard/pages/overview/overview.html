@@ -13,7 +13,7 @@
     <div class="col-span-12">
       <div class="dashboard-card relative overflow-hidden">
         <div
-          class="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-primary-400/10 to-emerald-400/10 rounded-full blur-3xl -z-0"></div>
+          class="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-primary-400/10 to-emerald-400/10 rounded-full blur-3xl z-0"></div>
 
         <div class="relative z-10 flex items-center gap-4">
           <div
@@ -118,7 +118,7 @@
             </span>
           </div>
           @defer (on viewport) {
-          <div class="relative flex-1 flex items-center justify-center min-h-[2px]">
+          <div class="relative flex-1 flex items-center justify-center min-h-0.5">
             <svg
               class="w-64 h-64 lg:h-72 lg:w-72 max-w-full transform -rotate-90 dashboard-progress-circle"
               viewBox="0 0 200 200"
@@ -162,7 +162,7 @@
 
           <a
             [routerLink]="highlightLink()"
-            class="relative dashboard-card-hover overflow-hidden group cursor-pointer h-[360px] flex flex-col justify-end">
+            class="relative dashboard-card-hover overflow-hidden group cursor-pointer h-90 flex flex-col justify-end">
             <div class="absolute inset-0 overflow-hidden">
               <img
                 [src]="highlightImage()"
@@ -183,7 +183,7 @@
               <p class="text-slate-200 text-sm leading-relaxed dashboard-line-clamp-2">{{ highlightDescription() }}</p>
               <div class="flex items-center gap-2 text-white font-semibold pt-2">
                 <span class="text-sm">Découvrir</span>
-                 <i-lucide class="text-base group-hover:translate-x-1 transition-transform" [name]="icons.arrowRight" />
+                <i-lucide class="text-base group-hover:translate-x-1 transition-transform" [name]="icons.arrowRight" />
               </div>
             </div>
           </a>
@@ -210,7 +210,7 @@
           </div>
           } @else {
           <div
-            class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center font-black text-white text-lg shadow-lg shrink-0 group-hover:scale-105 transition-transform duration-300">
+            class="w-16 h-16 bg-linear-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center font-black text-white text-lg shadow-lg shrink-0 group-hover:scale-105 transition-transform duration-300">
             {{ venture.name.charAt(0) }}{{ (venture.name.split(' ')[1] || '').charAt(0) }}
           </div>
           }

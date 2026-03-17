@@ -33,7 +33,7 @@
   </div>
   } @else { @if (projectStore.project(); as project) {
   <div class="relative overflow-hidden">
-    <div class="absolute inset-0 h-[500px]">
+    <div class="absolute inset-0 h-125">
       @if (project.cover) {
       <img [src]="project | apiIMG: 'project'" [alt]="project.name" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-linear-to-br from-slate-900/90 via-slate-900/80 to-primary-900/70"></div>

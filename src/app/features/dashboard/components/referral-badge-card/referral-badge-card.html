@@ -2,7 +2,7 @@
   @if (badgeInfo().isMaxLevel) {
   <div class="absolute top-6 right-6 z-20">
     <span
-      class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500/90 to-orange-600/85 text-white rounded-full text-sm font-bold shadow-lg"
+      class="inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-amber-500/90 to-orange-600/85 text-white rounded-full text-sm font-bold shadow-lg"
       role="status"
       aria-label="Niveau maximum atteint">
       <lucide-icon [img]="icons.trophy" class="w-4 h-4" />
@@ -12,8 +12,7 @@
   }
 
   <div class="flex flex-col">
-    <div
-      class="relative bg-gradient-to-br from-primary-500/90 via-primary-600/90 to-primary-700/85 p-8 overflow-hidden">
+    <div class="relative bg-linear-to-br from-primary-500/90 via-primary-600/90 to-primary-700/85 p-8 overflow-hidden">
       <div class="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
       <div class="absolute bottom-0 left-0 w-56 h-56 bg-white/5 rounded-full blur-2xl"></div>
 
@@ -52,7 +51,7 @@
 
     <div class="p-6 sm:p-8 space-y-6">
       <div
-        class="p-6 bg-gradient-to-br from-emerald-50/80 via-teal-50/60 to-cyan-50/40 rounded-xl border border-emerald-100">
+        class="p-6 bg-linear-to-br from-emerald-50/80 via-teal-50/60 to-cyan-50/40 rounded-xl border border-emerald-100">
         <div class="flex items-center gap-3 mb-2">
           <div class="w-10 h-10 bg-emerald-500 rounded-lg flex items-center justify-center">
             <i-lucide [name]="icons.groupAdd" class="w-5 h-5 text-white" />
@@ -75,7 +74,7 @@
       }
 
       <div
-        class="p-6 bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-purple-50/40 rounded-xl border border-blue-100">
+        class="p-6 bg-linear-to-br from-blue-50/80 via-indigo-50/60 to-purple-50/40 rounded-xl border border-blue-100">
         <div class="flex items-start gap-3">
           <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center shrink-0">
             <i-lucide [name]="icons.sparkles" class="w-5 h-5 text-white" />
@@ -126,7 +125,7 @@
         <button
           (click)="onShareClick()"
           type="button"
-          class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-primary-600/90 to-primary-700/90 text-white rounded-xl text-base font-bold hover:from-primary-700 hover:to-primary-800 transition-all group">
+          class="inline-flex items-center justify-center gap-2 px-6 py-4 bg-linear-to-r from-primary-600/90 to-primary-700/90 text-white rounded-xl text-base font-bold hover:from-primary-700 hover:to-primary-800 transition-all group">
           <lucide-icon [img]="icons.share" class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
           <span>Partager</span>
         </button>
