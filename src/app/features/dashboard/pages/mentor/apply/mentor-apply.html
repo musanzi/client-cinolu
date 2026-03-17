@@ -262,10 +262,12 @@
                   </label>
                   <input
                     [id]="'start_' + i"
-                    type="month"
+                    type="text"
+                    inputmode="numeric"
                     formControlName="start_date"
                     class="dashboard-input"
-                    placeholder="MM/YYYY" />
+                    placeholder="MM/YYYY"
+                    title="Format MM/YYYY" />
                 </div>
 
                 <div>
@@ -275,10 +277,12 @@
                   </label>
                   <input
                     [id]="'end_' + i"
-                    type="month"
+                    type="text"
+                    inputmode="numeric"
                     formControlName="end_date"
                     class="dashboard-input"
-                    placeholder="MM/YYYY" />
+                    placeholder="MM/YYYY"
+                    title="Format MM/YYYY" />
                 </div>
               </div>
 

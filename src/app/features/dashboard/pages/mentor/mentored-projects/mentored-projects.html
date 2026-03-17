@@ -3,7 +3,7 @@
     <div class="col-span-12">
       <div class="dashboard-card-elevated p-8 md:p-10 relative overflow-hidden group cursor-default">
         <div
-          class="absolute top-0 right-0 w-80 h-80 bg-linear-to-br from-primary-400/20 to-indigo-400/20 rounded-full blur-3xl -z-0 group-hover:scale-110 transition-transform duration-700"></div>
+          class="absolute top-0 right-0 w-80 h-80 bg-linear-to-br from-primary-400/20 to-indigo-400/20 rounded-full blur-3xl z-0 group-hover:scale-110 transition-transform duration-700"></div>
         <div class="relative z-10 flex items-start gap-5">
           <div
             class="w-16 h-16 rounded-xl bg-primary-500 flex items-center justify-center shadow-xl shadow-primary-500/30 shrink-0">
@@ -43,7 +43,7 @@
       <div class="dashboard-card hover:shadow-md transition-shadow duration-200 overflow-hidden">
         <div class="h-28 relative overflow-hidden">
           <img [src]="project | apiIMG:'project'" [alt]="project.name" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
           <div class="absolute top-3 right-3">
             @if (status === 'active') {
             <span class="dashboard-badge-success text-xs">
