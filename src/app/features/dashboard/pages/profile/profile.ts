@@ -8,11 +8,36 @@ import { UpdateInfoDto } from '@features/dashboard/dto/update-info.dto';
 import { FileUpload } from '@shared/components/file-upload/file-upload';
 import { ApiImgPipe } from '@shared/pipes';
 import { FormManager } from '@shared/components/form-manager/form-manager';
-import { IconComponent } from '@shared/ui';
+import {
+  Badge,
+  BadgeCheck,
+  Building2,
+  Cake,
+  CheckCircle,
+  CircleX,
+  Clock3,
+  FileText,
+  Globe,
+  GraduationCap,
+  Info,
+  LayoutDashboard,
+  LucideAngularModule,
+  Mail,
+  Network,
+  Phone,
+  Rocket,
+  Save,
+  SquarePen,
+  Star,
+  User,
+  Users,
+  VenusAndMars,
+  X
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-profile',
-  imports: [ReactiveFormsModule, RouterModule, FileUpload, ApiImgPipe, FormManager, IconComponent],
+  imports: [ReactiveFormsModule, RouterModule, FileUpload, ApiImgPipe, FormManager, LucideAngularModule],
   providers: [UpdateInfoStore],
   templateUrl: './profile.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,6 +47,32 @@ export class ProfilePage {
   updateInfoStore = inject(UpdateInfoStore);
   fb = inject(FormBuilder);
   router = inject(Router);
+
+  icons = {
+    badge: Badge,
+    birthDate: Cake,
+    cancel: CircleX,
+    checkCircle: CheckCircle,
+    city: Building2,
+    close: X,
+    country: Globe,
+    dashboard: LayoutDashboard,
+    description: FileText,
+    edit: SquarePen,
+    email: Mail,
+    gender: VenusAndMars,
+    info: Info,
+    network: Network,
+    phone: Phone,
+    profile: User,
+    rocketLaunch: Rocket,
+    save: Save,
+    schedule: Clock3,
+    school: GraduationCap,
+    star: Star,
+    users: Users,
+    verified: BadgeCheck
+  };
 
   isEditing = signal(false);
   isEditingInterests = signal(false);
@@ -108,7 +159,6 @@ export class ProfilePage {
     this.isEditing.set(false);
     this.profileForm.disable();
 
-    // Re-synchroniser avec les données actuelles du signal
     const user = this.user();
     if (user) {
       this.profileForm.patchValue({

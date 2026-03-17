@@ -7,7 +7,25 @@ import { ReferralBadgesService, BadgeLevel } from '@features/dashboard/services/
 import { IUser } from '@shared/models/entities.models';
 import { REFERRAL_CONFIG } from '@features/dashboard/config/referral.constants';
 import { ReferralCtaCard } from '../../../components/referral-cta-card/referral-cta-card';
-import { IconComponent } from '@shared/ui';
+import {
+  Award,
+  CalendarCheck,
+  CalendarX,
+  ChartNoAxesColumnIncreasing,
+  ChevronDown,
+  Crown,
+  History,
+  LucideAngularModule,
+  LucideIconData,
+  Mail,
+  Share2,
+  Sparkles,
+  Trophy,
+  TrendingUp,
+  User,
+  UserPlus,
+  Users
+} from 'lucide-angular';
 
 interface TimelineEvent {
   id: string;
@@ -23,7 +41,7 @@ interface TimelineEvent {
 
 @Component({
   selector: 'app-referral-activity',
-  imports: [CommonModule, RouterModule, ReferralCtaCard, IconComponent],
+  imports: [CommonModule, RouterModule, ReferralCtaCard, LucideAngularModule],
   templateUrl: './activity.html'
 })
 export class ReferralActivity implements OnInit {
@@ -32,6 +50,30 @@ export class ReferralActivity implements OnInit {
   badgesService = inject(ReferralBadgesService);
 
   maxEventsToShow = REFERRAL_CONFIG.MAX_TIMELINE_EVENTS;
+
+  readonly icons = {
+    award: Award,
+    badgeUnlocked: Trophy,
+    calendarCheck: CalendarCheck,
+    calendarX: CalendarX,
+    expandMore: ChevronDown,
+    history: History,
+    mail: Mail,
+    person: User,
+    personAdd: UserPlus,
+    share: Share2,
+    timeline: ChartNoAxesColumnIncreasing,
+    users: Users
+  };
+
+  private readonly badgeIconMap: Record<string, LucideIconData> = {
+    award: Award,
+    'trending-up': TrendingUp,
+    crown: Crown,
+    sparkles: Sparkles,
+    trophy: Trophy,
+    person_add: UserPlus
+  };
 
   timelineEvents = computed<TimelineEvent[]>(() => {
     const events: TimelineEvent[] = [];
@@ -114,39 +156,43 @@ export class ReferralActivity implements OnInit {
         bg: 'bg-primary-50',
         border: 'border-primary-200',
         text: 'text-primary-700',
-        icon: 'bg-gradient-to-br from-primary-400 to-primary-600'
+        icon: 'bg-linear-to-br from-primary-400 to-primary-600'
       },
       emerald: {
         bg: 'bg-emerald-50',
         border: 'border-emerald-200',
         text: 'text-emerald-700',
-        icon: 'bg-gradient-to-br from-emerald-400 to-emerald-600'
+        icon: 'bg-linear-to-br from-emerald-400 to-emerald-600'
       },
       blue: {
         bg: 'bg-blue-50',
         border: 'border-blue-200',
         text: 'text-blue-700',
-        icon: 'bg-gradient-to-br from-blue-400 to-blue-600'
+        icon: 'bg-linear-to-br from-blue-400 to-blue-600'
       },
       purple: {
         bg: 'bg-purple-50',
         border: 'border-purple-200',
         text: 'text-purple-700',
-        icon: 'bg-gradient-to-br from-purple-400 to-purple-600'
+        icon: 'bg-linear-to-br from-purple-400 to-purple-600'
       },
       orange: {
         bg: 'bg-orange-50',
         border: 'border-orange-200',
         text: 'text-orange-700',
-        icon: 'bg-gradient-to-br from-orange-400 to-orange-600'
+        icon: 'bg-linear-to-br from-orange-400 to-orange-600'
       },
       amber: {
         bg: 'bg-amber-50',
         border: 'border-amber-200',
         text: 'text-amber-700',
-        icon: 'bg-gradient-to-br from-amber-400 to-amber-600'
+        icon: 'bg-linear-to-br from-amber-400 to-amber-600'
       }
     };
     return colorMap[color] || colorMap['primary'];
+  }
+
+  resolveEventIcon(icon: string): LucideIconData {
+    return this.badgeIconMap[icon] ?? Award;
   }
 }

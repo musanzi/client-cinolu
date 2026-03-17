@@ -2,8 +2,8 @@
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-10">
       <div
-        class="inline-flex w-24 h-24 rounded-full bg-gradient-to-br from-red-400 to-pink-500 items-center justify-center shadow-2xl mb-6">
-        <ui-icon class="text-white text-6xl" name="cancel" />
+        class="inline-flex w-24 h-24 rounded-full bg-linear-to-br from-red-400 to-pink-500 items-center justify-center shadow-2xl mb-6">
+        <i-lucide class="text-white text-6xl" [name]="icons.cancel" />
       </div>
       <h1 class="dashboard-heading-1 mb-3">Candidature <span class="dashboard-text-gradient-danger">refusée</span></h1>
       <p class="dashboard-text-base text-slate-600 max-w-xl mx-auto">
@@ -14,8 +14,8 @@
 
     <div class="dashboard-card-elevated p-8 mb-8">
       <div class="flex items-start gap-4 mb-6">
-        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0">
-          <ui-icon class="text-red-600 text-2xl" name="info" />
+        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center shrink-0">
+          <i-lucide class="text-red-600 text-2xl" [name]="icons.info" />
         </div>
         <div>
           <h2 class="dashboard-heading-4 mb-2">Raisons possibles</h2>
@@ -25,7 +25,7 @@
 
       <div class="space-y-3">
         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
-          <ui-icon class="text-slate-500 text-xl mt-0.5" name="schedule" />
+          <i-lucide class="text-slate-500 text-xl mt-0.5" [name]="icons.schedule" />
           <div>
             <h3 class="font-semibold text-slate-900 text-sm mb-1">Expérience insuffisante</h3>
             <p class="text-slate-600 text-xs leading-relaxed">
@@ -35,7 +35,7 @@
         </div>
 
         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
-          <ui-icon class="text-slate-500 text-xl mt-0.5" name="star_border" />
+          <i-lucide class="text-slate-500 text-xl mt-0.5" [name]="icons.starBorder" />
           <div>
             <h3 class="font-semibold text-slate-900 text-sm mb-1">Domaines d'expertise</h3>
             <p class="text-slate-600 text-xs leading-relaxed">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="flex items-start gap-3 p-4 bg-slate-50 rounded-lg">
-          <ui-icon class="text-slate-500 text-xl mt-0.5" name="description" />
+          <i-lucide class="text-slate-500 text-xl mt-0.5" [name]="icons.description" />
           <div>
             <h3 class="font-semibold text-slate-900 text-sm mb-1">Profil incomplet</h3>
             <p class="text-slate-600 text-xs leading-relaxed">
@@ -58,20 +58,20 @@
 
     <div class="dashboard-card bg-blue-50 border border-blue-100 p-6 mb-8">
       <div class="flex items-start gap-3">
-        <ui-icon class="text-blue-600 text-2xl" name="lightbulb" />
+        <i-lucide class="text-blue-600 text-2xl" [name]="icons.lightbulb" />
         <div>
           <h3 class="font-semibold text-blue-900 text-sm mb-2">Que faire maintenant ?</h3>
           <ul class="space-y-2">
             <li class="flex items-start gap-2 text-blue-700 text-xs">
-              <ui-icon class="text-sm mt-0.5" name="check_circle" />
+              <i-lucide class="text-sm mt-0.5" [name]="icons.checkCircle" />
               <span>Continuez à développer votre expertise et votre expérience professionnelle</span>
             </li>
             <li class="flex items-start gap-2 text-blue-700 text-xs">
-              <ui-icon class="text-sm mt-0.5" name="check_circle" />
+              <i-lucide class="text-sm mt-0.5" [name]="icons.checkCircle" />
               <span>Complétez votre profil avec plus de détails sur votre parcours</span>
             </li>
             <li class="flex items-start gap-2 text-blue-700 text-xs">
-              <ui-icon class="text-sm mt-0.5" name="check_circle" />
+              <i-lucide class="text-sm mt-0.5" [name]="icons.checkCircle" />
               <span>Vous pourrez soumettre une nouvelle candidature dans 3 mois</span>
             </li>
           </ul>
@@ -81,7 +81,7 @@
 
     <div class="dashboard-card-elevated p-6 mb-8 border-l-4 border-primary-500">
       <div class="flex items-start gap-3">
-        <ui-icon class="text-primary-600 text-2xl" name="favorite" />
+        <i-lucide class="text-primary-600 text-2xl" [name]="icons.favorite" />
         <div>
           <h3 class="font-semibold text-slate-900 text-sm mb-2">Ne vous découragez pas !</h3>
           <p class="text-slate-700 text-xs leading-relaxed">
@@ -96,11 +96,11 @@
 
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
       <a routerLink="/dashboard/user/profile" class="dashboard-btn-secondary">
-        <ui-icon class="text-lg" name="person" />
+        <i-lucide class="text-lg" [name]="icons.person" />
         <span>Améliorer mon profil</span>
       </a>
       <a routerLink="/dashboard/overview" class="dashboard-btn-primary">
-        <ui-icon class="text-lg" name="dashboard" />
+        <i-lucide class="text-lg" [name]="icons.dashboard" />
         <span>Retour au tableau de bord</span>
       </a>
     </div>

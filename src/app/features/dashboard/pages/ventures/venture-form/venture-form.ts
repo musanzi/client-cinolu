@@ -8,12 +8,12 @@ import { FileUpload } from '@shared/components/file-upload/file-upload';
 import { ApiImgPipe } from '../../../../../shared/pipes/api-img.pipe';
 import { VentureGalleryStore } from '@features/dashboard/store/venture-gallery.store';
 import { FormManager, StepConfig } from '@shared/components/form-manager/form-manager';
-import { IconComponent } from '@shared/ui';
+import { BriefcaseBusiness, CircleAlert, Info, LucideAngularModule, SquarePen, X } from 'lucide-angular';
 
 @Component({
   selector: 'app-venture-form',
   providers: [VentureGalleryStore],
-  imports: [ReactiveFormsModule, FileUpload, ApiImgPipe, NgOptimizedImage, FormManager, IconComponent],
+  imports: [ReactiveFormsModule, FileUpload, ApiImgPipe, NgOptimizedImage, FormManager, LucideAngularModule],
   templateUrl: './venture-form.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -31,6 +31,14 @@ export class VentureForm implements OnInit {
   galleryStore = inject(VentureGalleryStore);
   showCoverUpload = signal(true);
   showLogoUpload = signal(true);
+
+  readonly icons = {
+    addBusiness: BriefcaseBusiness,
+    close: X,
+    edit: SquarePen,
+    error: CircleAlert,
+    info: Info
+  };
 
   sectors = [
     'Agriculture',

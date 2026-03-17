@@ -13,12 +13,12 @@
     <div class="col-span-12">
       <div class="dashboard-card relative overflow-hidden">
         <div
-          class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-400/10 to-emerald-400/10 rounded-full blur-3xl -z-0"></div>
+          class="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-primary-400/10 to-emerald-400/10 rounded-full blur-3xl -z-0"></div>
 
         <div class="relative z-10 flex items-center gap-4">
           <div
-            class="w-14 h-14 rounded-lg bg-gradient-to-br from-primary-500/90 to-primary-700/85 flex items-center justify-center shadow-lg flex-shrink-0">
-            <ui-icon class="text-white text-2xl" name="waving_hand" />
+            class="w-14 h-14 rounded-lg bg-linear-to-br from-primary-500/90 to-primary-700/85 flex items-center justify-center shadow-lg shrink-0">
+            <i-lucide class="text-white text-2xl" [name]="icons.hand" />
           </div>
 
           <div class="flex-1 min-w-0">
@@ -26,7 +26,7 @@
             @if (isAdminUser()) {
             <div class="flex items-center gap-2 text-slate-700 text-sm flex-wrap">
               <span class="dashboard-badge-purple">
-                <ui-icon class="text-xs" name="admin_panel_settings" />
+                <i-lucide class="text-xs" [name]="icons.shield" />
                 Administrateur
               </span>
               <span class="text-slate-600">•</span>
@@ -36,12 +36,12 @@
                 target="_blank"
                 rel="noopener noreferrer">
                 <span>admin.cinolu.org</span>
-                <ui-icon class="text-sm" name="open_in_new" />
+                <i-lucide class="text-sm" [name]="icons.externalLink" />
               </a>
             </div>
             } @else {
             <p class="text-slate-600">Voici votre tableau de bord</p>
-            } 
+            }
           </div>
         </div>
       </div>
@@ -56,8 +56,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="dashboard-stat-card">
           <div class="flex items-start justify-between mb-4">
-            <div class="dashboard-stat-icon bg-gradient-to-br from-primary-500/90 to-primary-700/85 shadow-lg">
-              <ui-icon class="text-white text-2xl" [name]="businessIcon" />
+            <div class="dashboard-stat-icon bg-linear-to-br from-primary-500/90 to-primary-700/85 shadow-lg">
+              <i-lucide class="text-white text-2xl" [name]="icons.business" />
             </div>
           </div>
           <div class="space-y-1">
@@ -68,8 +68,8 @@
 
         <div class="dashboard-stat-card">
           <div class="flex items-start justify-between mb-4">
-            <div class="dashboard-stat-icon bg-gradient-to-br from-blue-500/90 to-indigo-600/85 shadow-lg">
-              <ui-icon class="text-white text-2xl" [name]="packageIcon" />
+            <div class="dashboard-stat-icon bg-linear-to-br from-blue-500/90 to-indigo-600/85 shadow-lg">
+              <i-lucide class="text-white text-2xl" [name]="icons.package" />
             </div>
           </div>
           <div class="space-y-1">
@@ -80,8 +80,8 @@
 
         <div class="dashboard-stat-card">
           <div class="flex items-start justify-between mb-4">
-            <div class="dashboard-stat-icon bg-gradient-to-br from-emerald-500/90 to-teal-600/85 shadow-lg">
-              <ui-icon class="text-white text-2xl" [name]="userPlusIcon" />
+            <div class="dashboard-stat-icon bg-linear-to-br from-emerald-500/90 to-teal-600/85 shadow-lg">
+              <i-lucide class="text-white text-2xl" [name]="icons.userPlus" />
             </div>
           </div>
           <div class="space-y-1">
@@ -92,8 +92,8 @@
 
         <div class="dashboard-stat-card">
           <div class="flex items-start justify-between mb-4">
-            <div class="dashboard-stat-icon bg-gradient-to-br from-amber-500/90 to-orange-600/85 shadow-lg">
-              <ui-icon class="text-white text-2xl" [name]="usersIcon" />
+            <div class="dashboard-stat-icon bg-linear-to-br from-amber-500/90 to-orange-600/85 shadow-lg">
+              <i-lucide class="text-white text-2xl" [name]="icons.users" />
             </div>
           </div>
           <div class="space-y-1">
@@ -148,7 +148,7 @@
             </div>
           </div>
           } @placeholder {
-          <div class="flex-1 flex items-center justify-center min-h-[320px]">
+          <div class="flex-1 flex items-center justify-center min-h-80">
             <div class="dashboard-shimmer w-64 h-64 rounded-full"></div>
           </div>
           }
@@ -168,13 +168,13 @@
                 [src]="highlightImage()"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 [alt]="highlightTitle()" />
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
+              <div class="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/60 to-transparent"></div>
             </div>
 
             <div class="relative z-10 space-y-4 p-8">
               <span
-                class="dashboard-badge bg-gradient-to-r from-primary-500/90 to-primary-700/85 text-white border-0 shadow-lg inline-flex">
-                <ui-icon class="text-sm" name="star" />
+                class="dashboard-badge bg-linear-to-r from-primary-500/90 to-primary-700/85 text-white border-0 shadow-lg inline-flex">
+                <i-lucide class="text-sm" [name]="icons.star" />
                 <span class="uppercase tracking-wider font-bold text-xs">{{ highlightBadge() }}</span>
               </span>
               <h4 class="text-2xl font-black text-white leading-tight dashboard-line-clamp-2">
@@ -183,8 +183,7 @@
               <p class="text-slate-200 text-sm leading-relaxed dashboard-line-clamp-2">{{ highlightDescription() }}</p>
               <div class="flex items-center gap-2 text-white font-semibold pt-2">
                 <span class="text-sm">Découvrir</span>
-                <ui-icon class="text-base group-hover:translate-x-1 transition-transform"
-                   name="arrow_forward" />
+                 <i-lucide class="text-base group-hover:translate-x-1 transition-transform" [name]="icons.arrowRight" />
               </div>
             </div>
           </a>
@@ -206,12 +205,12 @@
           class="dashboard-card-hover p-6 flex items-center gap-4 group cursor-pointer">
           @if (venture.logo) {
           <div
-            class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 ring-2 ring-slate-100 group-hover:ring-primary-200 transition-all duration-300 shadow-md">
+            class="w-16 h-16 rounded-lg overflow-hidden shrink-0 ring-2 ring-slate-100 group-hover:ring-primary-200 transition-all duration-300 shadow-md">
             <img [src]="venture | apiIMG : 'venture'" [alt]="venture.name" class="w-full h-full object-cover" />
           </div>
           } @else {
           <div
-            class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center font-black text-white text-lg shadow-lg flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+            class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center font-black text-white text-lg shadow-lg shrink-0 group-hover:scale-105 transition-transform duration-300">
             {{ venture.name.charAt(0) }}{{ (venture.name.split(' ')[1] || '').charAt(0) }}
           </div>
           }
@@ -226,10 +225,10 @@
           </div>
 
           <div
-            class="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-primary-50 transition-all duration-300 flex-shrink-0 shadow-sm">
-            <ui-icon
+            class="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center group-hover:bg-primary-50 transition-all duration-300 shrink-0 shadow-sm">
+            <i-lucide
               class="text-slate-600 group-hover:text-primary-600 group-hover:translate-x-0.5 transition-all text-xl"
-               name="arrow_forward" />
+              [name]="icons.arrowRight" />
           </div>
         </a>
         }
@@ -238,7 +237,7 @@
       <div class="dashboard-card flex items-center justify-between">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center">
-            <ui-icon class="text-primary-600 text-2xl" name="business_center" />
+            <i-lucide class="text-primary-600 text-2xl" [name]="icons.business" />
           </div>
           <div>
             <h3 class="font-bold text-slate-900">Aucun projet</h3>
@@ -246,7 +245,7 @@
           </div>
         </div>
         <a [routerLink]="['/dashboard/user/ventures/create']" class="dashboard-btn-primary">
-          <ui-icon class="text-xl" name="add" />
+          <i-lucide class="text-xl" [name]="icons.add" />
           <span>Créer</span>
         </a>
       </div>
@@ -262,11 +261,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <a
           routerLink="/dashboard/user/ventures/create"
-          class="dashboard-card-hover group cursor-pointer overflow-hidden bg-gradient-to-br from-primary-500/90 via-primary-600/85 to-primary-700/85 p-8">
+          class="dashboard-card-hover group cursor-pointer overflow-hidden bg-linear-to-br from-primary-500/90 via-primary-600/85 to-primary-700/85 p-8">
           <div class="flex flex-col items-center text-center text-white gap-4">
             <div
               class="w-16 h-16 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <ui-icon class="text-4xl" name="add_business" />
+              <i-lucide class="text-4xl" [name]="icons.business" />
             </div>
             <div>
               <h4 class="font-black text-lg mb-1">Créer un projet</h4>
@@ -278,8 +277,8 @@
         <a routerLink="/dashboard/products/create" class="dashboard-card-hover group cursor-pointer">
           <div class="flex flex-col items-center text-center gap-4">
             <div
-              class="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-500/90 to-indigo-600/85 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <ui-icon class="text-white text-4xl" name="add_shopping_cart" />
+              class="w-16 h-16 rounded-lg bg-linear-to-br from-blue-500/90 to-indigo-600/85 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <i-lucide class="text-white text-4xl" [name]="icons.shoppingCart" />
             </div>
             <div>
               <h4 class="font-black text-lg text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
@@ -293,8 +292,8 @@
         <a routerLink="/dashboard/user/profile" class="dashboard-card-hover group cursor-pointer">
           <div class="flex flex-col items-center text-center gap-4">
             <div
-              class="w-16 h-16 rounded-lg bg-gradient-to-br from-purple-500/90 to-pink-600/85 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <ui-icon class="text-white text-4xl" name="edit" />
+              class="w-16 h-16 rounded-lg bg-linear-to-br from-purple-500/90 to-pink-600/85 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <i-lucide class="text-white text-4xl" [name]="icons.edit" />
             </div>
             <div>
               <h4 class="font-black text-lg text-slate-900 mb-1 group-hover:text-purple-600 transition-colors">

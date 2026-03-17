@@ -28,7 +28,7 @@
               <label for="name" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.user" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.name' | translate }}
@@ -45,7 +45,7 @@
               <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.mail" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.email' | translate }}
@@ -59,14 +59,12 @@
                 class="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-primary-400 focus:ring-4 focus:ring-primary-100" />
             </div>
           </div>
-          }
-
-          @if (formManager.currentStep() === 1) {
+          } @if (formManager.currentStep() === 1) {
           <div class="group">
             <label for="country" class="block text-sm font-semibold text-slate-700 mb-2">
               <span class="flex items-center gap-2">
                 <span
-                  class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                  class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                   <i-lucide [name]="icons.globe" class="size-3.5 md:size-5 text-primary-600" />
                 </span>
                 {{ 'auth.signup.form.country' | translate }}
@@ -84,14 +82,15 @@
               <label for="phone_number" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.phone" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.phone' | translate }}
                 </span>
               </label>
               <div class="flex overflow-hidden rounded-lg border border-slate-200 bg-white">
-                <span class="inline-flex items-center border-r border-slate-200 bg-slate-50 px-4 text-sm font-medium text-slate-700">
+                <span
+                  class="inline-flex items-center border-r border-slate-200 bg-slate-50 px-4 text-sm font-medium text-slate-700">
                   {{ formattedCountryCode }}
                 </span>
                 <input
@@ -106,7 +105,7 @@
               <label for="gender" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.users" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.gender' | translate }}
@@ -123,7 +122,7 @@
               <label for="birth_date" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.calendar" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.birthDate' | translate }}
@@ -143,7 +142,7 @@
               <label for="password" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.lock" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.password' | translate }}
@@ -169,7 +168,7 @@
               <label for="password_confirm" class="block text-sm font-semibold text-slate-700 mb-2">
                 <span class="flex items-center gap-2">
                   <span
-                    class="flex-shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
+                    class="shrink-0 w-5 h-5 md:w-7 md:h-7 rounded-md bg-gradient-to-br from-primary-50 to-primary-100/50 border border-primary-200/60 flex items-center justify-center group-focus-within:from-primary-100 group-focus-within:to-primary-200/50 group-focus-within:border-primary-300 transition-all duration-200">
                     <i-lucide [name]="icons.lock" class="size-3.5 md:size-5 text-primary-600" />
                   </span>
                   {{ 'auth.signup.form.passwordConfirm' | translate }}

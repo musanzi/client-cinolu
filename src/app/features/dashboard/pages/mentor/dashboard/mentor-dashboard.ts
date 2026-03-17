@@ -3,11 +3,29 @@ import { RouterModule } from '@angular/router';
 import { AuthStore } from '@core/auth/auth.store';
 import { MentorDashboardStore } from '../../../store/mentor-dashboard.store';
 import { MentorProfileStore } from '../../../store/mentor-profile.store';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowRight,
+  BadgeCheck,
+  BellRing,
+  Calendar,
+  ChartColumnBig,
+  CheckCheck,
+  Clock3,
+  GraduationCap,
+  History,
+  Inbox,
+  LucideAngularModule,
+  Mail,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  User,
+  Users
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-mentor-dashboard',
-  imports: [RouterModule, IconComponent],
+  imports: [RouterModule, LucideAngularModule],
   templateUrl: './mentor-dashboard.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -16,12 +34,24 @@ export class MentorDashboard implements OnInit {
   profileStore = inject(MentorProfileStore);
   dashboardStore = inject(MentorDashboardStore);
 
-  dashboardIcon = 'dashboard';
-  profileIcon = 'person';
-  sessionsIcon = 'event';
-  requestsIcon = 'mail';
-  menteesIcon = 'groups';
-  ratingIcon = 'star';
+  readonly icons = {
+    arrowRight: ArrowRight,
+    checkedAll: CheckCheck,
+    clock: Clock3,
+    inbox: Inbox,
+    insights: ChartColumnBig,
+    mail: Mail,
+    mentees: Users,
+    notifications: BellRing,
+    profile: User,
+    rating: Star,
+    school: GraduationCap,
+    sessions: Calendar,
+    statusApproved: BadgeCheck,
+    trendingUp: TrendingUp,
+    update: RefreshCw,
+    history: History
+  };
 
   constructor() {
     // Charger le profil mentor quand l'utilisateur change

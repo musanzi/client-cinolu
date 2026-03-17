@@ -3,7 +3,7 @@
   <div
     class="mb-6 flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800"
     role="status">
-    <ui-icon class="text-2xl text-amber-600" name="schedule" />
+    <i-lucide class="text-2xl text-amber-600" [name]="icons.schedule" />
     <p class="font-semibold">{{ message }}</p>
   </div>
   }
@@ -11,8 +11,8 @@
   <div class="dashboard-section mb-8">
     <div class="flex items-center gap-4 mb-6">
       <div
-        class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg">
-        <ui-icon class="text-white text-3xl" name="school" />
+        class="w-14 h-14 rounded-xl bg-linear-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg">
+        <i-lucide class="text-white text-3xl" [name]="icons.school" />
       </div>
       <div>
         <h1 class="dashboard-heading-2">Devenir <span class="dashboard-text-gradient-primary">Mentor</span></h1>
@@ -31,7 +31,7 @@
       </div>
       <div class="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
         <div
-          class="bg-gradient-to-r from-purple-500 to-primary-600 h-2.5 rounded-full transition-all duration-500"
+          class="bg-linear-to-r from-purple-500 to-primary-600 h-2.5 rounded-full transition-all duration-500"
           [style.width.%]="getProgressPercentage()"></div>
       </div>
 
@@ -45,7 +45,7 @@
             [class.bg-primary-600]="currentStep() >= 1"
             [class.border-primary-600]="currentStep() >= 1"
             [class.border-slate-300]="currentStep() < 1">
-            <ui-icon class="text-sm" [class.text-white]="currentStep() >= 1" name="person" />
+            <i-lucide class="text-sm" [class.text-white]="currentStep() >= 1" [name]="icons.person" />
           </div>
           <span class="dashboard-text-tiny font-medium hidden sm:inline">Expérience</span>
         </div>
@@ -64,7 +64,7 @@
             [class.bg-primary-600]="currentStep() >= 2"
             [class.border-primary-600]="currentStep() >= 2"
             [class.border-slate-300]="currentStep() < 2">
-            <ui-icon class="text-sm" [class.text-white]="currentStep() >= 2" name="star" />
+            <i-lucide class="text-sm" [class.text-white]="currentStep() >= 2" [name]="icons.star" />
           </div>
           <span class="dashboard-text-tiny font-medium hidden sm:inline">Expertises</span>
         </div>
@@ -83,7 +83,7 @@
             [class.bg-primary-600]="currentStep() >= 3"
             [class.border-primary-600]="currentStep() >= 3"
             [class.border-slate-300]="currentStep() < 3">
-            <ui-icon class="text-sm" [class.text-white]="currentStep() >= 3" name="work" />
+            <i-lucide class="text-sm" [class.text-white]="currentStep() >= 3" [name]="icons.work" />
           </div>
           <span class="dashboard-text-tiny font-medium hidden sm:inline">Parcours</span>
         </div>
@@ -97,8 +97,8 @@
       <div class="dashboard-card-elevated p-8 anim-fade-in">
         <div class="flex items-center gap-3 mb-6 pb-6 border-b border-slate-100">
           <div
-            class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
-            <ui-icon class="text-white text-2xl" name="person" />
+            class="w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
+            <i-lucide class="text-white text-2xl" [name]="icons.person" />
           </div>
           <div>
             <h2 class="dashboard-heading-4">Votre Expérience</h2>
@@ -109,7 +109,7 @@
         <div class="w-full mx-auto space-y-6">
           <div>
             <label for="years_experience" class="dashboard-label">
-              <ui-icon class="text-base text-primary-600" name="calendar_today" />
+              <i-lucide class="text-base text-primary-600" [name]="icons.calendar" />
               <span>Années d'expérience <span class="text-red-500">*</span></span>
             </label>
             <input
@@ -126,7 +126,7 @@
 
           <div class="dashboard-card bg-blue-50 border border-blue-100 p-5">
             <div class="flex items-start gap-3">
-              <ui-icon class="text-blue-600 text-xl" name="info" />
+              <i-lucide class="text-blue-600 text-xl" [name]="icons.info" />
               <div>
                 <h4 class="font-semibold text-blue-900 text-sm mb-1">Pourquoi cette information ?</h4>
                 <p class="text-blue-700 text-xs leading-relaxed">
@@ -142,8 +142,8 @@
       <div class="dashboard-card-elevated p-8 anim-fade-in">
         <div class="flex items-center gap-3 mb-6 pb-6 border-b border-slate-100">
           <div
-            class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg">
-            <ui-icon class="text-white text-2xl" name="star" />
+            class="w-12 h-12 rounded-xl bg-linear-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg">
+            <i-lucide class="text-white text-2xl" [name]="icons.star" />
           </div>
           <div>
             <h2 class="dashboard-heading-4">Vos Domaines d'Expertise</h2>
@@ -158,7 +158,7 @@
         } @else {
         <div class="space-y-4 w-full">
           <label for="expertisesSelect" class="dashboard-label flex items-center gap-2">
-            <ui-icon class="text-base text-primary-600" name="manage_search" />
+            <i-lucide class="text-base text-primary-600" [name]="icons.manageSearch" />
             <span>Domaines d'expertise</span>
           </label>
           <select
@@ -179,13 +179,13 @@
 
         @if (availableExpertises().length === 0) {
         <div class="text-center py-12">
-          <ui-icon class="text-slate-300 text-6xl mb-3" name="info" />
+          <i-lucide class="text-slate-300 text-6xl mb-3" [name]="icons.info" />
           <p class="dashboard-text-base text-slate-500">Aucune expertise disponible</p>
         </div>
         } } @if (applicationForm.get('expertises')?.hasError('required') && applicationForm.get('expertises')?.touched)
         {
         <p class="text-red-500 text-sm mt-4 flex items-center gap-2">
-          <ui-icon class="text-lg" name="error" />
+          <i-lucide class="text-lg" [name]="icons.error" />
           <span>Veuillez sélectionner au moins une expertise</span>
         </p>
         }
@@ -195,8 +195,8 @@
         <div class="flex items-center justify-between mb-6 pb-6 border-b border-slate-100">
           <div class="flex items-center gap-3">
             <div
-              class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg">
-              <ui-icon class="text-white text-2xl" name="work" />
+              class="w-12 h-12 rounded-xl bg-linear-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg">
+              <i-lucide class="text-white text-2xl" [name]="icons.work" />
             </div>
             <div>
               <h2 class="dashboard-heading-4">Votre Parcours Professionnel</h2>
@@ -208,7 +208,7 @@
             (click)="addExperience()"
             [disabled]="mentorApply.isFormReadonly()"
             class="dashboard-btn-secondary text-sm">
-            <ui-icon class="text-lg" name="add" />
+            <i-lucide class="text-lg" [name]="icons.add" />
             <span class="hidden sm:inline">Ajouter</span>
           </button>
         </div>
@@ -221,7 +221,7 @@
               type="button"
               (click)="removeExperience(i)"
               class="absolute top-4 right-4 w-8 h-8 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 flex items-center justify-center transition-colors">
-              <ui-icon class="text-lg" name="close" />
+              <i-lucide class="text-lg" [name]="icons.close" />
             </button>
             }
 
@@ -229,7 +229,7 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label [for]="'company_' + i" class="dashboard-label">
-                    <ui-icon class="text-base text-primary-600" name="business" />
+                    <i-lucide class="text-base text-primary-600" [name]="icons.business" />
                     <span>Projet <span class="text-red-500">*</span></span>
                   </label>
                   <input
@@ -242,7 +242,7 @@
 
                 <div>
                   <label [for]="'job_' + i" class="dashboard-label">
-                    <ui-icon class="text-base text-purple-600" name="work" />
+                    <i-lucide class="text-base text-purple-600" [name]="icons.work" />
                     <span>Poste <span class="text-red-500">*</span></span>
                   </label>
                   <input
@@ -257,7 +257,7 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label [for]="'start_' + i" class="dashboard-label">
-                    <ui-icon class="text-base text-primary-600" name="event" />
+                    <i-lucide class="text-base text-primary-600" [name]="icons.event" />
                     <span>Date de début <span class="text-red-500">*</span></span>
                   </label>
                   <input
@@ -270,7 +270,7 @@
 
                 <div>
                   <label [for]="'end_' + i" class="dashboard-label">
-                    <ui-icon class="text-base text-red-600" name="event" />
+                    <i-lucide class="text-base text-red-600" [name]="icons.event" />
                     <span>Date de fin</span>
                   </label>
                   <input
@@ -302,12 +302,12 @@
       <div class="flex flex-col-reverse sm:flex-row gap-3 justify-between mt-8">
         <div class="flex gap-3">
           <a routerLink="/dashboard/user/profile" class="dashboard-btn-secondary">
-            <ui-icon class="text-lg" name="arrow_back" />
+            <i-lucide class="text-lg" [name]="icons.arrowBack" />
             <span>Retour au profil</span>
           </a>
           @if (currentStep() > 1 && !mentorApply.isFormReadonly()) {
           <button formActions type="button" (click)="previousStep()" class="dashboard-btn-secondary">
-            <ui-icon class="text-lg" name="chevron_left" />
+            <i-lucide class="text-lg" [name]="icons.chevronLeft" />
             <span>Précédent</span>
           </button>
           }
@@ -322,7 +322,7 @@
             [disabled]="mentorApply.isFormReadonly()"
             class="dashboard-btn-primary">
             <span>Suivant</span>
-            <ui-icon class="text-lg" name="chevron_right" />
+            <i-lucide class="text-lg" [name]="icons.chevronRight" />
           </button>
           } @else {
           <button
@@ -334,7 +334,7 @@
             <div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
             <span>Soumission en cours...</span>
             } @else {
-            <ui-icon class="text-lg" name="send" />
+            <i-lucide class="text-lg" [name]="icons.send" />
             <span>Soumettre ma candidature</span>
             }
           </button>

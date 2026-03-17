@@ -2,8 +2,8 @@
   <div class="mb-8">
     <div class="flex items-start gap-3 mb-4">
       <div
-        class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20 flex-shrink-0">
-        <ui-icon class="text-white text-2xl" name="military_tech" />
+        class="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20 shrink-0">
+        <i-lucide class="text-white text-2xl" [name]="icons.award" />
       </div>
       <div class="flex-1 min-w-0">
         <h1 class="dashboard-heading-2">Badge Ambassadeur</h1>
@@ -12,7 +12,7 @@
     </div>
     <div class="mt-4 p-4 bg-white border rounded-lg border-l-4 border-primary-200">
       <div class="flex items-start gap-2">
-        <ui-icon class="text-primary-600 text-base mt-0.5" name="info" />
+        <i-lucide class="text-primary-600 text-base mt-0.5" [name]="icons.info" />
         <p class="dashboard-text-small text-slate-600">
           Ton niveau évolue automatiquement selon le nombre d'inscriptions générées via ton lien. Tu restes toujours
           Ambassadeur.
@@ -37,10 +37,11 @@
 
         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mb-6">
           <div
-            class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg flex items-center justify-center bg-gradient-to-br shadow-lg flex-shrink-0"
+            class="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-lg flex items-center justify-center bg-linear-to-br shadow-lg shrink-0"
             [class]="getBadgeGradientClass(badgeProgress().currentBadge.color)">
-            <ui-icon class="text-white text-4xl sm:text-5xl lg:text-6xl"
-               [name]="badgeProgress().currentBadge.icon" />
+            <i-lucide
+              class="text-white text-4xl sm:text-5xl lg:text-6xl"
+              [name]="resolveBadgeIcon(badgeProgress().currentBadge.icon)" />
           </div>
 
           <div class="flex-1 text-center sm:text-left">
@@ -51,7 +52,7 @@
             <span
               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold"
               [class]="'bg-' + badgeProgress().currentBadge.color + '-50 text-' + badgeProgress().currentBadge.color + '-700 border border-' + badgeProgress().currentBadge.color + '-200'">
-              <ui-icon class="text-base" name="military_tech" />
+              <i-lucide class="text-base" [name]="icons.award" />
               <span>Niveau {{ badgeProgress().currentBadge.secondaryLevel }}</span>
             </span>
           </div>
@@ -68,7 +69,7 @@
 
           <div class="relative h-3 bg-slate-200 rounded-full overflow-hidden mb-3">
             <div
-              class="absolute top-0 left-0 h-full bg-gradient-to-r transition-all duration-700 ease-out rounded-full"
+              class="absolute top-0 left-0 h-full bg-linear-to-r transition-all duration-700 ease-out rounded-full"
               [class]="getBadgeGradientClass(badgeProgress().currentBadge.color)"
               [style.width.%]="badgeProgress().progress"></div>
           </div>
@@ -80,8 +81,8 @@
           </p>
         </div>
         } @else {
-        <div class="bg-gradient-to-br from-purple-50 to-white rounded-lg p-5 border border-purple-200 text-center">
-          <ui-icon class="text-purple-500 text-4xl mb-3" name="emoji_events" />
+        <div class="bg-linear-to-br from-purple-50 to-white rounded-lg p-5 border border-purple-200 text-center">
+          <i-lucide class="text-purple-500 text-4xl mb-3" [name]="icons.trophy" />
           <p class="text-lg font-bold text-slate-900 mb-2">Niveau Légende atteint</p>
           <p class="dashboard-text-small">
             Tu as débloqué le niveau ultime ! Continue à inviter des membres pour maximiser ton impact.
@@ -95,15 +96,17 @@
       @if (badgeProgress().nextBadge) {
       <div class="dashboard-card p-6">
         <h4 class="dashboard-heading-5 mb-4 flex items-center gap-2">
-          <ui-icon class="text-slate-600 text-xl" name="flag" />
+          <i-lucide class="text-slate-600 text-xl" [name]="icons.flag" />
           <span>Prochain objectif</span>
         </h4>
 
         <div class="flex items-start gap-3 sm:gap-4 p-4 bg-slate-50 rounded-lg border border-slate-100">
           <div
-            class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center bg-gradient-to-br shadow-lg flex-shrink-0"
+            class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center bg-linear-to-br shadow-lg shrink-0"
             [class]="getBadgeGradientClass(badgeProgress().nextBadge!.color)">
-            <ui-icon class="text-white text-2xl sm:text-3xl" [name]="badgeProgress().nextBadge!.icon" />
+            <i-lucide
+              class="text-white text-2xl sm:text-3xl"
+              [name]="resolveBadgeIcon(badgeProgress().nextBadge!.icon)" />
           </div>
           <div class="flex-1 min-w-0">
             <h5 class="font-bold text-slate-900 mb-1 text-sm sm:text-base">
@@ -139,10 +142,10 @@
       </div>
 
       <div class="dashboard-card p-6 text-center">
-        <ui-icon class="text-primary-600 text-4xl mb-3" name="share" />
+        <i-lucide class="text-primary-600 text-4xl mb-3" [name]="icons.share" />
         <p class="dashboard-text-small mb-4 font-semibold">Partage ton lien pour faire évoluer ton niveau</p>
         <a routerLink="/dashboard/user/referral/link" class="dashboard-btn-primary w-full inline-flex justify-center">
-          <ui-icon class="text-lg" name="link" />
+          <i-lucide class="text-lg" [name]="icons.link" />
           <span>Mon lien de parrainage</span>
         </a>
       </div>
@@ -169,26 +172,29 @@
         @if (isBadgeUnlocked(badge)) {
         <div class="absolute top-3 right-3">
           <div class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center">
-            <ui-icon class="text-white text-sm" name="check" />
+            <i-lucide class="text-white text-sm" [name]="icons.check" />
           </div>
         </div>
         } @else {
         <div class="absolute top-3 right-3">
           <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center">
-            <ui-icon class="text-slate-500 text-sm" name="lock" />
+            <i-lucide class="text-slate-500 text-sm" [name]="icons.lock" />
           </div>
         </div>
         }
 
         <div class="flex justify-center mb-4">
           <div
-            class="w-16 h-16 rounded-lg flex items-center justify-center bg-gradient-to-br shadow"
+            class="w-16 h-16 rounded-lg flex items-center justify-center bg-linear-to-br shadow"
             [class]="
               isBadgeUnlocked(badge)
                 ? getBadgeGradientClass(badge.color) + ' group-hover:scale-105 transition-transform'
                 : 'from-slate-200 to-slate-300'
             ">
-            <ui-icon class="text-4xl" [class]="isBadgeUnlocked(badge) ? 'text-white' : 'text-slate-400'" [name]="badge.icon" />
+            <i-lucide
+              class="text-4xl"
+              [class]="isBadgeUnlocked(badge) ? 'text-white' : 'text-slate-400'"
+              [name]="resolveBadgeIcon(badge.icon)" />
           </div>
         </div>
 
@@ -201,7 +207,7 @@
                   ? 'bg-primary-50 text-primary-700 border border-primary-200'
                   : 'bg-slate-200 text-slate-600'
               ">
-              <ui-icon class="text-base" name="military_tech" />
+              <i-lucide class="text-base" [name]="icons.award" />
               <span>{{ badge.secondaryLevel }}</span>
             </span>
           </div>
@@ -228,14 +234,14 @@
           @if (isBadgeUnlocked(badge)) {
           <div class="mt-3">
             <span class="dashboard-badge-success text-xs px-2 py-1">
-              <ui-icon class="text-xs" name="verified" />
+              <i-lucide class="text-xs" [name]="icons.verified" />
               <span>Débloqué</span>
             </span>
           </div>
           } @else {
           <div class="mt-3">
             <span class="dashboard-badge-neutral text-xs px-2 py-1">
-              <ui-icon class="text-xs" name="lock" />
+              <i-lucide class="text-xs" [name]="icons.lock" />
               <span>Verrouillé</span>
             </span>
           </div>
@@ -249,26 +255,26 @@
   <div class="dashboard-card p-6 sm:p-8 mt-8 border-l-4 border-primary-200">
     <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
       <div
-        class="w-14 h-14 sm:w-16 sm:h-16 flex-shrink-0 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20">
-        <ui-icon class="text-white text-2xl sm:text-3xl" name="info" />
+        class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20">
+        <i-lucide class="text-white text-2xl sm:text-3xl" [name]="icons.info" />
       </div>
       <div class="flex-1 text-center sm:text-left">
         <h4 class="dashboard-heading-4 mb-3">Comment ça fonctionne ?</h4>
         <ul class="space-y-2 dashboard-text-body text-left">
           <li class="flex items-start gap-2">
-            <ui-icon class="text-primary-600 text-lg mt-0.5 flex-shrink-0" name="arrow_right" />
+            <i-lucide class="text-primary-600 text-lg mt-0.5 shrink-0" [name]="icons.arrowRight" />
             <span>Tu es toujours Ambassadeur, seul ton niveau évolue</span>
           </li>
           <li class="flex items-start gap-2">
-            <ui-icon class="text-primary-600 text-lg mt-0.5 flex-shrink-0" name="arrow_right" />
+            <i-lucide class="text-primary-600 text-lg mt-0.5 shrink-0" [name]="icons.arrowRight" />
             <span>Le niveau change automatiquement selon le nombre d'inscriptions via ton lien</span>
           </li>
           <li class="flex items-start gap-2">
-            <ui-icon class="text-primary-600 text-lg mt-0.5 flex-shrink-0" name="arrow_right" />
+            <i-lucide class="text-primary-600 text-lg mt-0.5 shrink-0" [name]="icons.arrowRight" />
             <span>5 niveaux : Bronze (1) → Argent (5) → Or (15) → Diamant (30) → Légende (50+)</span>
           </li>
           <li class="flex items-start gap-2">
-            <ui-icon class="text-primary-600 text-lg mt-0.5 flex-shrink-0" name="arrow_right" />
+            <i-lucide class="text-primary-600 text-lg mt-0.5 shrink-0" [name]="icons.arrowRight" />
             <span>Partage ton lien pour faire évoluer ton niveau et maximiser ton impact</span>
           </li>
         </ul>

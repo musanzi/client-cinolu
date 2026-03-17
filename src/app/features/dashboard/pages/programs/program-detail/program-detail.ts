@@ -6,12 +6,34 @@ import { VenturesStore } from '../../../store/ventures.store';
 import { ParticipationsStore } from '../../../store/participations.store';
 import { ApiImgPipe } from '../../../../../shared/pipes/api-img.pipe';
 import { AuthStore } from '@core/auth/auth.store';
-import { AlertTriangle, Info, LucideAngularModule } from 'lucide-angular';
-import { ButtonComponent, DialogComponent, IconComponent } from '@shared/ui';
+import {
+  AlertTriangle,
+  ArrowLeft,
+  ArrowRight,
+  BadgeCheck,
+  Briefcase,
+  Calendar,
+  CalendarX,
+  CheckCircle,
+  Clock3,
+  FileText,
+  Images,
+  Info,
+  Lightbulb,
+  Lock,
+  LucideAngularModule,
+  Rocket,
+  SearchX,
+  Send,
+  Tag,
+  Trophy,
+  User
+} from 'lucide-angular';
+import { ButtonComponent, DialogComponent } from '@shared/ui';
 
 @Component({
   selector: 'app-program-detail',
-  imports: [CommonModule, ApiImgPipe, RouterLink, LucideAngularModule, ButtonComponent, DialogComponent, IconComponent],
+  imports: [CommonModule, ApiImgPipe, RouterLink, LucideAngularModule, ButtonComponent, DialogComponent],
   providers: [ProjectStore],
   templateUrl: './program-detail.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -33,7 +55,28 @@ export class ProgramDetail implements OnInit {
   confirmIcon = signal<'alert' | 'info'>('alert');
   pendingConfirmAction = signal<(() => void) | null>(null);
 
-  readonly icons = { alertTriangle: AlertTriangle, info: Info };
+  readonly icons = {
+    alertTriangle: AlertTriangle,
+    arrowLeft: ArrowLeft,
+    arrowRight: ArrowRight,
+    briefcase: Briefcase,
+    calendar: Calendar,
+    calendarX: CalendarX,
+    checkCircle: CheckCircle,
+    clock: Clock3,
+    description: FileText,
+    images: Images,
+    info: Info,
+    lightbulb: Lightbulb,
+    lock: Lock,
+    rocket: Rocket,
+    search: SearchX,
+    send: Send,
+    tag: Tag,
+    trophy: Trophy,
+    user: User,
+    verified: BadgeCheck
+  };
 
   readonly projectStatus = computed(() => {
     const project = this.projectStore.project();

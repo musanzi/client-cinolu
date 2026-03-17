@@ -10,7 +10,7 @@
   [class.top-0]="!isMobile()"
   role="navigation">
   <div
-    class="h-18 flex items-center justify-between px-4 border-b border-slate-200 flex-shrink-0"
+    class="h-18 flex items-center justify-between px-4 border-b border-slate-200 shrink-0"
     [ngClass]="{ 'justify-center': isCollapsed() && !isMobile() }">
     @if (!isCollapsed() || isMobile()) {
     <a [routerLink]="['/']" class="flex items-center gap-2.5 group">
@@ -71,7 +71,7 @@
               'bg-primary-100': isActive(item),
               'bg-slate-100 group-hover:bg-primary-50': !isActive(item)
             }"
-            class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0">
+            class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors shrink-0">
             <i-lucide
               [name]="item.icon"
               [ngClass]="{ 'text-primary-600': isActive(item), 'text-slate-600 group-hover:text-primary-600': !isActive(item) }"
@@ -87,11 +87,11 @@
         <i-lucide
           [name]="icons.chevronDown"
           [ngClass]="{ 'rotate-180': isMenuExpanded(item.id) }"
-          class="w-4 h-4 transition-transform duration-200 flex-shrink-0" />
+          class="w-4 h-4 transition-transform duration-200 shrink-0" />
         } @if (item.badge && (!isCollapsed() || isMobile())) {
         <span
           [ngClass]="getBadgeColorClass(item.badge.color)"
-          class="px-2 py-0.5 rounded-full text-xs font-bold flex-shrink-0"
+          class="px-2 py-0.5 rounded-full text-xs font-bold shrink-0"
           >{{ item.badge.count }}</span
         >
         }
@@ -121,18 +121,18 @@
                 'text-primary-600': isChildActive(child),
                 'text-slate-600 group-hover:text-slate-700': !isChildActive(child)
               }"
-              class="w-4 h-4 flex-shrink-0" />
+              class="w-4 h-4 shrink-0" />
 
             @if (!isCollapsed() || isMobile()) {
             <span class="text-sm truncate">{{ child.label }}</span>
             } @if (child.badge && (!isCollapsed() || isMobile())) {
             <span
               [ngClass]="getBadgeColorClass(child.badge.color)"
-              class="ml-auto px-2 py-0.5 rounded-full text-xs font-bold flex-shrink-0"
+              class="ml-auto px-2 py-0.5 rounded-full text-xs font-bold shrink-0"
               >{{ child.badge.count }}</span
             >
             } @if (child.disabled && (!isCollapsed() || isMobile())) {
-            <span class="ml-auto text-xs text-slate-600 font-medium flex-shrink-0">Bientôt</span>
+            <span class="ml-auto text-xs text-slate-600 font-medium shrink-0">Bientôt</span>
             }
           </a>
           }
@@ -155,7 +155,7 @@
             'bg-primary-100': isActive(item),
             'bg-slate-100 group-hover:bg-primary-50': !isActive(item)
           }"
-          class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors flex-shrink-0">
+          class="w-9 h-9 flex items-center justify-center rounded-lg transition-colors shrink-0">
           <i-lucide
             [name]="item.icon"
             [ngClass]="{
@@ -170,11 +170,11 @@
         } @if (item.badge && (!isCollapsed() || isMobile())) {
         <span
           [ngClass]="getBadgeColorClass(item.badge.color)"
-          class="px-2 py-0.5 rounded-full text-xs font-bold flex-shrink-0"
+          class="px-2 py-0.5 rounded-full text-xs font-bold shrink-0"
           >{{ item.badge.count }}</span
         >
         } @if (item.disabled && (!isCollapsed() || isMobile())) {
-        <span class="text-xs text-slate-600 font-medium flex-shrink-0">Bientôt</span>
+        <span class="text-xs text-slate-600 font-medium shrink-0">Bientôt</span>
         }
       </a>
       }
@@ -182,7 +182,7 @@
     } }
   </nav>
 
-  <div class="border-t border-slate-200 p-3 flex-shrink-0">
+  <div class="border-t border-slate-200 p-3 shrink-0">
     <button
       (click)="signOut()"
       type="button"

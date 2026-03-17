@@ -11,7 +11,7 @@
   @if (!isEditMode()) {
   <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 flex items-start gap-3">
     <svg
-      class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+      class="w-5 h-5 text-blue-600 shrink-0 mt-0.5"
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +118,7 @@
             <img [ngSrc]="image | apiIMG: 'gallery'" alt="Image de galerie" fill class="object-cover" priority />
             } @else {
             <div class="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
-              <ui-icon class="text-4xl" name="image" />
+              <i-lucide class="text-4xl" [name]="icons.image" />
             </div>
             }
             <button

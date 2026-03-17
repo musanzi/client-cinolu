@@ -1,12 +1,4 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  computed,
-  signal,
-  ChangeDetectionStrategy,
-  PLATFORM_ID
-} from '@angular/core';
+import { Component, inject, OnInit, computed, signal, ChangeDetectionStrategy, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -16,7 +8,31 @@ import { AuthStore } from '@core/auth/auth.store';
 import { ToastrService } from '@core/services/toast/toastr.service';
 import { environment } from '@environments/environment';
 import { REFERRAL_CONFIG, QRCodeCache } from '@features/dashboard/config/referral.constants';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowRight,
+  Award,
+  BadgeCheck,
+  ChartColumnBig,
+  ChevronDown,
+  ChevronUp,
+  ClipboardCopy,
+  Crown,
+  Download,
+  Info,
+  Link,
+  Link2,
+  LucideAngularModule,
+  Megaphone,
+  MessageSquare,
+  Podcast,
+  QrCode,
+  ScanQrCode,
+  Shield,
+  Sparkles,
+  TrendingUp,
+  Users,
+  Building
+} from 'lucide-angular';
 import {
   shareToLinkedIn,
   shareToFacebook,
@@ -26,7 +42,7 @@ import {
 
 @Component({
   selector: 'app-my-referral-link',
-  imports: [CommonModule, RouterModule, IconComponent],
+  imports: [CommonModule, RouterModule, LucideAngularModule],
   templateUrl: './my-link.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -40,6 +56,31 @@ export class MyReferralLink implements OnInit {
   qrCodeDataUrl = signal<string | null>(null);
   isGeneratingQR = signal(false);
   showAllBenefits = signal(false);
+
+  readonly icons = {
+    addLink: Link2,
+    arrowRight: ArrowRight,
+    award: Award,
+    business: Building,
+    campaign: Megaphone,
+    copy: ClipboardCopy,
+    crown: Crown,
+    download: Download,
+    expandLess: ChevronUp,
+    expandMore: ChevronDown,
+    info: Info,
+    insights: ChartColumnBig,
+    link: Link,
+    podcasts: Podcast,
+    qrCode: QrCode,
+    qrScanner: ScanQrCode,
+    security: Shield,
+    sparkles: Sparkles,
+    trendingUp: TrendingUp,
+    users: Users,
+    message: MessageSquare,
+    verified: BadgeCheck
+  };
 
   referralLink = computed(() => {
     const code = this.referralsStore.referralCode() || this.authStore.user()?.referral_code;

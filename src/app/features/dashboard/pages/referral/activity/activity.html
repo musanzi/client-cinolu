@@ -2,8 +2,8 @@
   <div class="mb-8">
     <div class="flex gap-3 mb-4">
       <div
-        class="w-14 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/20">
-        <ui-icon class="text-white text-2xl" name="history" />
+        class="w-14 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/20">
+        <i-lucide class="text-white text-2xl" [name]="icons.history" />
       </div>
       <div>
         <h1 class="dashboard-heading-2">Activité récente</h1>
@@ -24,11 +24,11 @@
     <div class="dashboard-card p-6">
       <div class="flex items-start justify-between mb-4">
         <div
-          class="w-11 h-11 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20">
-          <ui-icon class="text-white text-xl" name="timeline" />
+          class="w-11 h-11 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20">
+          <i-lucide class="text-white text-xl" [name]="icons.timeline" />
         </div>
         <div class="dashboard-badge-info">
-          <ui-icon class="text-xs" name="event_available" />
+          <i-lucide class="text-xs" [name]="icons.calendarCheck" />
         </div>
       </div>
       <h3 class="dashboard-heading-3 mb-1">{{ totalEvents() }}</h3>
@@ -38,11 +38,11 @@
     <div class="dashboard-card p-6">
       <div class="flex items-start justify-between mb-4">
         <div
-          class="w-11 h-11 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-          <ui-icon class="text-white text-xl" name="person_add" />
+          class="w-11 h-11 rounded-lg bg-linear-to-br from-emerald-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+          <i-lucide class="text-white text-xl" [name]="icons.personAdd" />
         </div>
         <div class="dashboard-badge-success">
-          <ui-icon class="text-xs" name="people" />
+          <i-lucide class="text-xs" [name]="icons.users" />
         </div>
       </div>
       <h3 class="dashboard-heading-3 mb-1">{{ referralEvents() }}</h3>
@@ -52,11 +52,11 @@
     <div class="dashboard-card p-6">
       <div class="flex items-start justify-between mb-4">
         <div
-          class="w-11 h-11 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
-          <ui-icon class="text-white text-xl" name="military_tech" />
+          class="w-11 h-11 rounded-lg bg-linear-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20">
+          <i-lucide class="text-white text-xl" [name]="icons.award" />
         </div>
         <div class="dashboard-badge-warning">
-          <ui-icon class="text-xs" name="emoji_events" />
+          <i-lucide class="text-xs" [name]="icons.badgeUnlocked" />
         </div>
       </div>
       <h3 class="dashboard-heading-3 mb-1">{{ badgeEvents() }}</h3>
@@ -67,35 +67,35 @@
   @if (timelineEvents().length === 0) {
   <div class="dashboard-card p-16 text-center">
     <div class="w-24 h-24 rounded-lg bg-slate-100 flex items-center justify-center mx-auto mb-6">
-      <ui-icon class="text-slate-400 text-5xl" name="event_busy" />
+      <i-lucide class="text-slate-400 text-5xl" [name]="icons.calendarX" />
     </div>
     <h3 class="dashboard-heading-3 mb-3">Aucune activité pour le moment</h3>
     <p class="dashboard-text-body mb-8 max-w-md mx-auto">
       Commence à partager ton lien de parrainage pour voir apparaître tes événements ici
     </p>
     <a routerLink="/dashboard/user/referral/link" class="dashboard-btn-primary inline-flex">
-      <ui-icon class="text-lg" name="share" />
+      <i-lucide class="text-lg" [name]="icons.share" />
       <span>Partager mon lien</span>
     </a>
   </div>
   } @else {
   <div class="dashboard-card p-6 sm:p-8">
     <h3 class="dashboard-heading-4 mb-8 flex items-center gap-2">
-      <ui-icon class="text-primary-600 text-xl" name="timeline" />
+      <i-lucide class="text-primary-600 text-xl" [name]="icons.timeline" />
       <span>Timeline de tes inscriptions</span>
     </h3>
 
     <div class="relative">
-      <div class="absolute left-[27px] top-0 bottom-0 w-0.5 bg-slate-200 hidden sm:block"></div>
+      <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-slate-200 hidden sm:block"></div>
 
       <div class="space-y-6">
         @for (event of timelineEvents(); track event.id) {
         <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-6 group">
-          <div class="relative flex-shrink-0">
+          <div class="relative shrink-0">
             <div
               class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-105"
               [class]="getColorClasses(event.color).icon">
-              <ui-icon class="text-white text-xl sm:text-2xl" [name]="event.icon" />
+              <i-lucide class="text-white text-xl sm:text-2xl" [name]="resolveEventIcon(event.icon)" />
             </div>
 
             @if (!$last) {
@@ -113,7 +113,7 @@
                   <p class="dashboard-text-small">{{ event.description }}</p>
                 </div>
 
-                <div class="text-left sm:text-right flex-shrink-0">
+                <div class="text-left sm:text-right shrink-0">
                   <p class="text-xs font-semibold mb-1" [class]="getColorClasses(event.color).text">
                     {{ getRelativeTime(event.date) }}
                   </p>
@@ -127,11 +127,11 @@
                 class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-3 border-t"
                 [class]="getColorClasses(event.color).border">
                 <span class="dashboard-badge-success text-[11px] px-2 py-1">
-                  <ui-icon class="text-xs" name="person" />
+                  <i-lucide class="text-xs" [name]="icons.person" />
                   <span>Inscription</span>
                 </span>
                 <p class="dashboard-text-tiny truncate">
-                  <ui-icon class="text-xs align-middle" name="email" />
+                  <i-lucide class="text-xs align-middle" [name]="icons.mail" />
                   {{ event.user.email }}
                 </p>
               </div>
@@ -141,8 +141,8 @@
                 [class]="getColorClasses(event.color).border">
                 <span
                   class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold text-white shadow-lg"
-                  [class]="'bg-gradient-to-r from-' + event.badge.color + '-400 to-' + event.badge.color + '-600'">
-                  <ui-icon class="text-xs" [name]="event.badge.icon" />
+                  [class]="'bg-linear-to-r from-' + event.badge.color + '-400 to-' + event.badge.color + '-600'">
+                  <i-lucide class="text-xs" [name]="resolveEventIcon(event.badge.icon)" />
                   <span>Niveau {{ event.badge.level }}</span>
                 </span>
                 <p class="dashboard-text-tiny">{{ event.badge.description }}</p>
@@ -162,7 +162,7 @@
         class="dashboard-btn-secondary inline-flex"
         aria-label="Fonctionnalité de chargement supplémentaire à venir"
         disabled>
-        <ui-icon class="text-lg" name="expand_more" />
+        <i-lucide class="text-lg" [name]="icons.expandMore" />
         <span>Charger plus (bientôt disponible)</span>
       </button>
     </div>

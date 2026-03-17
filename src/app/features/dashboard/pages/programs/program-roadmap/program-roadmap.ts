@@ -7,11 +7,24 @@ import { DeliverablesStore } from '../../../store/deliverables.store';
 import { ToastrService } from '@core/services/toast/toastr.service';
 import { IPhase } from '@shared/models/entities.models';
 import { DELIVERABLE_UPLOAD } from '../../../config/deliverable-upload.config';
-import { IconComponent } from '@shared/ui';
+import {
+  Calendar,
+  Check,
+  ChevronDown,
+  ChevronRight,
+  FileText,
+  LucideAngularModule,
+  Lock,
+  Paperclip,
+  Play,
+  Rocket,
+  Timer,
+  Upload
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-program-roadmap',
-  imports: [CommonModule, RouterLink, IconComponent],
+  imports: [CommonModule, RouterLink, LucideAngularModule],
   providers: [ProjectStore],
   templateUrl: './program-roadmap.html'
 })
@@ -25,6 +38,20 @@ export class ProgramRoadmap implements OnInit {
 
   expandedPhases = signal<Record<string, boolean>>({});
   selectedFiles = signal<Record<string, File>>({});
+
+  icons = {
+    attach: Paperclip,
+    calendar: Calendar,
+    check: Check,
+    chevronDown: ChevronDown,
+    chevronRight: ChevronRight,
+    description: FileText,
+    lock: Lock,
+    play: Play,
+    publish: Upload,
+    rocket: Rocket,
+    timelapse: Timer
+  };
 
   orderedPhases = computed(() => {
     return this.projectStore.project()?.phases ?? [];
@@ -132,5 +159,18 @@ export class ProgramRoadmap implements OnInit {
     if (this.isPhaseActive(phase)) return 'active';
     if (this.isPhaseFuture(phase)) return 'future';
     return 'past';
+  }
+
+  getStatusIcon(status: 'completed' | 'active' | 'future' | 'past') {
+    switch (status) {
+      case 'completed':
+        return this.icons.check;
+      case 'active':
+        return this.icons.play;
+      case 'future':
+        return this.icons.calendar;
+      default:
+        return this.icons.lock;
+    }
   }
 }

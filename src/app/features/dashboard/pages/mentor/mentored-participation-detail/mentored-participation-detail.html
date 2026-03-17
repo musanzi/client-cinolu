@@ -3,14 +3,14 @@
   <a
     [routerLink]="['/dashboard/mentor/mentored-projects', projectId]"
     class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-primary-600 mb-6 group transition-colors">
-    <ui-icon class="text-base group-hover:-translate-x-0.5 transition-transform" name="arrow_back" />
+    <i-lucide class="text-base group-hover:-translate-x-0.5 transition-transform" [name]="icons.arrowBack" />
     Retour aux candidatures
   </a>
   } @else {
   <a
     routerLink="/dashboard/mentor/mentored-projects"
     class="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-primary-600 mb-6 group transition-colors">
-    <ui-icon class="text-base group-hover:-translate-x-0.5 transition-transform" name="arrow_back" />
+    <i-lucide class="text-base group-hover:-translate-x-0.5 transition-transform" [name]="icons.arrowBack" />
     Retour aux projets
   </a>
   } @if (mentorshipStore.isLoadingDetail()) {
@@ -45,7 +45,7 @@
           [alt]="participation.user.name"
           class="w-full h-full object-cover" />
         } @else {
-        <ui-icon class="text-primary-600 text-3xl" name="person" />
+        <i-lucide class="text-primary-600 text-3xl" [name]="icons.profile" />
         }
       </div>
 
@@ -56,17 +56,17 @@
         <div class="flex flex-wrap gap-2">
           @if (participation.user?.city) {
           <span class="dashboard-badge-neutral">
-            <ui-icon class="text-xs" name="location_on" />
+            <i-lucide class="text-xs" [name]="icons.location" />
             {{ participation.user!.city }}
           </span>
           } @if (participation.user?.phone_number) {
           <span class="dashboard-badge-neutral">
-            <ui-icon class="text-xs" name="phone" />
+            <i-lucide class="text-xs" [name]="icons.phone" />
             {{ participation.user!.phone_number }}
           </span>
           }
           <span class="dashboard-badge-neutral">
-            <ui-icon class="text-xs" name="calendar_today" />
+            <i-lucide class="text-xs" [name]="icons.calendar" />
             Inscrit le {{ participation.created_at | date:'d MMM yyyy':'':'fr' }}
           </span>
         </div>
@@ -76,7 +76,7 @@
       <div class="shrink-0 text-center">
         <div
           class="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex flex-col items-center justify-center">
-          <ui-icon class="text-primary-600 text-base" name="thumb_up" />
+          <i-lucide class="text-primary-600 text-base" [name]="icons.thumbUp" />
           <span class="text-xs font-bold text-primary-700">{{ participation.upvotesCount }}</span>
         </div>
       </div>
@@ -90,7 +90,7 @@
       <div class="dashboard-card p-5 h-full">
         <div class="flex items-center gap-2 mb-4">
           <div class="w-8 h-8 rounded-lg bg-linear-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-            <ui-icon class="text-white text-sm" name="business" />
+            <i-lucide class="text-white text-sm" [name]="icons.business" />
           </div>
           <h2 class="dashboard-heading-5">Startup / Venture</h2>
         </div>
@@ -117,17 +117,17 @@
         <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
           @if (participation.venture.location) {
           <span class="flex items-center gap-1">
-            <ui-icon class="text-xs" name="place" />
+            <i-lucide class="text-xs" [name]="icons.place" />
             {{ participation.venture.location }}
           </span>
           } @if (participation.venture.stage) {
           <span class="flex items-center gap-1">
-            <ui-icon class="text-xs" name="trending_up" />
+            <i-lucide class="text-xs" [name]="icons.trendingUp" />
             {{ participation.venture.stage }}
           </span>
           } @if (participation.venture.founded_at) {
           <span class="flex items-center gap-1">
-            <ui-icon class="text-xs" name="event" />
+            <i-lucide class="text-xs" [name]="icons.event" />
             {{ participation.venture.founded_at | date:'yyyy' }}
           </span>
           }
@@ -141,7 +141,7 @@
         <div class="flex items-center gap-2 mb-4">
           <div
             class="w-8 h-8 rounded-lg bg-linear-to-br from-primary-500 to-primary-700 flex items-center justify-center">
-            <ui-icon class="text-white text-sm" name="layers" />
+            <i-lucide class="text-white text-sm" [name]="icons.layers" />
           </div>
           <h2 class="dashboard-heading-5">Progression par phase</h2>
           <span class="ml-auto dashboard-badge-info">
@@ -182,10 +182,10 @@
                       'bg-primary-500 animate-pulse': status === 'active',
                       'bg-slate-300': status === 'future' || status === 'past'
                     }">
-              @if (status === 'completed') { <ui-icon class="text-white text-sm" name="check" /> } @if (status ===
-              'active') { <ui-icon class="text-white text-sm" name="play_arrow" /> } @if (status === 'future') {
-              <ui-icon class="text-white text-sm" name="schedule" /> } @if (status === 'past') {
-              <ui-icon class="text-white text-sm" name="block" /> }
+              @if (status === 'completed') { <i-lucide class="text-white text-sm" [name]="icons.check" /> } @if (status
+              === 'active') { <i-lucide class="text-white text-sm" [name]="icons.play" /> } @if (status === 'future') {
+              <i-lucide class="text-white text-sm" [name]="icons.schedule" /> } @if (status === 'past') {
+              <i-lucide class="text-white text-sm" [name]="icons.block" /> }
             </div>
 
             <div class="flex-1 min-w-0">
@@ -201,12 +201,12 @@
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-1 text-xs text-primary-600 hover:underline shrink-0">
-              <ui-icon class="text-sm" name="picture_as_pdf" />
+              <i-lucide class="text-sm" [name]="icons.filePdf" />
               Livrable
             </a>
             } @else if (hasDeliverables(phase)) {
             <span class="text-xs text-slate-400 shrink-0 flex items-center gap-1">
-              <ui-icon class="text-sm" name="upload_file" />
+              <i-lucide class="text-sm" [name]="icons.uploadFile" />
               Non soumis
             </span>
             }
@@ -223,14 +223,14 @@
   } @else {
   <div class="dashboard-card p-12 text-center">
     <div class="w-16 h-16 rounded-xl bg-slate-100 flex items-center justify-center mx-auto mb-3">
-      <ui-icon class="text-3xl text-slate-400" name="error_outline" />
+      <i-lucide class="text-3xl text-slate-400" [name]="icons.error" />
     </div>
     <h3 class="dashboard-heading-5 mb-2">Candidature introuvable</h3>
     <p class="dashboard-text-body">Cette candidature n'existe pas ou vous n'y avez pas accès.</p>
     <a
       [routerLink]="['/dashboard/mentor/mentored-projects', projectId]"
       class="mt-4 inline-flex items-center gap-1 text-sm text-primary-600 hover:underline">
-      <ui-icon class="text-base" name="arrow_back" />
+      <i-lucide class="text-base" [name]="icons.arrowBack" />
       Retour
     </a>
   </div>

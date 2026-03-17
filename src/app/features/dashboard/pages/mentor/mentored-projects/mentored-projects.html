@@ -3,18 +3,18 @@
     <div class="col-span-12">
       <div class="dashboard-card-elevated p-8 md:p-10 relative overflow-hidden group cursor-default">
         <div
-          class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-primary-400/20 to-indigo-400/20 rounded-full blur-3xl -z-0 group-hover:scale-110 transition-transform duration-700"></div>
+          class="absolute top-0 right-0 w-80 h-80 bg-linear-to-br from-primary-400/20 to-indigo-400/20 rounded-full blur-3xl -z-0 group-hover:scale-110 transition-transform duration-700"></div>
         <div class="relative z-10 flex items-start gap-5">
           <div
-            class="w-16 h-16 rounded-xl bg-primary-500 flex items-center justify-center shadow-xl shadow-primary-500/30 flex-shrink-0">
-            <ui-icon class="text-white text-4xl" name="school" />
+            class="w-16 h-16 rounded-xl bg-primary-500 flex items-center justify-center shadow-xl shadow-primary-500/30 shrink-0">
+            <i-lucide class="text-white text-4xl" [name]="icons.school" />
           </div>
           <div class="flex-1 min-w-0">
             <h1 class="dashboard-heading-2 mb-1">Projets mentorés</h1>
             <p class="dashboard-text-body">Les projets dont vous assurez le mentorat des phases</p>
           </div>
           <div class="dashboard-badge-info hidden sm:inline-flex">
-            <ui-icon class="text-xs" name="folder_open" />
+            <i-lucide class="text-xs" [name]="icons.folder" />
             <span
               >{{ mentorshipStore.mentoredProjects().length }} projet{{ mentorshipStore.mentoredProjects().length !== 1
               ? 's' : '' }}</span
@@ -28,7 +28,7 @@
     <div class="col-span-12 md:col-span-6">
       <div class="dashboard-card p-6 animate-pulse">
         <div class="flex gap-4">
-          <div class="w-14 h-14 rounded-xl bg-slate-200 flex-shrink-0"></div>
+          <div class="w-14 h-14 rounded-xl bg-slate-200 shrink-0"></div>
           <div class="flex-1 space-y-2">
             <div class="h-4 bg-slate-200 rounded w-2/3"></div>
             <div class="h-3 bg-slate-100 rounded w-full"></div>
@@ -52,12 +52,12 @@
             </span>
             } @else if (status === 'future') {
             <span class="dashboard-badge-info text-xs">
-              <ui-icon class="text-xs" name="schedule" />
+              <i-lucide class="text-xs" [name]="icons.schedule" />
               À venir
             </span>
             } @else {
             <span class="dashboard-badge-neutral text-xs">
-              <ui-icon class="text-xs" name="check_circle" />
+              <i-lucide class="text-xs" [name]="icons.checkCircle" />
               Terminé
             </span>
             }
@@ -86,7 +86,7 @@
           </div>
 
           <div class="flex items-center gap-1 text-xs text-slate-500 mb-4">
-            <ui-icon class="text-sm" name="calendar_today" />
+            <i-lucide class="text-sm" [name]="icons.calendar" />
             <span>{{ project.started_at | date:'d MMM yyyy':'':'fr' }}</span>
             <span class="mx-1">→</span>
             <span>{{ project.ended_at | date:'d MMM yyyy':'':'fr' }}</span>
@@ -95,7 +95,7 @@
           <a
             [routerLink]="['/dashboard/mentor/mentored-projects', project.id]"
             class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
-            <ui-icon class="text-base" name="group" />
+            <i-lucide class="text-base" [name]="icons.group" />
             Voir les candidatures
           </a>
         </div>
@@ -105,8 +105,8 @@
     <div class="col-span-12">
       <div class="dashboard-card p-12 text-center">
         <div
-          class="w-20 h-20 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center mx-auto mb-4 shadow-inner">
-          <ui-icon class="text-4xl text-slate-400" name="school" />
+          class="w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center mx-auto mb-4 shadow-inner">
+          <i-lucide class="text-4xl text-slate-400" [name]="icons.school" />
         </div>
         <h3 class="dashboard-heading-5 mb-2">Aucun projet mentoré</h3>
         <p class="dashboard-text-body max-w-md mx-auto">

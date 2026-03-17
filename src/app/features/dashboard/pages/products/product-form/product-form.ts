@@ -9,12 +9,12 @@ import { FileUpload } from '@shared/components/file-upload/file-upload';
 import { ApiImgPipe } from '../../../../../shared/pipes/api-img.pipe';
 import { ProductGalleryStore } from '@features/dashboard/store/product-gallery.store';
 import { FormManager } from '@shared/components/form-manager/form-manager';
-import { IconComponent } from '@shared/ui';
+import { Image, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-product-form',
   providers: [ProductGalleryStore],
-  imports: [ReactiveFormsModule, FileUpload, ApiImgPipe, NgOptimizedImage, FormManager, IconComponent],
+  imports: [ReactiveFormsModule, FileUpload, ApiImgPipe, NgOptimizedImage, FormManager, LucideAngularModule],
   templateUrl: './product-form.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -29,6 +29,10 @@ export class ProductForm implements OnInit {
   product = signal<IProduct | null>(null);
   galleryImages = signal<IImage[]>([]);
   galleryStore = inject(ProductGalleryStore);
+
+  icons = {
+    image: Image
+  };
 
   form = this.fb.group({
     ventureId: ['', Validators.required],

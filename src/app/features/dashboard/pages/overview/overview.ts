@@ -9,11 +9,25 @@ import { HighlightsStore } from '@features/landing/store/highlights.store';
 import { environment } from '@environments/environment';
 import { ApiImgPipe } from '../../../../shared/pipes/api-img.pipe';
 import { ToastrService } from '@core/services/toast/toastr.service';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowRight,
+  Building2,
+  ExternalLink,
+  Hand,
+  LucideAngularModule,
+  Package,
+  Pencil,
+  Plus,
+  ShieldCheck,
+  ShoppingCart,
+  Star,
+  UserPlus,
+  Users
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-dashboard-overview',
-  imports: [RouterModule, ApiImgPipe, IconComponent],
+  imports: [RouterModule, ApiImgPipe, LucideAngularModule],
   providers: [HighlightsStore],
   templateUrl: './overview.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,11 +42,20 @@ export class DashboardOverview implements OnInit {
   toast = inject(ToastrService);
   onestopUrl = environment.onestopUrl;
 
-  // Icônes Material Icons (noms de strings)
-  businessIcon = 'business_center';
-  usersIcon = 'groups';
-  packageIcon = 'inventory_2';
-  userPlusIcon = 'person_add';
+  icons = {
+    add: Plus,
+    arrowRight: ArrowRight,
+    business: Building2,
+    edit: Pencil,
+    externalLink: ExternalLink,
+    hand: Hand,
+    package: Package,
+    shield: ShieldCheck,
+    shoppingCart: ShoppingCart,
+    star: Star,
+    userPlus: UserPlus,
+    users: Users
+  };
 
   ngOnInit() {
     this.venturesStore.loadAllVentures();

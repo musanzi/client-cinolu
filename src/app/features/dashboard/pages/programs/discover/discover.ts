@@ -1,72 +1,73 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  signal,
-  computed,
-  ChangeDetectionStrategy,
-  effect
-} from '@angular/core';
+import { Component, inject, OnInit, signal, computed, ChangeDetectionStrategy, effect } from '@angular/core';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { ParticipationsStore } from '../../../store/participations.store';
 import { ProgramCard } from '../../../components/program-card/program-card';
 import { IProject } from '@shared/models';
 import { ProjectsStore } from '../../../../projects/store/projects.store';
-import { IconComponent } from '@shared/ui';
+import { Calendar, CalendarX, Clock3, Compass, LucideAngularModule, Rocket, SearchX } from 'lucide-angular';
 
 type LoadingPhase = 'current' | 'upcoming' | 'done';
 
 @Component({
   selector: 'app-discover-programs',
-  imports: [NgClass, NgTemplateOutlet, ProgramCard, IconComponent],
+  imports: [NgClass, NgTemplateOutlet, ProgramCard, LucideAngularModule],
   templateUrl: './discover.html',
   providers: [ProjectsStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DiscoverPrograms implements OnInit {
-   projectsStore = inject(ProjectsStore);
-   participationsStore = inject(ParticipationsStore);
+  projectsStore = inject(ProjectsStore);
+  participationsStore = inject(ParticipationsStore);
 
-   loadingPhase = signal<LoadingPhase>('current');
-   currentList = signal<IProject[]>([]);
-   upcomingList = signal<IProject[]>([]);
+  loadingPhase = signal<LoadingPhase>('current');
+  currentList = signal<IProject[]>([]);
+  upcomingList = signal<IProject[]>([]);
 
-   currentProjects = this.currentList.asReadonly();
-   upcomingProjects = this.upcomingList.asReadonly();
+  currentProjects = this.currentList.asReadonly();
+  upcomingProjects = this.upcomingList.asReadonly();
 
-   isCurrentLoading = computed(() => this.loadingPhase() === 'current');
-   isUpcomingLoading = computed(() => this.loadingPhase() === 'upcoming');
-   isFullyLoaded = computed(() => this.loadingPhase() === 'done');
+  isCurrentLoading = computed(() => this.loadingPhase() === 'current');
+  isUpcomingLoading = computed(() => this.loadingPhase() === 'upcoming');
+  isFullyLoaded = computed(() => this.loadingPhase() === 'done');
 
-   hasNoProjectsAtAll = computed(
+  hasNoProjectsAtAll = computed(
     () => this.isFullyLoaded() && this.currentList().length === 0 && this.upcomingList().length === 0
   );
 
-   currentHeaderContext = {
-    icon: 'rocket_launch',
+  icons = {
+    current: Rocket,
+    emptyCurrent: CalendarX,
+    explore: Compass,
+    search: SearchX,
+    upcoming: Calendar,
+    upcomingHeader: Clock3
+  };
+
+  currentHeaderContext = {
+    icon: this.icons.current,
     label: 'Programmes en cours'
   } as const;
 
-   upcomingHeaderContext = {
-    icon: 'schedule',
+  upcomingHeaderContext = {
+    icon: this.icons.upcomingHeader,
     label: 'Programmes à venir',
     accent: 'blue'
   } as const;
 
-   emptyCurrentContext = {
+  emptyCurrentContext = {
     title: 'Aucun programme en cours',
     message: "Il n'y a pas de programmes actifs pour le moment.",
-    icon: 'event_busy'
+    icon: this.icons.emptyCurrent
   } as const;
 
-   emptyUpcomingContext = {
+  emptyUpcomingContext = {
     title: 'Aucun programme à venir',
     message: "Il n'y a pas de programmes prévus pour l'instant. Revenez bientôt !",
-    icon: 'upcoming'
+    icon: this.icons.upcoming
   } as const;
 
-   loadingPrimaryContext = { color: 'primary' } as const;
-   loadingBlueContext = { color: 'blue' } as const;
+  loadingPrimaryContext = { color: 'primary' } as const;
+  loadingBlueContext = { color: 'blue' } as const;
 
   constructor() {
     effect(() => {

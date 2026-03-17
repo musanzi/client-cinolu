@@ -6,11 +6,30 @@ import { MentorApplicationState } from '@core/auth/mentor-application.state';
 import { MentorProfileStore } from '@features/dashboard/store/mentor-profile.store';
 import { FormManager } from '@shared/components/form-manager/form-manager';
 import { CreateExperienceDto } from '@shared/models';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowLeft,
+  BriefcaseBusiness,
+  Building,
+  Calendar,
+  CalendarDays,
+  ChevronLeft,
+  ChevronRight,
+  CircleAlert,
+  Clock3,
+  GraduationCap,
+  Info,
+  LucideAngularModule,
+  Plus,
+  SearchCheck,
+  Send,
+  Star,
+  User,
+  X
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-mentor-apply',
-  imports: [ReactiveFormsModule, RouterModule, FormManager, IconComponent],
+  imports: [ReactiveFormsModule, RouterModule, FormManager, LucideAngularModule],
   templateUrl: './mentor-apply.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -23,6 +42,26 @@ export class MentorApply implements OnInit {
 
   currentStep = signal(1);
   maxSteps = 3;
+
+  readonly icons = {
+    add: Plus,
+    arrowBack: ArrowLeft,
+    business: Building,
+    calendar: CalendarDays,
+    chevronLeft: ChevronLeft,
+    chevronRight: ChevronRight,
+    close: X,
+    error: CircleAlert,
+    event: Calendar,
+    info: Info,
+    manageSearch: SearchCheck,
+    person: User,
+    schedule: Clock3,
+    school: GraduationCap,
+    send: Send,
+    star: Star,
+    work: BriefcaseBusiness
+  };
 
   applicationForm = this.fb.group({
     years_experience: [0, [Validators.required, Validators.min(0)]],
