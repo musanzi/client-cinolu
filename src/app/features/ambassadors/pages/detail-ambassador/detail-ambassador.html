@@ -1,6 +1,5 @@
 <section class="relative min-h-screen bg-slate-50/50 pt-32 pb-20">
-  <div
-    class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+  <div class="absolute inset-0 bg-grid-slate-100 mask-[linear-linear(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
 
   @if (store.ambassador(); as ambassador) {
   <div class="px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-32 max-w-screen-2xl mx-auto space-y-16 lg:space-y-24">
@@ -19,10 +18,10 @@
 
       <div
         class="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-center lg:items-start text-center lg:text-left">
-        <div class="w-full max-w-[240px] md:max-w-[280px] lg:max-w-none lg:w-4/12 md:sticky md:top-[300px]">
+        <div class="w-full max-w-60 md:max-w-72 lg:max-w-none lg:w-4/12 md:sticky md:top-76">
           <div class="group relative">
             <div
-              class="absolute -inset-3 bg-gradient-to-br from-primary-100 to-primary-50 rounded-2xl rotate-3 transition-all duration-500 group-hover:rotate-2 group-hover:scale-105"></div>
+              class="absolute -inset-3 bg-linear-to-br from-primary-100 to-primary-50 rounded-2xl rotate-3 transition-all duration-500 group-hover:rotate-2 group-hover:scale-105"></div>
             <div
               class="relative aspect-[1/1.1] w-full overflow-hidden rounded-xl bg-slate-200 shadow-xl ring-1 ring-slate-900/5">
               @if (ambassador.profile) {
@@ -32,7 +31,7 @@
                 class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110" />
               } @else {
               <div
-                class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center text-white text-7xl md:text-8xl font-light">
+                class="w-full h-full bg-linear-to-br from-slate-800 to-slate-900 flex items-center justify-center text-white text-7xl md:text-8xl font-light">
                 {{ getInitials(ambassador.name) }}
               </div>
               }
@@ -120,13 +119,13 @@
               alt="cover"
               class="w-full h-full object-cover transition-transform duration-1000 group-hover/v:scale-105" />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent opacity-80"></div>
+              class="absolute inset-0 bg-linear-to-t from-slate-900 via-slate-900/20 to-transparent opacity-80"></div>
 
             <div
               class="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-4 sm:left-6 lg:left-8 right-4 sm:right-6 lg:right-8 flex flex-col gap-3 md:gap-4 md:flex-row md:items-end justify-between">
               <div class="flex items-center gap-3 sm:gap-4 lg:gap-6">
                 <div
-                  class="size-14 sm:size-16 md:size-18 lg:size-20 xl:size-24 rounded-lg bg-white p-1 md:p-1.5 shadow-md flex-shrink-0">
+                  class="size-14 sm:size-16 md:size-18 lg:size-20 xl:size-24 rounded-lg bg-white p-1 md:p-1.5 shadow-md shrink-0">
                   <img
                     [src]="venture | apiIMG: 'venture'"
                     alt="programme"
@@ -138,7 +137,7 @@
                       {{ venture.name }}
                     </h3>
                     <span
-                      class="px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 bg-primary-500 text-xs font-bold uppercase rounded-lg shadow-lg w-fit flex-shrink-0"
+                      class="px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-3 bg-primary-500 text-xs font-bold uppercase rounded-lg shadow-lg w-fit shrink-0"
                       >{{ 'ambassadors.detail.stage' | translate }}: {{ venture.stage }}</span
                     >
                   </div>
@@ -147,7 +146,7 @@
                   </p>
                 </div>
               </div>
-              <div class="flex gap-2 sm:gap-2.5 flex-shrink-0">
+              <div class="flex gap-2 sm:gap-2.5 shrink-0">
                 <a
                   [href]="venture.website"
                   target="_blank"
@@ -204,15 +203,15 @@
               <div class="space-y-2 lg:space-y-3">
                 <h5
                   class="text-xs sm:text-sm font-black uppercase text-primary-600 tracking-widest flex items-center gap-2">
-                  <i-lucide [name]="icons.target" class="size-4 flex-shrink-0" /> {{ 'ambassadors.detail.problemSolved'
-                  | translate }}
+                  <i-lucide [name]="icons.target" class="size-4 shrink-0" /> {{ 'ambassadors.detail.problemSolved' |
+                  translate }}
                 </h5>
                 <p class="text-sm lg:text-base text-slate-700 leading-relaxed">{{ venture.problem_solved }}</p>
               </div>
               <div class="space-y-2 lg:space-y-3">
                 <h5
                   class="text-xs sm:text-sm font-black uppercase text-primary-600 tracking-widest flex items-center gap-2">
-                  <i-lucide [name]="icons.users" class="size-4 flex-shrink-0" /> {{ 'ambassadors.detail.targetMarket' |
+                  <i-lucide [name]="icons.users" class="size-4 shrink-0" /> {{ 'ambassadors.detail.targetMarket' |
                   translate }}
                 </h5>
                 <p class="text-sm lg:text-base text-slate-700 leading-relaxed">{{ venture.target_market }}</p>
@@ -232,7 +231,7 @@
               <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 xl:gap-10">
                 @for (product of venture.products; track product.id) {
                 <div
-                  class="group/p bg-white rounded-lg border border-slate-100 shadow-md shadow-slate-200/40 overflow-hidden hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-700 flex flex-col md:flex-row h-auto md:h-[480px] lg:h-[520px]">
+                  class="group/p bg-white rounded-lg border border-slate-100 shadow-md shadow-slate-200/40 overflow-hidden hover:shadow-lg hover:shadow-primary-900/10 transition-all duration-700 flex flex-col md:flex-row h-auto md:h-120 lg:h-130">
                   <div
                     class="relative flex flex-row md:flex-col gap-2 md:gap-3 lg:gap-4 p-3 md:p-4 lg:p-5 bg-slate-50/30 border-b md:border-b-0 md:border-r border-slate-100 w-full md:w-28 lg:w-36 xl:w-40 h-20 sm:h-24 md:h-auto">
                     @if (product.gallery && product.gallery.length > 0) { @if (product.gallery.length > 3) {
@@ -247,7 +246,6 @@
                       <button
                         type="button"
                         (click)="scrollGallery(product.id, 'down', product.gallery.length)"
-                        aria-label="Image suivante dans la galerie"
                         class="p-1 md:p-1.5 bg-white/95 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110 active:scale-95">
                         <i-lucide [name]="icons.chevronDown" class="size-3 md:size-4 text-slate-700" />
                       </button>
@@ -282,7 +280,7 @@
                     <button
                       type="button"
                       (click)="product.gallery && product.gallery.length > 0 ? openLightbox(product.gallery, getGalleryIndex(product.id)) : null"
-                      class="relative flex-1 overflow-hidden bg-slate-50 cursor-pointer group/img min-h-[180px] sm:min-h-[220px]">
+                      class="relative flex-1 overflow-hidden bg-slate-50 cursor-pointer group/img min-h-44 sm:min-h-56">
                       @if (product.gallery && product.gallery.length > 0) { @for (image of product.gallery; track
                       image.id; let idx = $index) {
                       <img
@@ -339,9 +337,9 @@
           <div class="max-w-2xl mx-auto space-y-6 md:space-y-8">
             <div class="relative inline-block">
               <div
-                class="absolute -inset-4 md:-inset-6 bg-gradient-to-br from-primary-100 to-primary-50 rounded-full blur-xl md:blur-2xl opacity-50"></div>
+                class="absolute -inset-4 md:-inset-6 bg-linear-to-br from-primary-100 to-primary-50 rounded-full blur-xl md:blur-2xl opacity-50"></div>
               <div
-                class="relative w-24 h-24 md:w-32 md:h-32 mx-auto bg-gradient-to-br from-slate-100 to-slate-50 rounded-full flex items-center justify-center border border-slate-200/50 shadow-lg">
+                class="relative w-24 h-24 md:w-32 md:h-32 mx-auto bg-linear-to-br from-slate-100 to-slate-50 rounded-full flex items-center justify-center border border-slate-200/50 shadow-lg">
                 <i-lucide [name]="icons.building" class="size-12 md:size-16 text-slate-300" />
               </div>
             </div>
@@ -377,7 +375,7 @@
   </div>
   } @if (lightboxOpen()) {
   <div
-    class="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-sm flex items-center justify-center"
+    class="fixed inset-0 z-9999 bg-black/95 backdrop-blur-sm flex items-center justify-center"
     role="dialog"
     aria-modal="true"
     tabindex="-1"

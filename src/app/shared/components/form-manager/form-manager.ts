@@ -12,7 +12,8 @@ import {
 } from '@angular/core';
 import { AbstractControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ButtonComponent, IconComponent } from '@shared/ui';
+import { ButtonComponent } from '@shared/ui';
+import { ArrowLeft, ArrowRight, Check, LucideAngularModule } from 'lucide-angular';
 
 export interface FormManagerSubmittedPayload {
   value: unknown;
@@ -26,7 +27,7 @@ export interface StepConfig {
 
 @Component({
   selector: 'app-form-manager',
-  imports: [ReactiveFormsModule, ButtonComponent, IconComponent],
+  imports: [ReactiveFormsModule, ButtonComponent, LucideAngularModule],
   templateUrl: './form-manager.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -44,6 +45,12 @@ export class FormManager implements OnInit {
   readonly #tick = signal(0);
   readonly #destroyRef = inject(DestroyRef);
   readonly currentStep = signal(0);
+
+  icons = {
+    arrowLeft: ArrowLeft,
+    arrowRight: ArrowRight,
+    check: Check
+  };
 
   readonly isStepper = computed(() => !!this.steps && this.steps.length > 1);
   readonly totalSteps = computed(() => this.steps?.length ?? 1);

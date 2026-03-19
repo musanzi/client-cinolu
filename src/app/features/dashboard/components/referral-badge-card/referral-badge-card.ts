@@ -5,13 +5,24 @@ import { calculateBadgeInfo } from '@shared/helpers/badges.helper';
 import { BadgeProgressBarComponent } from '@shared/components/badge-progress-bar/badge-progress-bar';
 import { ShareModalComponent } from '@shared/components/share-modal/share-modal';
 import { ToastrService } from '@core/services/toast/toastr.service';
-import { LucideAngularModule, Award, TrendingUp, Crown, Sparkles, Trophy, Share2, Copy, Target } from 'lucide-angular';
-import { IconComponent } from '@shared/ui';
+import {
+  LucideAngularModule,
+  Award,
+  TrendingUp,
+  Crown,
+  Sparkles,
+  Trophy,
+  Share2,
+  Copy,
+  Target,
+  UserRoundPlus,
+  Link
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-referral-badge-card',
 
-  imports: [NgClass, BadgeProgressBarComponent, ShareModalComponent, LucideAngularModule, IconComponent],
+  imports: [NgClass, BadgeProgressBarComponent, ShareModalComponent, LucideAngularModule],
   templateUrl: './referral-badge-card.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -32,7 +43,9 @@ export class ReferralBadgeCardComponent {
     trophy: Trophy,
     share: Share2,
     copy: Copy,
-    target: Target
+    target: Target,
+    groupAdd: UserRoundPlus,
+    link: Link
   };
 
   badgeInfo = computed(() => {

@@ -6,17 +6,36 @@ import { AuthStore } from '@core/auth/auth.store';
 import { IUser } from '@shared/models/entities.models';
 import { ApiImgPipe } from '@shared/pipes/api-img.pipe';
 import { ReferralCtaCard } from '../../../components/referral-cta-card/referral-cta-card';
-import { IconComponent } from '@shared/ui';
+import {
+  Award,
+  CalendarDays,
+  ChevronLeft,
+  ChevronRight,
+  LucideAngularModule,
+  Share2,
+  UserX,
+  Users
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-my-referrals',
-  imports: [CommonModule, RouterModule, ApiImgPipe, ReferralCtaCard, IconComponent],
+  imports: [CommonModule, RouterModule, ApiImgPipe, ReferralCtaCard, LucideAngularModule],
   templateUrl: './my-referrals.html',
   standalone: true
 })
 export class MyReferrals implements OnInit {
   referralsStore = inject(ReferralsStore);
   authStore = inject(AuthStore);
+
+  readonly icons = {
+    award: Award,
+    calendar: CalendarDays,
+    chevronLeft: ChevronLeft,
+    chevronRight: ChevronRight,
+    share: Share2,
+    userOff: UserX,
+    users: Users
+  };
 
   currentPage = signal(1);
   itemsPerPage = 12;

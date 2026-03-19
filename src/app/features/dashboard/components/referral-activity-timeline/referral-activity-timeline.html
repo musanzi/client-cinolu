@@ -8,7 +8,7 @@
   <div class="space-y-4">
     @for (activity of activities(); track activity.id) {
     <div class="flex items-start gap-4 group">
-      <div [class]="'flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ' + activity.iconColor">
+      <div [class]="'shrink-0 w-10 h-10 rounded-full flex items-center justify-center ' + activity.iconColor">
         <i-lucide [name]="activity.icon" class="w-5 h-5" />
       </div>
 

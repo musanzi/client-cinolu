@@ -1,6 +1,8 @@
 <section class="bg-gradient-to-br from-white via-primary-50/30 to-blue-50/20">
   <div class="py-12 lg:py-20 px-8 lg:px-16 xl:px-24 2xl:px-32 max-w-screen-2xl mx-auto">
-    <header class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-16 fade-left-init" appAnimationsOnScroll>
+    <header
+      class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 lg:mb-16 fade-left-init"
+      appAnimationsOnScroll>
       <div class="max-w-2xl">
         <div
           class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-primary-50 to-primary-100 text-primary-700 text-sm font-semibold rounded-full border border-primary-200/60 mb-6">
@@ -10,7 +12,9 @@
         <h3
           class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-800 font-satoshi mb-4 tracking-tight leading-tight hyphens-none">
           {{ 'compare.title' | translate }}
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-700">{{ 'compare.titleHighlight' | translate }}</span>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-primary-700"
+            >{{ 'compare.titleHighlight' | translate }}</span
+          >
         </h3>
       </div>
       <p class="text-slate-500 text-lg max-w-sm border-l-2 border-primary-500 pl-6 italic">
@@ -28,7 +32,7 @@
           class="absolute inset-0 bg-gradient-to-br from-primary-50/0 via-primary-50/20 to-blue-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
         <div class="relative z-10 flex items-start justify-between mb-6">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <div
               class="w-14 h-14 bg-gradient-to-br from-primary-100 via-primary-200 to-primary-300 rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-sm group-hover:shadow-md">
               <i-lucide
@@ -68,7 +72,7 @@
           @for (benefitKey of card.benefitsKeys; track benefitKey) {
           <div class="flex items-center gap-3">
             <div
-              class="flex-shrink-0 w-5 h-5 rounded-md bg-primary-100 flex items-center justify-center group-hover:bg-primary-200 transition-colors">
+              class="shrink-0 w-5 h-5 rounded-md bg-primary-100 flex items-center justify-center group-hover:bg-primary-200 transition-colors">
               <i-lucide [name]="icons.check" class="w-3 h-3 text-primary-600 stroke-[3]" />
             </div>
             <span class="text-sm text-gray-700 font-medium">{{ benefitKey | translate }}</span>

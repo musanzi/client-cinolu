@@ -4,17 +4,42 @@ import { RouterModule } from '@angular/router';
 import { VenturesStore } from '../../../store/ventures.store';
 import { ProductsStore } from '../../../store/products.store';
 import { ApiImgPipe } from '@shared/pipes/api-img.pipe';
-import { IconComponent } from '@shared/ui';
+import {
+  Building2,
+  Briefcase,
+  Eye,
+  EyeOff,
+  LucideAngularModule,
+  Package,
+  Pencil,
+  Plus,
+  Tag,
+  Trash2,
+  TrendingUp
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-ventures-list',
-  imports: [RouterModule, ApiImgPipe, DecimalPipe, IconComponent],
+  imports: [RouterModule, ApiImgPipe, DecimalPipe, LucideAngularModule],
   templateUrl: './ventures-list.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VenturesUnified implements OnInit {
   venturesStore = inject(VenturesStore);
   productsStore = inject(ProductsStore);
+
+  icons = {
+    add: Plus,
+    business: Briefcase,
+    category: Tag,
+    delete: Trash2,
+    edit: Pencil,
+    eyeOff: EyeOff,
+    package: Package,
+    project: Building2,
+    trendingUp: TrendingUp,
+    view: Eye
+  };
 
   activeTab = signal<'ventures' | 'products'>('ventures');
 

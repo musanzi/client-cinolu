@@ -13,14 +13,14 @@
     <div class="col-span-12">
       <div class="dashboard-card-elevated p-8 md:p-10 relative overflow-hidden group cursor-default">
         <div
-          class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-indigo-400/20 rounded-full blur-3xl -z-0 group-hover:scale-110 transition-transform duration-700"></div>
+          class="absolute top-0 right-0 w-96 h-96 bg-linear-to-br from-purple-400/20 to-indigo-400/20 rounded-full blur-3xl z-0 group-hover:scale-110 transition-transform duration-700"></div>
         <div
-          class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-400/10 to-teal-400/10 rounded-full blur-3xl -z-0 group-hover:scale-110 transition-transform duration-700"></div>
+          class="absolute bottom-0 left-0 w-80 h-80 bg-linear-to-tr from-blue-400/10 to-teal-400/10 rounded-full blur-3xl z-0 group-hover:scale-110 transition-transform duration-700"></div>
 
         <div class="relative z-10 flex items-start gap-5">
           <div
-            class="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-700 flex items-center justify-center shadow-xl shadow-purple-500/30 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-            <ui-icon class="text-white text-4xl md:text-5xl" name="school" />
+            class="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-linear-to-br from-purple-500 to-indigo-700 flex items-center justify-center shadow-xl shadow-purple-500/30 shrink-0 group-hover:scale-105 transition-transform duration-300">
+            <i-lucide class="text-white text-4xl md:text-5xl" [name]="icons.school" />
           </div>
 
           <div class="flex-1 min-w-0">
@@ -32,14 +32,14 @@
             @if (profileStore.isApproved()) {
             <div class="flex items-center gap-2 text-slate-700 text-base md:text-lg flex-wrap">
               <span class="dashboard-badge-success">
-                <ui-icon class="text-sm" name="verified" />
+                <i-lucide class="text-sm" [name]="icons.statusApproved" />
                 Mentor Approuvé
               </span>
             </div>
             } @else if (profileStore.isPending()) {
             <div class="flex items-center gap-2 text-slate-700 text-base md:text-lg flex-wrap">
               <span class="dashboard-badge-warning">
-                <ui-icon class="text-sm" name="schedule" />
+                <i-lucide class="text-sm" [name]="icons.clock" />
                 En attente d'approbation
               </span>
             </div>
@@ -53,8 +53,8 @@
       <div class="dashboard-card p-5 flex items-center justify-between">
         <div class="flex items-center gap-4">
           <div
-            class="w-11 h-11 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg">
-            <ui-icon class="text-white text-xl" name="insights" />
+            class="w-11 h-11 rounded-lg bg-linear-to-br from-purple-500 to-indigo-600 flex items-center justify-center shadow-lg">
+            <i-lucide class="text-white text-xl" [name]="icons.insights" />
           </div>
           <div>
             <h2 class="dashboard-heading-5">Statistiques du mentor</h2>
@@ -62,7 +62,7 @@
           </div>
         </div>
         <span class="dashboard-badge-neutral hidden sm:inline-flex">
-          <ui-icon class="text-xs" name="update" />
+          <i-lucide class="text-xs" [name]="icons.update" />
           <span>Temps réel</span>
         </span>
       </div>
@@ -72,11 +72,11 @@
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
       <div class="dashboard-stat-card">
         <div class="flex items-start justify-between mb-4">
-          <div class="dashboard-stat-icon bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/30">
-            <ui-icon class="text-white text-2xl" [name]="sessionsIcon" />
+          <div class="dashboard-stat-icon bg-linear-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/30">
+            <i-lucide class="text-white text-2xl" [name]="icons.sessions" />
           </div>
           <div class="dashboard-badge-info">
-            <ui-icon class="text-xs" name="schedule" />
+            <i-lucide class="text-xs" [name]="icons.clock" />
           </div>
         </div>
         <div class="space-y-1">
@@ -89,12 +89,11 @@
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
       <div class="dashboard-stat-card">
         <div class="flex items-start justify-between mb-4">
-          <div
-            class="dashboard-stat-icon bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/30">
-            <ui-icon class="text-white text-2xl" [name]="menteesIcon" />
+          <div class="dashboard-stat-icon bg-linear-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/30">
+            <i-lucide class="text-white text-2xl" [name]="icons.mentees" />
           </div>
           <div class="dashboard-badge-success">
-            <ui-icon class="text-xs" name="people" />
+            <i-lucide class="text-xs" [name]="icons.mentees" />
           </div>
         </div>
         <div class="space-y-1">
@@ -107,16 +106,16 @@
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
       <div class="dashboard-stat-card">
         <div class="flex items-start justify-between mb-4">
-          <div class="dashboard-stat-icon bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/30">
-            <ui-icon class="text-white text-2xl" [name]="requestsIcon" />
+          <div class="dashboard-stat-icon bg-linear-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/30">
+            <i-lucide class="text-white text-2xl" [name]="icons.mail" />
           </div>
           @if (stats.pendingRequests > 0) {
           <div class="dashboard-badge-warning">
-            <ui-icon class="text-xs" name="notifications_active" />
+            <i-lucide class="text-xs" [name]="icons.notifications" />
           </div>
           } @else {
           <div class="dashboard-badge-neutral">
-            <ui-icon class="text-xs" name="done_all" />
+            <i-lucide class="text-xs" [name]="icons.checkedAll" />
           </div>
           }
         </div>
@@ -130,11 +129,11 @@
     <div class="col-span-12 md:col-span-6 lg:col-span-3">
       <div class="dashboard-stat-card">
         <div class="flex items-start justify-between mb-4">
-          <div class="dashboard-stat-icon bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg shadow-purple-500/30">
-            <ui-icon class="text-white text-2xl" [name]="ratingIcon" />
+          <div class="dashboard-stat-icon bg-linear-to-br from-purple-500 to-pink-600 shadow-lg shadow-purple-500/30">
+            <i-lucide class="text-white text-2xl" [name]="icons.rating" />
           </div>
           <div class="dashboard-badge-success">
-            <ui-icon class="text-xs" name="trending_up" />
+            <i-lucide class="text-xs" [name]="icons.trendingUp" />
           </div>
         </div>
         <div class="space-y-1">
@@ -153,61 +152,58 @@
             routerLink="/dashboard/mentor/profile"
             class="flex items-center gap-4 p-4 rounded-lg border-2 border-slate-200/60 hover:border-primary-500 hover:bg-primary-50/30 transition-all group">
             <div
-              class="dashboard-stat-icon bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
-              <ui-icon class="text-white text-xl" [name]="profileIcon" />
+              class="dashboard-stat-icon bg-linear-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-shadow">
+              <i-lucide class="text-white text-xl" [name]="icons.profile" />
             </div>
             <div class="flex-1">
               <p class="font-semibold text-slate-900 group-hover:text-primary-700 transition-colors">Mon profil</p>
               <p class="text-xs text-slate-600">Gérer mes informations</p>
             </div>
-            <ui-icon class="text-slate-400 group-hover:text-primary-600 transition-colors"
-               name="arrow_forward" />
+            <i-lucide class="text-slate-400 group-hover:text-primary-600 transition-colors" [name]="icons.arrowRight" />
           </a>
 
           <a
             class="flex items-center gap-4 p-4 rounded-lg border-2 border-slate-200/60 hover:border-amber-500 hover:bg-amber-50/30 transition-all group">
             <div
-              class="dashboard-stat-icon bg-gradient-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
-              <ui-icon class="text-white text-xl" [name]="requestsIcon" />
+              class="dashboard-stat-icon bg-linear-to-br from-amber-500 to-orange-600 shadow-lg shadow-amber-500/20 group-hover:shadow-amber-500/40 transition-shadow">
+              <i-lucide class="text-white text-xl" [name]="icons.mail" />
             </div>
             <div class="flex-1">
               <p class="font-semibold text-slate-900 group-hover:text-amber-700 transition-colors">Demandes</p>
               <p class="text-xs text-slate-600">Gérer les demandes</p>
             </div>
             @if (dashboardStore.stats()?.pendingRequests; as count) { @if (count > 0) {
-            <span class="px-2 py-1 text-xs font-bold bg-red-500 text-white rounded-full min-w-[24px] text-center"
+            <span class="px-2 py-1 text-xs font-bold bg-red-500 text-white rounded-full min-w-6 text-center"
               >{{ count }}</span
             >
             } }
-            <ui-icon class="text-slate-400 group-hover:text-amber-600 transition-colors"
-               name="arrow_forward" />
+            <i-lucide class="text-slate-400 group-hover:text-amber-600 transition-colors" [name]="icons.arrowRight" />
           </a>
 
           <a
             class="flex items-center gap-4 p-4 rounded-lg border-2 border-slate-200/60 hover:border-blue-500 hover:bg-blue-50/30 transition-all group">
             <div
-              class="dashboard-stat-icon bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow">
-              <ui-icon class="text-white text-xl" [name]="sessionsIcon" />
+              class="dashboard-stat-icon bg-linear-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow">
+              <i-lucide class="text-white text-xl" [name]="icons.sessions" />
             </div>
             <div class="flex-1">
               <p class="font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">Sessions</p>
               <p class="text-xs text-slate-600">Mes rendez-vous</p>
             </div>
-            <ui-icon class="text-slate-400 group-hover:text-blue-600 transition-colors" name="arrow_forward" />
+            <i-lucide class="text-slate-400 group-hover:text-blue-600 transition-colors" [name]="icons.arrowRight" />
           </a>
 
           <a
             class="flex items-center gap-4 p-4 rounded-lg border-2 border-slate-200/60 hover:border-emerald-500 hover:bg-emerald-50/30 transition-all group">
             <div
-              class="dashboard-stat-icon bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
-              <ui-icon class="text-white text-xl" [name]="menteesIcon" />
+              class="dashboard-stat-icon bg-linear-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
+              <i-lucide class="text-white text-xl" [name]="icons.mentees" />
             </div>
             <div class="flex-1">
               <p class="font-semibold text-slate-900 group-hover:text-emerald-700 transition-colors">Entrepreneurs</p>
               <p class="text-xs text-slate-600">Mes accompagnés</p>
             </div>
-            <ui-icon class="text-slate-400 group-hover:text-emerald-600 transition-colors"
-               name="arrow_forward" />
+            <i-lucide class="text-slate-400 group-hover:text-emerald-600 transition-colors" [name]="icons.arrowRight" />
           </a>
         </div>
       </div>
@@ -218,15 +214,15 @@
         <div class="flex items-center justify-between mb-6">
           <h2 class="dashboard-heading-4">Activité récente</h2>
           <span class="dashboard-badge-neutral">
-            <ui-icon class="text-xs" name="history" />
+            <i-lucide class="text-xs" [name]="icons.history" />
             <span>Dernières actions</span>
           </span>
         </div>
 
         <div class="flex flex-col items-center justify-center py-12 px-4">
           <div
-            class="w-20 h-20 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center shadow-lg mb-4">
-            <ui-icon class="text-slate-400 text-4xl" name="inbox" />
+            class="w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center shadow-lg mb-4">
+            <i-lucide class="text-slate-400 text-4xl" [name]="icons.inbox" />
           </div>
           <h3 class="dashboard-heading-5 mb-2">Aucune activité récente</h3>
           <p class="dashboard-text-body text-center max-w-md">Vos dernières actions s'afficheront ici</p>

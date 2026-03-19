@@ -4,7 +4,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VenturesStore } from '../../../store/ventures.store';
 import { ProductsStore } from '../../../store/products.store';
 import { ApiImgPipe } from '@shared/pipes/api-img.pipe';
-import { IconComponent } from '@shared/ui';
 import {
   LucideAngularModule,
   Eye,
@@ -16,13 +15,24 @@ import {
   Users,
   ShoppingBag,
   Package,
-  Briefcase
+  Briefcase,
+  Lightbulb,
+  Trash2,
+  Plus,
+  MapPin,
+  Handshake,
+  Mail,
+  Phone,
+  Globe,
+  ExternalLink,
+  Link,
+  BriefcaseBusiness
 } from 'lucide-angular';
 import type { IImage } from '@shared/models';
 
 @Component({
   selector: 'app-venture-details',
-  imports: [RouterModule, ApiImgPipe, NgOptimizedImage, DecimalPipe, DatePipe, LucideAngularModule, IconComponent],
+  imports: [RouterModule, ApiImgPipe, NgOptimizedImage, DecimalPipe, DatePipe, LucideAngularModule],
   templateUrl: './venture-details.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -37,16 +47,27 @@ export class VentureDetails implements OnInit {
   lightboxIndex = signal(0);
 
   icons = {
-    eye: Eye,
-    x: X,
+    briefcase: Briefcase,
+    businessCenter: BriefcaseBusiness,
     chevronLeft: ChevronLeft,
     chevronRight: ChevronRight,
+    connect: Handshake,
+    delete: Trash2,
     edit: Edit,
+    email: Mail,
+    externalLink: ExternalLink,
+    eye: Eye,
+    language: Globe,
+    lightbulb: Lightbulb,
+    link: Link,
+    location: MapPin,
+    package: Package,
+    phone: Phone,
+    plus: Plus,
+    shoppingBag: ShoppingBag,
     target: Target,
     users: Users,
-    shoppingBag: ShoppingBag,
-    package: Package,
-    briefcase: Briefcase
+    x: X
   };
 
   openLightbox(images: IImage[], index: number): void {

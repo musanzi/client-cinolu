@@ -5,17 +5,44 @@ import { FormsModule } from '@angular/forms';
 import { ApiImgPipe } from '@shared/pipes/api-img.pipe';
 import { MentorshipStore } from '../../../store/mentorship.store';
 import { IPhase } from '@shared/models/entities.models';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowLeft,
+  CalendarDays,
+  Check,
+  ChevronRight,
+  CircleAlert,
+  Clock3,
+  Layers,
+  LucideAngularModule,
+  Search,
+  User,
+  UserX,
+  Users
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-mentored-project-detail',
-  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, IconComponent],
+  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule],
   templateUrl: './mentored-project-detail.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MentoredProjectDetail implements OnInit, OnDestroy {
   mentorshipStore = inject(MentorshipStore);
   private route = inject(ActivatedRoute);
+
+  readonly icons = {
+    arrowBack: ArrowLeft,
+    calendar: CalendarDays,
+    check: Check,
+    chevronRight: ChevronRight,
+    error: CircleAlert,
+    group: Users,
+    groupOff: UserX,
+    layers: Layers,
+    person: User,
+    schedule: Clock3,
+    search: Search
+  };
 
   projectId = signal<string>('');
   searchQuery = signal<string>('');

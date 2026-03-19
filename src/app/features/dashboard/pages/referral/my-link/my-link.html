@@ -3,8 +3,8 @@
     <div class="flex flex-col sm:flex-row sm:items-center gap-4">
       <div class="flex items-center gap-3 flex-1">
         <div
-          class="w-14 h-14 rounded-lg bg-gradient-to-br from-primary-500/90 to-primary-700/85 flex items-center justify-center shadow-lg">
-          <ui-icon class="text-white text-3xl" name="link" />
+          class="w-14 h-14 rounded-lg bg-linear-to-br from-primary-500/90 to-primary-700/85 flex items-center justify-center shadow-lg">
+          <i-lucide class="text-white text-3xl" [name]="icons.link" />
         </div>
         <div>
           <h1 class="dashboard-heading-2">Mon lien de parrainage</h1>
@@ -29,8 +29,8 @@
       <div class="dashboard-card-elevated p-6">
         <div class="flex items-center gap-3 mb-5">
           <div
-            class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/90 to-primary-600/90 flex items-center justify-center shadow-lg">
-            <ui-icon class="text-white text-lg" name="link" />
+            class="w-10 h-10 rounded-lg bg-linear-to-br from-primary-500/90 to-primary-600/90 flex items-center justify-center shadow-lg">
+            <i-lucide class="text-white text-lg" [name]="icons.link" />
           </div>
           <div>
             <h3 class="dashboard-heading-5">Votre lien de parrainage</h3>
@@ -49,13 +49,13 @@
               (click)="onCopyLink()"
               aria-label="Copier le lien de parrainage dans le presse-papier"
               class="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium text-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
-              <ui-icon class="text-base" name="content_copy" />
+              <i-lucide class="text-base" [name]="icons.copy" />
               <span class="hidden sm:inline">Copier</span>
             </button>
           </div>
 
           <div class="flex items-center gap-2 text-slate-500 dashboard-text-tiny">
-            <ui-icon class="text-sm" name="info" />
+            <i-lucide class="text-sm" [name]="icons.info" />
             <span>Ce lien reste actif de manière permanente</span>
           </div>
         </div>
@@ -110,12 +110,12 @@
         </div>
       </div>
 
-      <div class="dashboard-card p-6 lg:p-8 bg-gradient-to-br from-primary-50/80 to-white">
+      <div class="dashboard-card p-6 lg:p-8 bg-linear-to-br from-primary-50/80 to-white">
         <div class="mb-6">
           <div class="flex items-start gap-3 mb-3">
             <div
-              class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/90 to-primary-600/90 flex items-center justify-center shadow-lg flex-shrink-0">
-              <ui-icon class="text-white text-lg" name="workspace_premium" />
+              class="w-10 h-10 rounded-lg bg-linear-to-br from-primary-500/90 to-primary-600/90 flex items-center justify-center shadow-lg shrink-0">
+              <i-lucide class="text-white text-lg" [name]="icons.crown" />
             </div>
             <div class="flex-1">
               <h3 class="dashboard-heading-5 mb-1">Pourquoi partager votre lien de parrainage ?</h3>
@@ -129,8 +129,8 @@
 
         <div class="space-y-3">
           <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-            <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-              <ui-icon class="text-primary-700 text-base" name="campaign" />
+            <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+              <i-lucide class="text-primary-700 text-base" [name]="icons.campaign" />
             </div>
             <div class="flex-1">
               <h5 class="font-semibold text-slate-900 text-sm mb-1">Gagner en visibilité</h5>
@@ -138,8 +138,8 @@
             </div>
           </div>
           <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-            <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-              <ui-icon class="text-primary-700 text-base" name="business" />
+            <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+              <i-lucide class="text-primary-700 text-base" [name]="icons.business" />
             </div>
             <div class="flex-1">
               <h5 class="font-semibold text-slate-900 text-sm mb-1">Faire reconnaître votre projet</h5>
@@ -149,8 +149,8 @@
             </div>
           </div>
           <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-            <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-              <ui-icon class="text-primary-700 text-base" name="verified" />
+            <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+              <i-lucide class="text-primary-700 text-base" [name]="icons.verified" />
             </div>
             <div class="flex-1">
               <h5 class="font-semibold text-slate-900 text-sm mb-1">Reconnaissance officielle de Cinolu</h5>
@@ -165,13 +165,13 @@
             aria-label="Afficher tous les avantages du parrainage"
             class="w-full py-2 text-sm font-medium text-primary-600 hover:text-primary-700 flex items-center justify-center gap-1 transition-colors">
             <span>Voir tous les avantages</span>
-            <ui-icon class="text-base" name="expand_more" />
+            <i-lucide class="text-base" [name]="icons.expandMore" />
           </button>
           } @else {
           <div class="space-y-3 pt-1">
             <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-              <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-primary-700 text-base" name="podcasts" />
+              <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+                <i-lucide class="text-primary-700 text-base" [name]="icons.podcasts" />
               </div>
               <div class="flex-1">
                 <h5 class="font-semibold text-slate-900 text-sm mb-1">Accès aux canaux de communication Cinolu</h5>
@@ -182,8 +182,8 @@
             </div>
 
             <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-              <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-primary-700 text-base" name="trending_up" />
+              <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+                <i-lucide class="text-primary-700 text-base" [name]="icons.trendingUp" />
               </div>
               <div class="flex-1">
                 <h5 class="font-semibold text-slate-900 text-sm mb-1">Renforcer votre image de marque</h5>
@@ -198,7 +198,7 @@
               aria-label="Masquer les avantages supplémentaires"
               class="w-full py-2 text-sm font-medium text-primary-600 hover:text-primary-700 flex items-center justify-center gap-1 transition-colors">
               <span>Voir moins</span>
-              <ui-icon class="text-base" name="expand_less" />
+              <i-lucide class="text-base" [name]="icons.expandLess" />
             </button>
           </div>
           }
@@ -209,7 +209,7 @@
             routerLink="/dashboard/user/referral/badges"
             aria-label="Découvrir mes niveaux de badges ambassadeur"
             class="dashboard-btn-secondary w-full flex items-center justify-center gap-2 py-2.5 text-sm">
-            <ui-icon class="text-base" name="military_tech" />
+            <i-lucide class="text-base" [name]="icons.award" />
             <span>Découvrir mes niveaux</span>
           </a>
         </div>
@@ -218,7 +218,7 @@
       <div class="dashboard-card p-6 bg-slate-50 border border-slate-100">
         <div class="mb-5">
           <h3 class="dashboard-heading-5 mb-1 flex items-center gap-2">
-            <ui-icon class="text-primary-600 text-lg" name="tips_and_updates" />
+            <i-lucide class="text-primary-600 text-lg" [name]="icons.sparkles" />
             <span>Conseils pour maximiser vos parrainages</span>
           </h3>
           <p class="dashboard-text-small text-slate-500">Stratégies recommandées</p>
@@ -227,8 +227,8 @@
         <div class="grid md:grid-cols-3 gap-4">
           <div class="p-4 rounded-lg bg-white border border-slate-200 hover:border-primary-300 transition-colors">
             <div class="flex items-start gap-3">
-              <div class="w-8 h-8 flex-shrink-0 rounded-lg bg-emerald-100 flex items-center justify-center">
-                <ui-icon class="text-emerald-700 text-base" name="people" />
+              <div class="w-8 h-8 shrink-0 rounded-lg bg-emerald-100 flex items-center justify-center">
+                <i-lucide class="text-emerald-700 text-base" [name]="icons.users" />
               </div>
               <div>
                 <h5 class="font-semibold text-slate-900 text-sm mb-1">Réseau personnel</h5>
@@ -241,8 +241,8 @@
 
           <div class="p-4 rounded-lg bg-white border border-slate-200 hover:border-primary-300 transition-colors">
             <div class="flex items-start gap-3">
-              <div class="w-8 h-8 flex-shrink-0 rounded-lg bg-blue-100 flex items-center justify-center">
-                <ui-icon class="text-blue-700 text-base" name="forum" />
+              <div class="w-8 h-8 shrink-0 rounded-lg bg-blue-100 flex items-center justify-center">
+                <i-lucide class="text-blue-700 text-base" [name]="icons.message" />
               </div>
               <div>
                 <h5 class="font-semibold text-slate-900 text-sm mb-1">Réseaux sociaux</h5>
@@ -255,8 +255,8 @@
 
           <div class="p-4 rounded-lg bg-white border border-slate-200 hover:border-primary-300 transition-colors">
             <div class="flex items-start gap-3">
-              <div class="w-8 h-8 flex-shrink-0 rounded-lg bg-purple-100 flex items-center justify-center">
-                <ui-icon class="text-purple-700 text-base" name="qr_code_2" />
+              <div class="w-8 h-8 shrink-0 rounded-lg bg-purple-100 flex items-center justify-center">
+                <i-lucide class="text-purple-700 text-base" [name]="icons.qrCode" />
               </div>
               <div>
                 <h5 class="font-semibold text-slate-900 text-sm mb-1">Supports physiques</h5>
@@ -272,7 +272,7 @@
       <div class="dashboard-card p-6">
         <div class="flex items-center gap-2 mb-4">
           <div class="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center">
-            <ui-icon class="text-purple-700 text-base" name="qr_code_2" />
+            <i-lucide class="text-purple-700 text-base" [name]="icons.qrCode" />
           </div>
           <div>
             <h3 class="dashboard-heading-5">QR Code</h3>
@@ -286,19 +286,19 @@
         } @else if (qrCodeDataUrl()) {
         <div class="space-y-4">
           <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex items-center justify-center">
-            <img [src]="qrCodeDataUrl()" alt="QR Code" class="w-full max-w-[200px] h-auto" />
+            <img [src]="qrCodeDataUrl()" alt="QR Code" class="w-full max-w-50 h-auto" />
           </div>
           <button
             (click)="downloadQRCode()"
             aria-label="Télécharger le QR Code de mon lien de parrainage"
             class="w-full dashboard-btn-secondary flex items-center justify-center gap-2 py-2.5 text-sm">
-            <ui-icon class="text-base" name="download" />
+            <i-lucide class="text-base" [name]="icons.download" />
             <span>Télécharger</span>
           </button>
         </div>
         } @else {
         <div class="py-12 text-center">
-          <ui-icon class="text-slate-300 text-5xl mb-2" name="qr_code_scanner" />
+          <i-lucide class="text-slate-300 text-5xl mb-2" [name]="icons.qrScanner" />
           <p class="dashboard-text-small text-slate-500">Non disponible</p>
         </div>
         }
@@ -307,13 +307,13 @@
       <div class="dashboard-card p-6">
         <div class="flex items-center gap-2 mb-4">
           <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center">
-            <ui-icon class="text-primary-700 text-base" name="insights" />
+            <i-lucide class="text-primary-700 text-base" [name]="icons.insights" />
           </div>
           <h3 class="dashboard-heading-5">Statistiques</h3>
         </div>
 
         <div class="space-y-4">
-          <div class="bg-gradient-to-br from-primary-50 to-white p-4 rounded-lg border border-primary-200">
+          <div class="bg-linear-to-br from-primary-50 to-white p-4 rounded-lg border border-primary-200">
             <div class="flex items-center justify-between mb-1">
               <span class="dashboard-text-small text-slate-600">Filleuls inscrits</span>
               <span class="text-2xl font-bold text-primary-600">{{ authStore.user()?.referralsCount || 0 }}</span>
@@ -326,7 +326,7 @@
             aria-label="Consulter la liste de mes filleuls"
             class="dashboard-btn-secondary w-full flex items-center justify-center gap-2 py-2.5">
             <span>Voir mes filleuls</span>
-            <ui-icon class="text-sm" name="arrow_forward" />
+            <i-lucide class="text-sm" [name]="icons.arrowRight" />
           </a>
         </div>
       </div>
@@ -335,8 +335,8 @@
   } @else {
   <div class="dashboard-card-elevated p-8 sm:p-12 text-center max-w-4xl mx-auto">
     <div
-      class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary-500/30 animate-pulse">
-      <ui-icon class="text-white text-4xl sm:text-5xl" name="link" />
+      class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-linear-to-br from-primary-500 to-primary-700 flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary-500/30 animate-pulse">
+      <i-lucide class="text-white text-4xl sm:text-5xl" [name]="icons.link" />
     </div>
     <h3 class="dashboard-heading-3 mb-3">Générez votre lien de parrainage</h3>
     <p class="dashboard-text-body text-slate-600 mb-8 max-w-md mx-auto">
@@ -344,12 +344,12 @@
     </p>
 
     <div
-      class="mb-8 p-6 sm:p-8 bg-gradient-to-br from-primary-50 to-white rounded-lg border-l-4 border-primary-500 text-left">
+      class="mb-8 p-6 sm:p-8 bg-linear-to-br from-primary-50 to-white rounded-lg border-l-4 border-primary-500 text-left">
       <div class="mb-6">
         <div class="flex items-start gap-3 mb-3">
           <div
-            class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20 flex-shrink-0">
-            <ui-icon class="text-white text-lg" name="workspace_premium" />
+            class="w-10 h-10 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20 shrink-0">
+            <i-lucide class="text-white text-lg" [name]="icons.crown" />
           </div>
           <div class="flex-1">
             <h4 class="dashboard-heading-5 mb-1">Pourquoi partager votre lien de parrainage ?</h4>
@@ -363,8 +363,8 @@
 
       <div class="space-y-3">
         <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-            <ui-icon class="text-primary-700 text-base" name="campaign" />
+          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+            <i-lucide class="text-primary-700 text-base" [name]="icons.campaign" />
           </div>
           <div class="flex-1">
             <h5 class="font-semibold text-slate-900 text-sm mb-1">Gagner en visibilité</h5>
@@ -372,8 +372,8 @@
           </div>
         </div>
         <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-            <ui-icon class="text-primary-700 text-base" name="business" />
+          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+            <i-lucide class="text-primary-700 text-base" [name]="icons.business" />
           </div>
           <div class="flex-1">
             <h5 class="font-semibold text-slate-900 text-sm mb-1">Faire reconnaître votre projet</h5>
@@ -381,8 +381,8 @@
           </div>
         </div>
         <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-            <ui-icon class="text-primary-700 text-base" name="verified" />
+          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+            <i-lucide class="text-primary-700 text-base" [name]="icons.verified" />
           </div>
           <div class="flex-1">
             <h5 class="font-semibold text-slate-900 text-sm mb-1">Reconnaissance officielle de Cinolu</h5>
@@ -392,8 +392,8 @@
           </div>
         </div>
         <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-            <ui-icon class="text-primary-700 text-base" name="podcasts" />
+          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+            <i-lucide class="text-primary-700 text-base" [name]="icons.podcasts" />
           </div>
           <div class="flex-1">
             <h5 class="font-semibold text-slate-900 text-sm mb-1">Accès aux canaux de communication Cinolu</h5>
@@ -403,8 +403,8 @@
           </div>
         </div>
         <div class="flex items-start gap-3 p-3 rounded-lg bg-white border border-slate-100">
-          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0">
-            <ui-icon class="text-primary-700 text-base" name="trending_up" />
+          <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+            <i-lucide class="text-primary-700 text-base" [name]="icons.trendingUp" />
           </div>
           <div class="flex-1">
             <h5 class="font-semibold text-slate-900 text-sm mb-1">Renforcer votre image de marque</h5>
@@ -418,13 +418,13 @@
       (click)="onGenerateCode()"
       aria-label="Générer mon lien de parrainage unique"
       class="dashboard-btn-primary inline-flex hover:scale-105 active:scale-95 transition-transform shadow-xl hover:shadow-2xl">
-      <ui-icon class="text-xl" name="add_link" />
+      <i-lucide class="text-xl" [name]="icons.addLink" />
       <span>Générer mon lien</span>
     </button>
 
     <div class="mt-8 pt-6 border-t border-slate-200">
       <p class="dashboard-text-small text-slate-500 flex items-center justify-center gap-2">
-        <ui-icon class="text-base text-primary-600" name="security" />
+        <i-lucide class="text-base text-primary-600" [name]="icons.security" />
         <span>Votre lien sera unique et sécurisé</span>
       </p>
     </div>

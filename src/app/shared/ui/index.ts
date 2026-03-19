@@ -3,7 +3,6 @@ export * from './button/button';
 export * from './card/card';
 export * from './dialog/dialog';
 export * from './gallery/gallery';
-export * from './icon/icon';
 export * from './input/input';
 export * from './pagination/pagination';
 export * from './select/select';

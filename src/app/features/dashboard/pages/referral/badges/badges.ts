@@ -4,17 +4,57 @@ import { RouterModule } from '@angular/router';
 import { ReferralsStore } from '@features/dashboard/store/referrals.store';
 import { AuthStore } from '@core/auth/auth.store';
 import { ReferralBadgesService, BadgeLevel } from '@features/dashboard/services/referral-badges.service';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowRight,
+  Award,
+  BadgeCheck,
+  Check,
+  Crown,
+  Flag,
+  Info,
+  Link,
+  LockKeyhole,
+  LucideAngularModule,
+  LucideIconData,
+  Share2,
+  Sparkles,
+  TrendingUp,
+  Trophy
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-referral-badges',
-  imports: [CommonModule, RouterModule, IconComponent],
+  imports: [CommonModule, RouterModule, LucideAngularModule],
   templateUrl: './badges.html'
 })
 export class ReferralBadges implements OnInit {
   referralsStore = inject(ReferralsStore);
   authStore = inject(AuthStore);
   badgesService = inject(ReferralBadgesService);
+
+  readonly icons = {
+    arrowRight: ArrowRight,
+    award: Award,
+    check: Check,
+    crown: Crown,
+    flag: Flag,
+    info: Info,
+    link: Link,
+    lock: LockKeyhole,
+    share: Share2,
+    sparkles: Sparkles,
+    trendingUp: TrendingUp,
+    trophy: Trophy,
+    verified: BadgeCheck
+  };
+
+  private readonly badgeIconMap: Record<string, LucideIconData> = {
+    award: Award,
+    'trending-up': TrendingUp,
+    crown: Crown,
+    sparkles: Sparkles,
+    trophy: Trophy
+  };
 
   referralsCount = computed(() => {
     return this.authStore.user()?.referralsCount || this.referralsStore.referredUsers().length || 0;
@@ -68,5 +108,9 @@ export class ReferralBadges implements OnInit {
 
   isBadgeUnlocked(badge: BadgeLevel): boolean {
     return this.referralsCount() >= badge.minReferrals;
+  }
+
+  resolveBadgeIcon(icon: string): LucideIconData {
+    return this.badgeIconMap[icon] ?? Award;
   }
 }

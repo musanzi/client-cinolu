@@ -7,7 +7,7 @@
       (click)="toggleSidebar.emit()"
       type="button"
       class="min-h-[44px] min-w-[44px] flex items-center justify-center hover:bg-slate-100 rounded-lg transition-colors lg:hidden -ml-1">
-      <ui-icon class="text-slate-600 text-xl" name="menu" />
+      <i-lucide [name]="icons.menu" class="w-5 h-5 text-slate-600" />
     </button>
     }
 
@@ -15,7 +15,7 @@
       <div
         class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-600"
         role="status">
-        <ui-icon class="text-sm" name="schedule" />
+        <i-lucide [name]="icons.clock" class="w-3.5 h-3.5" />
         <time [attr.datetime]="currentTime().toISOString()" class="flex items-baseline gap-2">
           <span class="dashboard-clock font-semibold"> {{ displayTime() }} </span>
           <span class="dashboard-date-label text-slate-600 text-xs hidden sm:inline"> {{ dateLabel() }} </span>
@@ -31,20 +31,19 @@
       target="_blank"
       rel="noopener noreferrer"
       class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-lg text-amber-800 text-xs font-semibold transition-colors">
-      <ui-icon class="text-lg" name="admin_panel_settings" />
+      <i-lucide [name]="icons.adminPanel" class="w-4 h-4" />
       <span>Admin</span>
     </a>
     }
 
     <div
       class="hidden lg:flex items-center gap-2 bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-lg px-3 py-1.5 border border-primary-200/60">
-      <ui-icon class="text-primary-600 text-sm" name="key" />
+      <i-lucide [name]="icons.key" class="w-3.5 h-3.5 text-primary-600" />
       <span class="text-xs font-bold text-primary-700 tracking-wider">{{ referralCode() }}</span>
     </div>
 
     <a href="/contact-us" target="_blank" class="p-2 hover:bg-amber-50 rounded-lg transition-colors group">
-      <ui-icon class="text-slate-600 group-hover:text-amber-600 text-xl transition-colors"
-         name="help_outline" />
+      <i-lucide [name]="icons.help" class="w-5 h-5 text-slate-600 group-hover:text-amber-600 transition-colors" />
     </a>
 
     <div class="h-8 w-px bg-slate-200 hidden md:block"></div>
@@ -58,12 +57,7 @@
           @if (user()?.profile || user()?.google_image) {
           <div
             class="relative w-9 h-9 min-w-9 min-h-9 rounded-lg overflow-hidden ring-2 ring-slate-200 group-hover:ring-primary-300 transition-all">
-            <img
-              priority
-              [ngSrc]="user() | apiIMG: 'user'"
-              [alt]="user()?.name"
-              fill
-              class="object-cover" />
+            <img priority [ngSrc]="user() | apiIMG: 'user'" [alt]="user()?.name" fill class="object-cover" />
           </div>
           } @else {
           <div
@@ -79,10 +73,10 @@
           <p class="text-xs text-slate-500">{{ getRoleLabel() }}</p>
         </div>
 
-        <ui-icon
+        <i-lucide
+          [name]="icons.chevronDown"
           [ngClass]="{ 'rotate-180': showUserMenu() }"
-          class="text-slate-600 text-lg transition-transform hidden md:block"
-           name="expand_more" />
+          class="w-4 h-4 text-slate-600 transition-transform hidden md:block" />
       </button>
 
       @if (showUserMenu()) {
@@ -93,7 +87,7 @@
           <p class="text-xs text-slate-500">{{ user()?.email }}</p>
           <span
             class="inline-flex items-center gap-1 mt-2 px-2 py-1 bg-primary-50 text-primary-700 rounded text-xs font-semibold">
-            <ui-icon class="text-xs" name="verified" />
+            <i-lucide [name]="icons.verified" class="w-3 h-3" />
             {{ getRoleLabel() }}
           </span>
         </div>
@@ -106,7 +100,7 @@
             rel="noopener noreferrer"
             (click)="closeUserMenu()"
             class="flex items-center gap-3 px-4 py-2.5 hover:bg-amber-50 transition-colors group">
-            <ui-icon class="text-slate-500 group-hover:text-amber-600 text-lg" name="admin_panel_settings" />
+            <i-lucide [name]="icons.adminPanel" class="w-4 h-4 text-slate-500 group-hover:text-amber-600" />
             <span class="text-sm text-slate-700 group-hover:text-slate-900">Dashboard Admin</span>
           </a>
           }
@@ -115,7 +109,7 @@
             (click)="closeUserMenu()"
             routerLink="/dashboard/user/profile"
             class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 transition-colors group">
-            <ui-icon class="text-slate-500 group-hover:text-primary-600 text-lg" name="account_circle" />
+            <i-lucide [name]="icons.accountCircle" class="w-4 h-4 text-slate-500 group-hover:text-primary-600" />
             <span class="text-sm text-slate-700 group-hover:text-slate-900">Mon Profil</span>
           </a>
 
@@ -123,7 +117,7 @@
             (click)="closeUserMenu()"
             routerLink="/dashboard/user/profile/security"
             class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 transition-colors group">
-            <ui-icon class="text-slate-500 group-hover:text-primary-600 text-lg" name="security" />
+            <i-lucide [name]="icons.security" class="w-4 h-4 text-slate-500 group-hover:text-primary-600" />
             <span class="text-sm text-slate-700 group-hover:text-slate-900">Sécurité</span>
           </a>
 
@@ -131,7 +125,7 @@
             (click)="closeUserMenu()"
             routerLink="/dashboard/user/referral/referred-users"
             class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-50 transition-colors group">
-            <ui-icon class="text-slate-500 group-hover:text-primary-600 text-lg" name="group_add" />
+            <i-lucide [name]="icons.groupAdd" class="w-4 h-4 text-slate-500 group-hover:text-primary-600" />
             <span class="text-sm text-slate-700 group-hover:text-slate-900">Mes Parrainages</span>
           </a>
         </div>
@@ -141,7 +135,7 @@
             (click)="signOut()"
             type="button"
             class="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-red-50 transition-colors group text-left">
-            <ui-icon class="text-slate-500 group-hover:text-red-600 text-lg" name="logout" />
+            <i-lucide [name]="icons.logout" class="w-4 h-4 text-slate-500 group-hover:text-red-600" />
             <span class="text-sm text-slate-700 group-hover:text-red-600 font-medium">Déconnexion</span>
           </button>
         </div>

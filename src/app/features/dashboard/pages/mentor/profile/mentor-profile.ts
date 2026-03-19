@@ -4,11 +4,34 @@ import { AuthStore } from '@core/auth/auth.store';
 import { MentorProfileStore } from '../../../store/mentor-profile.store';
 import { CreateExperienceDto, IExpertise, IExperience, IMentorProfile } from '@shared/models';
 import { ToastrService } from '@core/services/toast/toastr.service';
-import { IconComponent } from '@shared/ui';
+import {
+  LucideAngularModule,
+  LucideIconData,
+  Badge,
+  SquarePen,
+  BriefcaseBusiness,
+  Brain,
+  CircleCheckBig,
+  SearchCheck,
+  BookOpenText,
+  Plus,
+  Trash2,
+  FileText,
+  Eye,
+  RefreshCw,
+  FileUp,
+  X,
+  Save,
+  CircleAlert,
+  BadgeCheck,
+  Clock3,
+  CircleX,
+  Info
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-mentor-profile',
-  imports: [ReactiveFormsModule, IconComponent],
+  imports: [ReactiveFormsModule, LucideAngularModule],
   templateUrl: './mentor-profile.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -21,10 +44,38 @@ export class MentorProfile implements OnInit {
 
   isEditMode = signal(false);
   selectedExpertises = signal<string[]>([]);
+  expertiseFilter = signal('');
+  isExpertiseDropdownOpen = signal(false);
+
+  readonly icons = {
+    badge: Badge,
+    edit: SquarePen,
+    work: BriefcaseBusiness,
+    psychology: Brain,
+    checkCircle: CircleCheckBig,
+    manageSearch: SearchCheck,
+    historyEdu: BookOpenText,
+    add: Plus,
+    delete: Trash2,
+    description: FileText,
+    visibility: Eye,
+    sync: RefreshCw,
+    uploadFile: FileUp,
+    close: X,
+    save: Save,
+    error: CircleAlert
+  };
 
   selectedExpertiseObjects = computed(() => {
     const ids = this.selectedExpertises();
     return this.profileStore.expertises().filter((e) => ids.includes(e.id));
+  });
+
+  filteredExpertises = computed(() => {
+    const term = this.normalizeSearch(this.expertiseFilter());
+    if (!term) return this.profileStore.expertises();
+
+    return this.profileStore.expertises().filter((expertise) => this.normalizeSearch(expertise.name).includes(term));
   });
 
   profileForm = this.fb.group({
@@ -164,6 +215,30 @@ export class MentorProfile implements OnInit {
     }
   }
 
+  updateExpertiseFilter(event: Event): void {
+    const value = (event.target as HTMLInputElement).value || '';
+    this.expertiseFilter.set(value);
+  }
+
+  toggleExpertiseDropdown(): void {
+    this.isExpertiseDropdownOpen.update((isOpen) => !isOpen);
+  }
+
+  closeExpertiseDropdown(): void {
+    this.isExpertiseDropdownOpen.set(false);
+  }
+
+  clearExpertiseFilter(): void {
+    this.expertiseFilter.set('');
+  }
+
+  private normalizeSearch(value: string): string {
+    return value
+      .toLocaleLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
+
   enableEditMode(): void {
     this.isEditMode.set(true);
     this.experiencesArray.controls.forEach((control) => {
@@ -298,19 +373,19 @@ export class MentorProfile implements OnInit {
     }
   }
 
-  getStatusIcon(): string {
+  getStatusIcon(): LucideIconData {
     const profile = this.profileStore.profile();
-    if (!profile) return '';
+    if (!profile) return Info;
 
     switch (profile.status) {
       case 'approved':
-        return 'verified';
+        return BadgeCheck;
       case 'pending':
-        return 'schedule';
+        return Clock3;
       case 'rejected':
-        return 'cancel';
+        return CircleX;
       default:
-        return 'info';
+        return Info;
     }
   }
 }

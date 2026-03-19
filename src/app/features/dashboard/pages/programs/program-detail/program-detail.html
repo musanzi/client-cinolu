@@ -4,7 +4,7 @@
     <div class="p-6 space-y-6">
       <div class="flex items-start gap-4">
         <i-lucide
-          class="size-6 flex-shrink-0 mt-0.5"
+          class="size-6 shrink-0 mt-0.5"
           [name]="confirmIcon() === 'alert' ? icons.alertTriangle : icons.info"
           [ngClass]="confirmIcon() === 'alert' ? 'text-amber-500' : 'text-blue-500'" />
         <p class="text-slate-700">{{ confirmMessage() }}</p>
@@ -33,14 +33,14 @@
   </div>
   } @else { @if (projectStore.project(); as project) {
   <div class="relative overflow-hidden">
-    <div class="absolute inset-0 h-[500px]">
+    <div class="absolute inset-0 h-125">
       @if (project.cover) {
       <img [src]="project | apiIMG: 'project'" [alt]="project.name" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/80 to-primary-900/70"></div>
+      <div class="absolute inset-0 bg-linear-to-br from-slate-900/90 via-slate-900/80 to-primary-900/70"></div>
       } @else {
-      <div class="absolute inset-0 bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900"></div>
+      <div class="absolute inset-0 bg-linear-to-br from-primary-600 via-primary-700 to-primary-900"></div>
       }
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]"></div>
+      <div class="absolute inset-0 bg-[radial-linear(circle_at_30%_50%,rgba(255,255,255,0.1),transparent_70%)]"></div>
     </div>
 
     <div class="relative pt-10 lg:pt-16 pb-24">
@@ -59,8 +59,8 @@
 
               @if (hasApplied()) {
               <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-bold border-2 border-blue-400/30">
-                <ui-icon class="text-base" name="verified" />
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r from-blue-500 to-blue-600 text-white text-sm font-bold border-2 border-blue-400/30">
+                <i-lucide class="text-base" [name]="icons.verified" />
                 <span>Candidature soumise</span>
               </div>
               }
@@ -75,7 +75,7 @@
               <div class="flex items-center gap-3">
                 <div
                   class="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  <ui-icon class="text-white" name="schedule" />
+                  <i-lucide class="text-white" [name]="icons.clock" />
                 </div>
                 <div>
                   <p class="text-white/60 text-xs font-semibold uppercase tracking-wider">Durée</p>
@@ -86,7 +86,7 @@
               <div class="flex items-center gap-3">
                 <div
                   class="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  <ui-icon class="text-white" name="event" />
+                  <i-lucide class="text-white" [name]="icons.calendar" />
                 </div>
                 <div>
                   <p class="text-white/60 text-xs font-semibold uppercase tracking-wider">Début</p>
@@ -101,11 +101,11 @@
           <div class="flex flex-col items-end gap-3">
             <button
               (click)="onApplyClick()"
-              class="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white rounded-lg font-bold border-2 border-primary-400/30 transition-all duration-300 transform hover:scale-105 overflow-hidden">
+              class="group relative px-8 py-4 bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white rounded-lg font-bold border-2 border-primary-400/30 transition-all duration-300 transform hover:scale-105 overflow-hidden">
               <div
-                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                class="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
               <div class="relative flex items-center gap-3">
-                <ui-icon class="text-xl" name="rocket_launch" />
+                <i-lucide class="text-xl" [name]="icons.rocket" />
                 <span class="text-lg">Postuler maintenant</span>
               </div>
             </button>
@@ -115,7 +115,7 @@
           <div class="flex flex-col items-end gap-3">
             <div
               class="px-8 py-4 bg-white/20 backdrop-blur-sm text-white rounded-lg font-bold border-2 border-white/30 flex items-center gap-3">
-              <ui-icon name="check_circle" />
+              <i-lucide [name]="icons.checkCircle" />
               <span>Candidature envoyée</span>
             </div>
             <p class="text-white/70 text-sm">Nous reviendrons vers vous</p>
@@ -123,7 +123,7 @@
           } @else {
           <div class="px-8 py-4 bg-white/10 backdrop-blur-sm text-white/60 rounded-lg font-bold border border-white/20">
             <div class="flex items-center gap-3">
-              <ui-icon name="lock" />
+              <i-lucide [name]="icons.lock" />
               <span>Programme fermé</span>
             </div>
           </div>
@@ -143,7 +143,7 @@
           fill="url(#paint0_linear)"
           fill-opacity="0.5" />
         <defs>
-          <linearGradient id="paint0_linear" x1="720" y1="40" x2="720" y2="120" gradientUnits="userSpaceOnUse">
+          <linearGradient id="paint0_linear" x1="720" y1="40" x2="720" y2="120" linearUnits="userSpaceOnUse">
             <stop stop-color="white" stop-opacity="0.8" />
             <stop offset="1" stop-color="white" />
           </linearGradient>
@@ -160,8 +160,8 @@
             class="relative group bg-white rounded-xl border border-slate-200 hover:border-primary-300 p-6 lg:p-8 transition-all duration-300 overflow-hidden border-l-4 border-l-primary-500">
             <div class="flex items-start gap-4 mb-6">
               <div
-                class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-white text-xl" name="description" />
+                class="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shrink-0">
+                <i-lucide class="text-white text-xl" [name]="icons.description" />
               </div>
               <div class="flex-1 min-w-0">
                 <h2 class="text-xl font-bold text-slate-900 mb-1">Description du programme</h2>
@@ -178,8 +178,8 @@
             class="relative group bg-white rounded-xl border border-slate-200 hover:border-primary-300 p-6 lg:p-8 transition-all duration-300 overflow-hidden border-l-4 border-l-primary-500">
             <div class="flex items-start gap-4 mb-6">
               <div
-                class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-white text-xl" name="lightbulb" />
+                class="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shrink-0">
+                <i-lucide class="text-white text-xl" [name]="icons.lightbulb" />
               </div>
               <div class="flex-1 min-w-0">
                 <h2 class="text-xl font-bold text-slate-900 mb-1">Contexte du programme</h2>
@@ -195,8 +195,8 @@
             class="relative group bg-white rounded-xl border border-slate-200 hover:border-primary-300 p-6 lg:p-8 transition-all duration-300 overflow-hidden border-l-4 border-l-primary-500">
             <div class="flex items-start gap-4 mb-6">
               <div
-                class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-white text-xl" name="emoji_events" />
+                class="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shrink-0">
+                <i-lucide class="text-white text-xl" [name]="icons.trophy" />
               </div>
               <div class="flex-1 min-w-0">
                 <h2 class="text-xl font-bold text-slate-900 mb-1">Objectifs visés</h2>
@@ -212,8 +212,8 @@
             class="relative group bg-white rounded-xl border border-slate-200 hover:border-primary-300 p-6 lg:p-8 transition-all duration-300 overflow-hidden border-l-4 border-l-primary-500">
             <div class="flex items-start gap-4 mb-6">
               <div
-                class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-white text-xl" name="verified" />
+                class="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shrink-0">
+                <i-lucide class="text-white text-xl" [name]="icons.verified" />
               </div>
               <div class="flex-1 min-w-0">
                 <h2 class="text-xl font-bold text-slate-900 mb-1">Critères de sélection</h2>
@@ -234,8 +234,8 @@
             class="relative bg-white rounded-xl border border-slate-200 shadow-sm p-6 transition-all duration-300 overflow-hidden">
             <div class="flex items-center gap-3 mb-6">
               <div
-                class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
-                <ui-icon class="text-white text-lg" name="info" />
+                class="w-10 h-10 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shrink-0">
+                <i-lucide class="text-white text-lg" [name]="icons.info" />
               </div>
               <h3 class="text-lg font-bold text-slate-900">Informations clés</h3>
             </div>
@@ -244,8 +244,8 @@
               @if (project.duration_hours) {
               <div
                 class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50 hover:border-slate-300 transition-colors duration-200">
-                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                  <ui-icon class="text-primary-600 text-lg" name="schedule" />
+                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center shrink-0">
+                  <i-lucide class="text-primary-600 text-lg" [name]="icons.clock" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Durée</p>
@@ -255,8 +255,8 @@
               } @if (project.started_at) {
               <div
                 class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50 hover:border-slate-300 transition-colors duration-200">
-                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                  <ui-icon class="text-primary-600 text-lg" name="event" />
+                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center shrink-0">
+                  <i-lucide class="text-primary-600 text-lg" [name]="icons.calendar" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Début</p>
@@ -266,8 +266,8 @@
               } @if (project.ended_at) {
               <div
                 class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50 hover:border-slate-300 transition-colors duration-200">
-                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                  <ui-icon class="text-primary-600 text-lg" name="event_busy" />
+                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center shrink-0">
+                  <i-lucide class="text-primary-600 text-lg" [name]="icons.calendarX" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Fin</p>
@@ -277,8 +277,8 @@
               } @if (project.project_manager) {
               <div
                 class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50 hover:border-slate-300 transition-colors duration-200">
-                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
-                  <ui-icon class="text-primary-600 text-lg" name="person" />
+                <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center shrink-0">
+                  <i-lucide class="text-primary-600 text-lg" [name]="icons.user" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <p class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-0.5">Responsable</p>
@@ -291,13 +291,13 @@
             @if (project.categories && project.categories.length > 0) {
             <div class="mt-6 pt-6 border-t border-slate-200">
               <p class="text-xs text-slate-500 font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
-                <ui-icon class="text-xs" name="label" />
+                <i-lucide class="text-xs" [name]="icons.tag" />
                 Catégories
               </p>
               <div class="flex flex-wrap gap-2">
                 @for (category of project.categories; track category.id) {
                 <span
-                  class="inline-flex items-center px-2.5 py-1 bg-gradient-to-r from-primary-50 to-primary-100/50 text-primary-700 rounded-lg text-xs font-bold border border-primary-200">
+                  class="inline-flex items-center px-2.5 py-1 bg-linear-to-r from-primary-50 to-primary-100/50 text-primary-700 rounded-lg text-xs font-bold border border-primary-200">
                   {{ category.name }}
                 </span>
                 }
@@ -309,22 +309,22 @@
               @if (!isProgramClosed() && !hasApplied()) {
               <button
                 (click)="onApplyClick()"
-                class="group/btn relative w-full px-4 py-3 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 border-2 border-primary-400/30 overflow-hidden text-sm">
+                class="group/btn relative w-full px-4 py-3 bg-linear-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 border-2 border-primary-400/30 overflow-hidden text-sm">
                 <div
-                  class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
-                <ui-icon class="text-lg relative" name="send" />
+                  class="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>
+                <i-lucide class="text-lg relative" [name]="icons.send" />
                 <span class="relative">Postuler</span>
               </button>
               } @else if (hasApplied()) {
               <div
-                class="w-full px-4 py-3 bg-gradient-to-r from-primary-50 to-primary-100/50 text-primary-700 rounded-lg font-bold border-2 border-primary-200 flex items-center justify-center gap-2 text-sm">
-                <ui-icon class="text-lg" name="check_circle" />
+                class="w-full px-4 py-3 bg-linear-to-r from-primary-50 to-primary-100/50 text-primary-700 rounded-lg font-bold border-2 border-primary-200 flex items-center justify-center gap-2 text-sm">
+                <i-lucide class="text-lg" [name]="icons.checkCircle" />
                 <span>Candidature envoyée</span>
               </div>
               } @else {
               <div
-                class="w-full px-4 py-3 bg-gradient-to-r from-red-50 to-red-100/50 text-red-700 rounded-lg font-bold border-2 border-red-300 flex items-center justify-center gap-2 text-sm">
-                <ui-icon class="text-lg" name="lock" />
+                class="w-full px-4 py-3 bg-linear-to-r from-red-50 to-red-100/50 text-red-700 rounded-lg font-bold border-2 border-red-300 flex items-center justify-center gap-2 text-sm">
+                <i-lucide class="text-lg" [name]="icons.lock" />
                 <span>Fermé</span>
               </div>
               }
@@ -339,8 +339,8 @@
           class="relative group bg-white rounded-lg border border-slate-200 hover:border-primary-300 p-6 lg:p-8 transition-all duration-300 overflow-hidden border-l-4 border-l-primary-500">
           <div class="flex items-start gap-4 mb-6">
             <div
-              class="w-12 h-12 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center flex-shrink-0">
-              <ui-icon class="text-white text-xl" name="collections" />
+              class="w-12 h-12 rounded-lg bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shrink-0">
+              <i-lucide class="text-white text-xl" [name]="icons.images" />
             </div>
             <div class="flex-1 min-w-0">
               <h2 class="text-xl font-bold text-slate-900 mb-1">Galerie photos</h2>
@@ -366,10 +366,10 @@
   <div class="flex flex-col items-center justify-center py-32 px-6">
     <div class="relative mb-8">
       <div
-        class="absolute inset-0 rounded-full bg-gradient-to-br from-slate-200 to-slate-100 animate-pulse blur-xl opacity-60"></div>
+        class="absolute inset-0 rounded-full bg-linear-to-br from-slate-200 to-slate-100 animate-pulse blur-xl opacity-60"></div>
       <div
-        class="relative w-32 h-32 rounded-full bg-gradient-to-br from-slate-100 to-white flex items-center justify-center border-4 border-slate-200">
-        <ui-icon class="text-7xl text-slate-300" name="search_off" />
+        class="relative w-32 h-32 rounded-full bg-linear-to-br from-slate-100 to-white flex items-center justify-center border-4 border-slate-200">
+        <i-lucide class="text-7xl text-slate-300" [name]="icons.search" />
       </div>
     </div>
 
@@ -380,7 +380,7 @@
     <a
       routerLink="/dashboard/user/programs"
       class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg transition-colors">
-      <ui-icon class="text-xl" name="arrow_back" />
+      <i-lucide class="text-xl" [name]="icons.arrowLeft" />
       Retour aux programmes
     </a>
   </div>
@@ -394,8 +394,8 @@
       <div class="mb-6 p-4 bg-primary-50 border-l-4 border-primary-500 rounded-r-lg">
         <p class="text-slate-700 leading-relaxed">
           Vous postulez au programme
-          <span class="font-bold text-primary-700">{{ projectStore.project()?.name }}</span>. Choisissez le projet
-          qui participera à ce programme.
+          <span class="font-bold text-primary-700">{{ projectStore.project()?.name }}</span>. Choisissez le projet qui
+          participera à ce programme.
         </p>
       </div>
 
@@ -404,23 +404,31 @@
         <button
           (click)="submitApplication(venture.id)"
           [disabled]="participationsStore.isLoading()"
-          class="group relative w-full p-5 border-2 border-slate-200 rounded-lg hover:border-primary-400 hover:bg-gradient-to-r hover:from-primary-50 hover:to-white transition-all duration-300 text-left disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden">
+          class="group relative w-full p-5 border-2 border-slate-200 rounded-lg hover:border-primary-400 hover:bg-linear-to-r hover:from-primary-50 hover:to-white transition-all duration-300 text-left disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden">
           <div class="relative flex items-center gap-5">
             @if (venture.logo) {
-            <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-white flex-shrink-0">
+            <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-white shrink-0">
               <img [src]="venture | apiIMG: 'venture'" [alt]="venture.name" class="w-full h-full object-cover" />
             </div>
             } @else {
-            <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center border-2 border-slate-200 flex-shrink-0">
-              <ui-icon class="text-slate-400 text-2xl" name="business" />
+            <div
+              class="w-16 h-16 rounded-lg bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center border-2 border-slate-200 shrink-0">
+              <i-lucide class="text-slate-400 text-2xl" [name]="icons.briefcase" />
             </div>
             }
             <div class="flex-1 min-w-0">
-              <h4 class="font-bold text-slate-900 text-lg group-hover:text-primary-700 transition-colors mb-1 truncate">{{ venture.name }}</h4>
-              <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed">{{ venture.description || 'Aucune description disponible' }}</p>
+              <h4 class="font-bold text-slate-900 text-lg group-hover:text-primary-700 transition-colors mb-1 truncate">
+                {{ venture.name }}
+              </h4>
+              <p class="text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                {{ venture.description || 'Aucune description disponible' }}
+              </p>
             </div>
-            <div class="w-10 h-10 rounded-lg bg-slate-100 group-hover:bg-primary-500 flex items-center justify-center transition-colors duration-300 flex-shrink-0">
-              <ui-icon class="text-slate-400 group-hover:text-white transition-colors duration-300" name="arrow_forward" />
+            <div
+              class="w-10 h-10 rounded-lg bg-slate-100 group-hover:bg-primary-500 flex items-center justify-center transition-colors duration-300 shrink-0">
+              <i-lucide
+                class="text-slate-400 group-hover:text-white transition-colors duration-300"
+                [name]="icons.arrowRight" />
             </div>
           </div>
         </button>
@@ -430,7 +438,7 @@
       @if (venturesStore.ventures().length === 0) {
       <div class="text-center py-12">
         <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-4">
-          <ui-icon class="text-4xl text-slate-400" name="business" />
+          <i-lucide class="text-4xl text-slate-400" [name]="icons.briefcase" />
         </div>
         <h4 class="text-lg font-bold text-slate-900 mb-2">Aucun projet</h4>
         <p class="text-slate-600 text-sm">Vous devez d'abord créer un projet pour postuler.</p>

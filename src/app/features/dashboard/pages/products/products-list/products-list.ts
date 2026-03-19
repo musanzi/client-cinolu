@@ -2,16 +2,24 @@ import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/cor
 import { DecimalPipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ProductsStore } from '@features/dashboard/store/products.store';
-import { IconComponent } from '@shared/ui';
+import { Briefcase, LucideAngularModule, Package, Pencil, Plus, Trash2 } from 'lucide-angular';
 
 @Component({
   selector: 'app-products-list',
-  imports: [RouterModule, DecimalPipe, IconComponent],
+  imports: [RouterModule, DecimalPipe, LucideAngularModule],
   templateUrl: './products-list.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsList implements OnInit {
   productsStore = inject(ProductsStore);
+
+  icons = {
+    add: Plus,
+    business: Briefcase,
+    delete: Trash2,
+    edit: Pencil,
+    package: Package
+  };
 
   ngOnInit() {
     this.productsStore.loadAllProducts();

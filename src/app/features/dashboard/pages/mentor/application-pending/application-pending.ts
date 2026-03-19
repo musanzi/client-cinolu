@@ -4,11 +4,23 @@ import { AuthStore } from '../../../../../core/auth/auth.store';
 import { MentorApplicationState } from '@core/auth/mentor-application.state';
 import { MentorProfileStore } from '../../../store/mentor-profile.store';
 import { ToastrService } from '@core/services/toast/toastr.service';
-import { IconComponent } from '@shared/ui';
+import {
+  Check,
+  CircleCheckBig,
+  Clock3,
+  FileUp,
+  Info,
+  LayoutDashboard,
+  Lightbulb,
+  LucideAngularModule,
+  Mail,
+  RefreshCw,
+  User
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-mentor-application-pending',
-  imports: [RouterModule, IconComponent],
+  imports: [RouterModule, LucideAngularModule],
   templateUrl: './application-pending.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -17,6 +29,19 @@ export class MentorApplicationPending implements OnInit {
   readonly mentorApplicationState = inject(MentorApplicationState);
   readonly mentorProfileStore = inject(MentorProfileStore);
   private readonly toast = inject(ToastrService);
+
+  readonly icons = {
+    check: Check,
+    checkCircle: CircleCheckBig,
+    dashboard: LayoutDashboard,
+    email: Mail,
+    info: Info,
+    lightbulb: Lightbulb,
+    person: User,
+    schedule: Clock3,
+    sync: RefreshCw,
+    uploadFile: FileUp
+  };
 
   /**
    * Vrai si l'utilisateur a une candidature pending sans CV.

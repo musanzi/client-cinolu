@@ -3,7 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ParticipationsStore } from '../../../store/participations.store';
 import { IParticipation, IPhase } from '../../../../../shared/models/entities.models';
-import { IconComponent } from '@shared/ui';
+import {
+  BadgeCheck,
+  Clock3,
+  FolderOpen,
+  LucideAngularModule,
+  LucideIconData,
+  TrendingUp,
+  XCircle
+} from 'lucide-angular';
 
 enum ParticipationStatus {
   VALIDATED = 'VALIDATED',
@@ -23,7 +31,7 @@ interface ParticipationAnalysis {
 
 interface StatusConfig {
   label: string;
-  icon: string;
+  icon: LucideIconData;
   classes: string;
   badgeClasses: string;
   borderClasses: string;
@@ -31,7 +39,7 @@ interface StatusConfig {
 
 @Component({
   selector: 'app-accepted-programs',
-  imports: [CommonModule, RouterLink, IconComponent],
+  imports: [CommonModule, RouterLink, LucideAngularModule],
   providers: [],
   templateUrl: './accepted-programs.html',
   styleUrls: [],
@@ -39,6 +47,14 @@ interface StatusConfig {
 })
 export class AcceptedPrograms implements OnInit {
   participationsStore = inject(ParticipationsStore);
+
+  icons = {
+    folder: FolderOpen,
+    pending: Clock3,
+    trending: TrendingUp,
+    verified: BadgeCheck,
+    cancel: XCircle
+  };
 
   validParticipations = computed(() => {
     return this.participationsStore.participations().filter((p) => this.isValidForAcceptedPrograms(p));
@@ -110,24 +126,25 @@ export class AcceptedPrograms implements OnInit {
     return ParticipationStatus.IN_PROGRESS;
   }
   getStatusConfig(status: ParticipationStatus): StatusConfig {
+    const icons = this.icons;
     const configs: Record<ParticipationStatus, StatusConfig> = {
       [ParticipationStatus.VALIDATED]: {
         label: 'Validé',
-        icon: 'verified',
+        icon: icons.verified,
         classes: 'bg-primary-50 text-primary-700',
         badgeClasses: 'bg-primary-100 text-primary-800 border-primary-200',
         borderClasses: 'border-primary-300 hover:border-primary-400'
       },
       [ParticipationStatus.IN_PROGRESS]: {
         label: 'En traitement',
-        icon: 'pending_actions',
+        icon: icons.pending,
         classes: 'bg-blue-50 text-blue-700',
         badgeClasses: 'bg-blue-100 text-blue-800 border-blue-200',
         borderClasses: 'border-blue-300 hover:border-blue-400'
       },
       [ParticipationStatus.ELIMINATED]: {
         label: 'Éliminé',
-        icon: 'cancel',
+        icon: icons.cancel,
         classes: 'bg-red-50 text-red-700',
         badgeClasses: 'bg-red-100 text-red-800 border-red-200',
         borderClasses: 'border-red-300 hover:border-red-400'

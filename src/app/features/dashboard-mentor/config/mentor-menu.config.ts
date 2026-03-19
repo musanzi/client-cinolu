@@ -1,3 +1,4 @@
+import { LayoutDashboard, Badge, GraduationCap } from 'lucide-angular';
 import type { MenuItem, MenuSection } from '@features/dashboard/config/menu.config';
 
 const MENTOR_BASE = '/dashboard/mentor';
@@ -9,21 +10,21 @@ export const MENTOR_MENU_CONFIG: MenuSection[] = [
       {
         id: 'mentor-dashboard',
         label: 'Accueil',
-        icon: 'dashboard',
+        icon: LayoutDashboard,
         path: MENTOR_BASE,
         tooltip: 'Tableau de bord mentor'
       },
       {
         id: 'mentor-profile',
         label: 'Profil Mentor',
-        icon: 'badge',
+        icon: Badge,
         path: MENTOR_BASE + '/profile',
         tooltip: 'Gérer mon profil de mentor'
       },
       {
         id: 'mentor-mentored-projects',
         label: 'Projets mentorés',
-        icon: 'school',
+        icon: GraduationCap,
         path: MENTOR_BASE + '/mentored-projects',
         tooltip: 'Voir les projets dont je suis mentor'
       }

@@ -1,5 +1,18 @@
 import { Component, inject, signal, effect, ChangeDetectionStrategy } from '@angular/core';
-import { IconComponent } from '@shared/ui';
+import {
+  ArrowRight,
+  Check,
+  CircleAlert,
+  CircleCheckBig,
+  Eye,
+  EyeOff,
+  LockKeyhole,
+  LucideAngularModule,
+  RefreshCw,
+  RotateCcwKey,
+  Shield,
+  Sparkles
+} from 'lucide-angular';
 import {
   AbstractControl,
   FormBuilder,
@@ -14,7 +27,7 @@ import { UpdatePasswordStore } from '../../store/update-password.store';
 @Component({
   selector: 'app-profile-security',
 
-  imports: [ReactiveFormsModule, IconComponent],
+  imports: [ReactiveFormsModule, LucideAngularModule],
   templateUrl: './profile-security.html',
   providers: [UpdatePasswordStore],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -24,6 +37,20 @@ export class ProfileSecurity {
   private router = inject(Router);
 
   store = inject(UpdatePasswordStore);
+
+  readonly icons = {
+    arrowRight: ArrowRight,
+    check: Check,
+    checkCircle: CircleCheckBig,
+    error: CircleAlert,
+    lock: LockKeyhole,
+    lockReset: RotateCcwKey,
+    refresh: RefreshCw,
+    security: Shield,
+    sparkles: Sparkles,
+    visibility: Eye,
+    visibilityOff: EyeOff
+  };
 
   showCurrentPassword = signal(false);
   showNewPassword = signal(false);
