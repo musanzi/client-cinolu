@@ -12,11 +12,6 @@
         <aside class="md:sticky md:top-28 2xl:top-36 self-start z-10">
           <app-project-detail-gallery [project]="project" />
         </aside>
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam molestias consequuntur necessitatibus,
-        reiciendis in temporibus atque alias maiores expedita. Quos voluptatibus pariatur consequatur sunt doloremque
-        nobis reprehenderit sequi alias ad.
-
         <div class="flex flex-col gap-10">
           <app-project-detail-collapsible
             titleKey="project_detail.detail.description"
@@ -69,12 +64,14 @@
     }
 
     <div class="overflow-hidden mt-10">
+      @if (participationsStore.totalCount() > 0) {
       <div class="flex items-center gap-3 mb-5">
         <div class="w-10 h-10 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
           <i-lucide [name]="icons.thumbsUp" class="size-5 stroke-[1.5]"></i-lucide>
         </div>
         <h2 class="text-lg font-bold text-gray-900">{{ 'project_detail.detail.participations_title' | translate }}</h2>
       </div>
+      }
       <app-participation-cards [project]="store.project()" (authRequired)="showAuthModal.set(true)" />
     </div>
   </div>
