@@ -1,5 +1,4 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
-  <!-- Title -->
   <div>
     <label for="title" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
       Titre <span class="text-red-500">*</span>
@@ -17,7 +16,6 @@
     }
   </div>
 
-  <!-- Description -->
   <div>
     <label for="description" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
       Description <span class="text-red-500">*</span>
@@ -35,7 +33,6 @@
     }
   </div>
 
-  <!-- Category -->
   <div>
     <label for="category" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
       Catégorie <span class="text-red-500">*</span>
@@ -43,14 +40,38 @@
     <select
       id="category"
       formControlName="category"
-      class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
-      @for (cat of categories; track cat.value) {
-        <option [value]="cat.value">{{ cat.label }}</option>
+      class="w-full px-3 py-2 border rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+      [class.border-red-500]="form.get('category')?.touched && form.get('category')?.invalid"
+      [class.border-slate-300]="!form.get('category')?.touched || form.get('category')?.valid">
+      @for (category of categories; track category.value) {
+        <option [value]="category.value">{{ category.label }}</option>
       }
     </select>
+    @if (getFieldError('category'); as error) {
+      <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+    }
   </div>
 
-  <!-- File Upload (only for create mode or optional for update) -->
+  <div>
+    <label for="project" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+      Projet <span class="text-red-500">*</span>
+    </label>
+    <select
+      id="project"
+      formControlName="projectId"
+      class="w-full px-3 py-2 border rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+      [class.border-red-500]="form.get('projectId')?.touched && form.get('projectId')?.invalid"
+      [class.border-slate-300]="!form.get('projectId')?.touched || form.get('projectId')?.valid">
+      <option value="" disabled>Sélectionnez un projet</option>
+      @for (proj of mentoredProjects; track proj.id) {
+        <option [value]="proj.id">{{ proj.name }}</option>
+      }
+    </select>
+    @if (getFieldError('projectId'); as error) {
+      <p class="mt-1 text-xs text-red-500">{{ error }}</p>
+    }
+  </div>
+
   @if (mode === 'create' || mode === 'update') {
     <div>
       <label for="fileInput" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
@@ -67,7 +88,7 @@
           id="fileInput"
           (change)="onFileSelected($event)"
           class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-        
+
         <div class="pointer-events-none">
           <i-lucide [name]="icons.upload" [size]="32" class="mx-auto mb-2 text-slate-400" />
           @if (selectedFile(); as file) {
@@ -88,7 +109,6 @@
     </div>
   }
 
-  <!-- Actions -->
   <div class="flex gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
     <button
       type="submit"

@@ -1,17 +1,21 @@
 import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
   ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
   OnInit,
-  signal,
-  inject
+  Output,
+  SimpleChanges,
+  inject,
+  signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ResourceCategory } from '@shared/models/entities.models';
-import { X, Upload, LucideAngularModule } from 'lucide-angular';
+import { LucideAngularModule, Upload, X } from 'lucide-angular';
+
+export type ResourceFormMode = 'create' | 'update';
 
 export interface ResourceFormValue {
   title: string;
@@ -27,16 +31,17 @@ export interface ResourceFormValue {
   templateUrl: './resource-form.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ResourceForm implements OnInit {
-  @Input() mode: 'create' | 'update' = 'create';
+export class ResourceForm implements OnInit, OnChanges {
+  @Input() mode: ResourceFormMode = 'create';
+  @Input() mentoredProjects: { id: string; name: string }[] = [];
   @Input() initialValue?: ResourceFormValue;
   @Input() isLoading = false;
-  
+
   @Output() submitForm = new EventEmitter<{ value: ResourceFormValue; file?: File }>();
   @Output() cancelForm = new EventEmitter<void>();
 
   private _fb = inject(FormBuilder);
-  
+
   form!: FormGroup;
   selectedFile = signal<File | null>(null);
 
@@ -60,9 +65,29 @@ export class ResourceForm implements OnInit {
       title: [this.initialValue?.title || '', [Validators.required, Validators.minLength(3)]],
       description: [this.initialValue?.description || '', [Validators.required, Validators.minLength(10)]],
       category: [this.initialValue?.category || ResourceCategory.OTHER, [Validators.required]],
-      projectId: [this.initialValue?.projectId || ''],
+      projectId: [this.initialValue?.projectId || this.mentoredProjects[0]?.id || '', [Validators.required]],
       phaseId: [this.initialValue?.phaseId || '']
     });
+
+    this.ensureProjectSelection();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.form) return;
+
+    if (changes['initialValue']?.currentValue) {
+      this.form.patchValue({
+        title: this.initialValue?.title || '',
+        description: this.initialValue?.description || '',
+        category: this.initialValue?.category || ResourceCategory.OTHER,
+        projectId: this.initialValue?.projectId || '',
+        phaseId: this.initialValue?.phaseId || ''
+      });
+    }
+
+    if (changes['mentoredProjects']) {
+      this.ensureProjectSelection();
+    }
   }
 
   onFileSelected(event: Event): void {
@@ -83,7 +108,7 @@ export class ResourceForm implements OnInit {
       return;
     }
 
-    const value: ResourceFormValue = this.form.value;
+    const value: ResourceFormValue = this.form.getRawValue();
 
     this.submitForm.emit({
       value,
@@ -105,5 +130,14 @@ export class ResourceForm implements OnInit {
       return `Minimum ${min} caractères requis`;
     }
     return 'Champ invalide';
+  }
+
+  private ensureProjectSelection(): void {
+    const projectControl = this.form.get('projectId');
+    if (!projectControl) return;
+
+    if (!projectControl.value && this.mentoredProjects.length > 0) {
+      projectControl.setValue(this.mentoredProjects[0].id);
+    }
   }
 }

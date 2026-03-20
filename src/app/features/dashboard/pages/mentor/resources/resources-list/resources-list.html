@@ -118,6 +118,7 @@
       <h2 id="modal-title" class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Créer une ressource</h2>
       <app-resource-form
         mode="create"
+        [mentoredProjects]="mentoredProjects()"
         [isLoading]="resourcesStore.isCreating()"
         (submitForm)="onSubmitCreate($event)"
         (cancelForm)="closeCreateModal()" />

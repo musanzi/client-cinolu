@@ -1,14 +1,14 @@
-import { Component, inject, OnInit, ChangeDetectionStrategy, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { ResourcesStore } from '@features/dashboard/store/resources.store';
-import { ResourcesService } from '@features/dashboard/services/resources.service';
-import { MentorshipService } from '@features/dashboard/services/mentorship.service';
 import { ResourceCard } from '../components/resource-card/resource-card';
 import { ResourceFilters, type ResourceFilterValue } from '../components/resource-filters/resource-filters';
-import { ResourceForm, ResourceFormValue } from '../components/resource-form/resource-form';
-import { IResource, ResourcesFilter, CreateResourceDto, IProject } from '@shared/models/entities.models';
-import { FileText, Plus, FolderOpen, LucideAngularModule } from 'lucide-angular';
+import { ResourceForm, type ResourceFormValue } from '../components/resource-form/resource-form';
+import { MentorshipService } from '@features/dashboard/services/mentorship.service';
+import { ResourcesService } from '@features/dashboard/services/resources.service';
+import { ResourcesStore } from '@features/dashboard/store/resources.store';
+import { type CreateResourceDto, type IProject, type IResource, type ResourcesFilter } from '@shared/models/entities.models';
+import { FileText, FolderOpen, LucideAngularModule, Plus } from 'lucide-angular';
 
 @Component({
   selector: 'app-resources-list',
@@ -28,23 +28,24 @@ export class ResourcesList implements OnInit {
     folder: FolderOpen
   };
 
-  // Modal state for creating resource
-  showCreateModal = signal(false);
   mentoredProjects = signal<IProject[]>([]);
   selectedProjectId = signal<string | null>(null);
+  showCreateModal = signal(false);
 
   ngOnInit(): void {
-    // Load mentored projects first
     this._mentorshipService.getMentoredProjects().subscribe({
       next: (projects) => {
         this.mentoredProjects.set(projects);
-        
-        // If there's at least one project, load its resources
-        if (projects.length > 0) {
-          const firstProject = projects[0];
-          this.selectedProjectId.set(firstProject.id);
-          this.loadResourcesForProject(firstProject.id);
+
+        const firstProject = projects[0];
+        if (!firstProject) {
+          this.selectedProjectId.set(null);
+          this.resourcesStore.clearResources();
+          return;
         }
+
+        this.selectedProjectId.set(firstProject.id);
+        this.loadResourcesForProject(firstProject.id);
       },
       error: (err) => {
         console.error('Error loading mentored projects:', err);
@@ -57,6 +58,7 @@ export class ResourcesList implements OnInit {
       page: 1,
       category: this.resourcesStore.filterCategory() ?? undefined
     };
+
     this.resourcesStore.loadResourcesByProject({ projectId, filter });
   }
 
@@ -74,7 +76,7 @@ export class ResourcesList implements OnInit {
       category: filter.category ?? undefined,
       page: 1
     };
-    
+
     this.resourcesStore.setFilter(filter.category);
     this.resourcesStore.loadResourcesByProject({ projectId, filter: resourcesFilter });
   }
