@@ -55,8 +55,8 @@
   </div>
   }
   <ul class="space-y-3 w-full">
-    @for (participation of validParticipations(); track participation.id) { @let analysis = getAnalysis(participation);
-    @let config = getConfig(participation);
+    @for (participation of validParticipations(); track participation.id || participation.project?.id || $index) { @let
+    analysis = getAnalysis(participation); @let config = getConfig(participation);
     <li class="w-full">
       <div
         class="w-full bg-white border rounded-lg p-4 hover:shadow-sm transition-shadow"

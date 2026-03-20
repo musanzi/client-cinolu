@@ -24,9 +24,7 @@ import {
 @Component({
   selector: 'app-my-applications',
   imports: [CommonModule, RouterLink, ApiImgPipe, LucideAngularModule],
-  providers: [],
-  templateUrl: './my-applications.html',
-  styleUrls: []
+  templateUrl: './my-applications.html'
 })
 export class MyApplications implements OnInit {
   participationsStore = inject(ParticipationsStore);
@@ -51,6 +49,14 @@ export class MyApplications implements OnInit {
   }
 
   getApplicationStatus(participation: IParticipation): { label: string; classes: string; icon: LucideIconData } {
+    if (!participation?.project) {
+      return {
+        label: 'Indisponible',
+        classes: 'bg-slate-100 text-slate-500 border border-slate-200',
+        icon: this.icons.cancel
+      };
+    }
+
     const now = new Date();
     const endDate = participation.project.ended_at ? new Date(participation.project.ended_at) : null;
     const isProgramEnded = endDate && endDate < now;
@@ -76,14 +82,14 @@ export class MyApplications implements OnInit {
 
     if (isLastPhase && totalPhases > 0) {
       return {
-        label: currentPhase.name,
+        label: currentPhase?.name ?? 'Terminé',
         classes: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
         icon: this.icons.verified
       };
     }
 
     return {
-      label: currentPhase.name,
+      label: currentPhase?.name ?? 'En cours',
       classes: 'bg-blue-50 text-blue-700 border border-blue-200',
       icon: this.icons.checkCircle
     };

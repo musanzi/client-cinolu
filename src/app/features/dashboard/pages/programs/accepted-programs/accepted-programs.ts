@@ -79,12 +79,14 @@ export class AcceptedPrograms implements OnInit {
   }
 
   private isValidForAcceptedPrograms(participation: IParticipation): boolean {
-    const projectPhases = participation.project.phases ?? [];
+    const project = participation.project;
+    if (!project) return false;
+    const projectPhases = project.phases ?? [];
     return projectPhases.length >= 1;
   }
 
   analyzeParticipation(participation: IParticipation): ParticipationAnalysis {
-    const projectPhases = participation.project.phases ?? [];
+    const projectPhases = participation.project?.phases ?? [];
     const completedPhases = participation.phases ?? [];
 
     const totalProjectPhases = projectPhases.length;
