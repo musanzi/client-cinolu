@@ -5,7 +5,8 @@
       [src]="project().gallery[activeIndex()] | apiIMG: 'gallery'"
       [alt]="project().gallery[activeIndex()].image || project().name || 'gallery image'"
       class="h-full w-full object-cover"
-      loading="lazy" />
+      loading="eager"
+      fetchpriority="high" />
   </figure>
   <div class="flex flex-wrap gap-3">
     @for (img of project().gallery; track img.id; let idx = $index) {
@@ -30,6 +31,7 @@
     [src]="project() | apiIMG: 'project'"
     [alt]="project().name"
     class="object-cover w-full h-full"
-    loading="lazy" />
+    loading="eager"
+    fetchpriority="high" />
 </figure>
 }
