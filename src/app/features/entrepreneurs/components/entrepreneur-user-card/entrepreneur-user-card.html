@@ -3,7 +3,7 @@
 <div
   class="group/card w-full bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 relative overflow-hidden border border-gray-100 hover:border-primary-200">
   <div
-    class="absolute inset-0 bg-gradient-to-br from-primary-50/0 via-primary-50/0 to-primary-100/0 group-hover/card:from-primary-50/30 group-hover/card:via-primary-50/10 group-hover/card:to-transparent transition-colors duration-500 pointer-events-none"></div>
+    class="absolute inset-0 bg-linear-to-br from-primary-50/0 via-primary-50/0 to-primary-100/0 group-hover/card:from-primary-50/30 group-hover/card:via-primary-50/10 group-hover/card:to-transparent transition-colors duration-500 pointer-events-none"></div>
 
   <div class="relative h-48 rounded-t-lg overflow-hidden">
     @if (venture.cover) {
@@ -24,10 +24,10 @@
     }
 
     <div
-      class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover/card:from-black/70 transition-colors duration-300"></div>
+      class="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent group-hover/card:from-black/70 transition-colors duration-300"></div>
 
     <div
-      class="absolute top-3 left-3 flex items-center gap-2 bg-gradient-to-r from-white/95 to-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-gray-800 shadow-lg border border-white/50 group-hover/card:scale-105 transition-transform duration-200">
+      class="absolute top-3 left-3 flex items-center gap-2 bg-linear-to-r from-white/95 to-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-bold text-gray-800 shadow-lg border border-white/50 group-hover/card:scale-105 transition-transform duration-200">
       <span class="text-amber-500 animate-pulse" aria-hidden="true">
         <i-lucide size="14" [name]="icons.award"></i-lucide>
       </span>
@@ -45,7 +45,7 @@
       <div
         class="absolute inset-0 bg-primary-400/20 rounded-full blur-xl group-hover/card:bg-primary-400/40 transition-colors duration-300"></div>
       <div
-        class="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-xl bg-gradient-to-br from-gray-50 to-gray-100 group-hover/card:border-primary-100 group-hover/card:scale-105 transition-all duration-300">
+        class="relative w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-xl bg-linear-to-br from-gray-50 to-gray-100 group-hover/card:border-primary-100 group-hover/card:scale-105 transition-all duration-300">
         @if (entrepreneur.profile || entrepreneur.google_image) {
         <img
           [ngSrc]="entrepreneur | apiIMG: 'user'"
@@ -55,7 +55,7 @@
           fill />
         } @else {
         <div
-          class="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-500/90 to-primary-600/90 text-2xl font-bold text-white">
+          class="flex h-full w-full items-center justify-center bg-linear-to-br from-primary-500/90 to-primary-600/90 text-2xl font-bold text-white">
           {{ getInitials(entrepreneur.name) }}
         </div>
         }
@@ -69,7 +69,7 @@
       {{ entrepreneur.name }}
     </h2>
 
-    <p class="text-sm text-gray-600 mb-6 line-clamp-2 min-h-[40px] leading-relaxed px-2">
+    <p class="text-sm text-gray-600 mb-6 line-clamp-2 min-h-10 leading-relaxed px-2">
       {{ entrepreneur.biography || ('entrepreneurs.no_biography' | translate) }}
     </p>
 
@@ -88,5 +88,5 @@
   </div>
 
   <div
-    class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-400 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+    class="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-primary-400 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
 </div>

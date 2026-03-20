@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { ApiImgPipe } from '@shared/pipes/api-img.pipe';
 import { MentorshipStore } from '../../../store/mentorship.store';
 import { IPhase } from '@shared/models/entities.models';
-import { MentoredProjectResources } from './components/mentored-project-resources';
 import {
   ArrowLeft,
   CalendarDays,
@@ -25,7 +24,7 @@ import { ProjectStore } from '@features/projects/store/project.store';
 @Component({
   selector: 'app-mentored-project-detail',
   providers: [ProjectStore],
-  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule, MentoredProjectResources],
+  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule],
   templateUrl: './mentored-project-detail.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
