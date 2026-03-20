@@ -74,6 +74,36 @@
     }
   </div>
 
+  <!-- Tabs -->
+  <div class="dashboard-card p-2 mb-6">
+    <div class="flex gap-2">
+      <button
+        type="button"
+        (click)="onTabChange('participations')"
+        [class]="activeTab() === 'participations' 
+          ? 'px-4 py-2 text-sm font-medium rounded-lg bg-primary-600 text-white transition-colors'
+          : 'px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition-colors'">
+        <span class="flex items-center gap-2">
+          <i-lucide [name]="icons.group" [size]="16" />
+          Candidatures
+        </span>
+      </button>
+      <button
+        type="button"
+        (click)="onTabChange('resources')"
+        [class]="activeTab() === 'resources' 
+          ? 'px-4 py-2 text-sm font-medium rounded-lg bg-primary-600 text-white transition-colors'
+          : 'px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:bg-slate-100 transition-colors'">
+        <span class="flex items-center gap-2">
+          <i-lucide [name]="icons.layers" [size]="16" />
+          Ressources
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tab Content: Participations -->
+  @if (activeTab() === 'participations') {
   <div class="dashboard-card p-6">
     <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-5">
       <div class="flex items-center gap-3 flex-1">
@@ -234,6 +264,12 @@
     </div>
     }
   </div>
+  }
+
+  <!-- Tab Content: Resources -->
+  @if (activeTab() === 'resources' && project) {
+    <app-mentored-project-resources [projectId]="project.id" />
+  }
 
   } @else {
   <div class="dashboard-card p-12 text-center">

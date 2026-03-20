@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiImgPipe } from '@shared/pipes/api-img.pipe';
 import { MentorshipStore } from '../../../store/mentorship.store';
 import { IPhase } from '@shared/models/entities.models';
+import { MentoredProjectResources } from './components/mentored-project-resources';
 import {
   ArrowLeft,
   CalendarDays,
@@ -24,7 +25,7 @@ import { ProjectStore } from '@features/projects/store/project.store';
 @Component({
   selector: 'app-mentored-project-detail',
   providers: [ProjectStore],
-  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule],
+  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule, MentoredProjectResources],
   templateUrl: './mentored-project-detail.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -50,6 +51,7 @@ export class MentoredProjectDetail implements OnInit, OnDestroy {
   projectId = signal<string>('');
   searchQuery = signal<string>('');
   selectedPhaseId = signal<string>('');
+  activeTab = signal<'participations' | 'resources'>('participations');
 
   constructor() {
     effect(
@@ -131,5 +133,9 @@ export class MentoredProjectDetail implements OnInit, OnDestroy {
     if (start <= now && end >= now) return 'active';
     if (end < now) return 'past';
     return 'future';
+  }
+
+  onTabChange(tab: 'participations' | 'resources'): void {
+    this.activeTab.set(tab);
   }
 }
