@@ -7,7 +7,7 @@ import { ResourceForm, type ResourceFormValue } from '../components/resource-for
 import { MentorshipService } from '@features/dashboard/services/mentorship.service';
 import { ResourcesService } from '@features/dashboard/services/resources.service';
 import { ResourcesStore } from '@features/dashboard/store/resources.store';
-import { type CreateResourceDto, type IProject, type IResource, type ResourcesFilter } from '@shared/models/entities.models';
+import { type CreateResourceDto, type IResource, type ResourcesFilter } from '@shared/models/entities.models';
 import { FileText, FolderOpen, LucideAngularModule, Plus } from 'lucide-angular';
 
 @Component({
@@ -28,15 +28,12 @@ export class ResourcesList implements OnInit {
     folder: FolderOpen
   };
 
-  mentoredProjects = signal<IProject[]>([]);
   selectedProjectId = signal<string | null>(null);
   showCreateModal = signal(false);
 
   ngOnInit(): void {
     this._mentorshipService.getMentoredProjects().subscribe({
       next: (projects) => {
-        this.mentoredProjects.set(projects);
-
         const firstProject = projects[0];
         if (!firstProject) {
           this.selectedProjectId.set(null);

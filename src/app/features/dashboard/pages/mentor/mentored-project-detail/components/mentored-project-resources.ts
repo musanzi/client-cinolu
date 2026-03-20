@@ -1,7 +1,10 @@
 import { Component, input, inject, signal, effect, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResourceCard } from '../../resources/components/resource-card/resource-card';
-import { ResourceFilters, type ResourceFilterValue } from '../../resources/components/resource-filters/resource-filters';
+import {
+  ResourceFilters,
+  type ResourceFilterValue
+} from '../../resources/components/resource-filters/resource-filters';
 import { ResourceForm, type ResourceFormValue } from '../../resources/components/resource-form/resource-form';
 import { ResourcesService } from '@features/dashboard/services/resources.service';
 import { ResourcesStore } from '@features/dashboard/store/resources.store';
@@ -24,7 +27,9 @@ import { Router } from '@angular/router';
           </div>
           <div>
             <h3 class="dashboard-heading-5">Ressources du projet</h3>
-            <p class="dashboard-text-tiny">{{ resourcesStore.totalResources() }} ressource{{ resourcesStore.totalResources() !== 1 ? 's' : '' }}</p>
+            <p class="dashboard-text-tiny">
+              {{ resourcesStore.totalResources() }} ressource{{ resourcesStore.totalResources() !== 1 ? 's' : '' }}
+            </p>
           </div>
         </div>
         <button
@@ -42,7 +47,7 @@ import { Router } from '@angular/router';
       <!-- Loading State -->
       @if (resourcesStore.isLoading() && resourcesStore.isEmpty()) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          @for (i of [1,2,3]; track i) {
+          @for (i of [1, 2, 3]; track i) {
             <div class="dashboard-card p-6 animate-pulse">
               <div class="flex gap-4 mb-4">
                 <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 shrink-0"></div>
@@ -86,7 +91,8 @@ import { Router } from '@angular/router';
       <!-- Empty State -->
       @else {
         <div class="dashboard-card p-12 text-center">
-          <div class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
+          <div
+            class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
             <i-lucide class="text-3xl text-slate-400" [name]="icons.file" />
           </div>
           <h4 class="dashboard-heading-5 mb-2">Aucune ressource disponible</h4>
@@ -104,17 +110,17 @@ import { Router } from '@angular/router';
 
     <!-- Create Modal -->
     @if (showCreateModal()) {
-      <div 
+      <div
         role="button"
         tabindex="0"
         aria-label="Fermer le modal"
-        class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" 
+        class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
         (click)="closeCreateModal()"
         (keydown.escape)="closeCreateModal()"
         (keydown.enter)="closeCreateModal()"
         (keydown.space)="closeCreateModal()">
-        <div 
-          class="bg-white dark:bg-slate-800 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto" 
+        <div
+          class="bg-white dark:bg-slate-800 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
           (click)="$event.stopPropagation()"
           (keydown)="$event.stopPropagation()"
           role="dialog"
@@ -122,6 +128,7 @@ import { Router } from '@angular/router';
           <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Créer une ressource</h2>
           <app-resource-form
             mode="create"
+            [contextProjectId]="projectId()"
             [isLoading]="resourcesStore.isCreating()"
             (submitForm)="onSubmitCreate($event)"
             (cancelForm)="closeCreateModal()" />
@@ -132,7 +139,7 @@ import { Router } from '@angular/router';
 })
 export class MentoredProjectResources {
   projectId = input.required<string>();
-  
+
   resourcesStore = inject(ResourcesStore);
   private _resourcesService = inject(ResourcesService);
   private _router = inject(Router);
@@ -145,12 +152,15 @@ export class MentoredProjectResources {
   showCreateModal = signal(false);
 
   constructor() {
-    effect(() => {
-      const projectId = this.projectId();
-      if (projectId) {
-        this.loadResources();
-      }
-    }, { allowSignalWrites: true });
+    effect(
+      () => {
+        const projectId = this.projectId();
+        if (projectId) {
+          this.loadResources();
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   private loadResources(): void {

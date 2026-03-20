@@ -17,7 +17,10 @@
           <div class="flex items-center gap-3">
             <div class="dashboard-badge-info hidden sm:inline-flex">
               <i-lucide class="text-xs" [name]="icons.folder" />
-              <span>{{ resourcesStore.totalResources() }} ressource{{ resourcesStore.totalResources() !== 1 ? 's' : '' }}</span>
+              <span
+                >{{ resourcesStore.totalResources() }} ressource{{ resourcesStore.totalResources() !== 1 ? 's' : ''
+                }}</span
+              >
             </div>
             <button
               type="button"
@@ -37,91 +40,98 @@
     </div>
 
     <!-- Loading State -->
-    @if (resourcesStore.isLoading() && resourcesStore.isEmpty()) {
-      @for (i of [1,2,3,4,5,6]; track i) {
-        <div class="col-span-12 md:col-span-6 lg:col-span-4">
-          <div class="dashboard-card p-6 animate-pulse">
-            <div class="flex gap-4 mb-4">
-              <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 shrink-0"></div>
-              <div class="flex-1 space-y-2">
-                <div class="h-4 bg-slate-200 dark:bg-slate-700 rounded w-2/3"></div>
-                <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-full"></div>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-full"></div>
-              <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-1/2"></div>
-            </div>
+    @if (resourcesStore.isLoading() && resourcesStore.isEmpty()) { @for (i of [1,2,3,4,5,6]; track i) {
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+      <div class="dashboard-card p-6 animate-pulse">
+        <div class="flex gap-4 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 shrink-0"></div>
+          <div class="flex-1 space-y-2">
+            <div class="h-4 bg-slate-200 dark:bg-slate-700 rounded w-2/3"></div>
+            <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-full"></div>
           </div>
         </div>
-      }
-    }
-    <!-- Resources Grid -->
-    @else if (!resourcesStore.isEmpty()) {
-      @for (resource of resourcesStore.resources(); track resource.id) {
-        <div class="col-span-12 md:col-span-6 lg:col-span-4">
-          <app-resource-card
-            [resource]="resource"
-            [showDelete]="true"
-            (download)="onDownloadResource($event)"
-            (view)="onViewResource($event)"
-            (delete)="onDeleteResource($event)" />
-        </div>
-      }
-
-      <!-- Load More Button (if has more) -->
-      @if (resourcesStore.hasMoreResources()) {
-        <div class="col-span-12 flex justify-center">
-          <button
-            type="button"
-            (click)="loadMore()"
-            [disabled]="resourcesStore.isLoading()"
-            class="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-            @if (resourcesStore.isLoading()) {
-              <span>Chargement...</span>
-            } @else {
-              <span>Charger plus</span>
-            }
-          </button>
-        </div>
-      }
-    }
-    <!-- Empty State -->
-    @else {
-      <div class="col-span-12">
-        <div class="dashboard-card p-12 text-center">
-          <div
-            class="w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center mx-auto mb-4 shadow-inner">
-            <i-lucide class="text-4xl text-slate-400 dark:text-slate-500" [name]="icons.file" />
-          </div>
-          <h3 class="dashboard-heading-5 mb-2">Aucune ressource disponible</h3>
-          <p class="dashboard-text-body max-w-md mx-auto mb-6">
-            Commencez par ajouter des ressources pour vos projets mentorés.
-          </p>
-          <button
-            type="button"
-            (click)="openCreateModal()"
-            class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
-            <i-lucide [name]="icons.plus" [size]="18" />
-            Ajouter une ressource
-          </button>
+        <div class="space-y-2">
+          <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-full"></div>
+          <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-1/2"></div>
         </div>
       </div>
+    </div>
+    } }
+    <!-- Resources Grid -->
+    @else if (!resourcesStore.isEmpty()) { @for (resource of resourcesStore.resources(); track resource.id) {
+    <div class="col-span-12 md:col-span-6 lg:col-span-4">
+      <app-resource-card
+        [resource]="resource"
+        [showDelete]="true"
+        (download)="onDownloadResource($event)"
+        (view)="onViewResource($event)"
+        (delete)="onDeleteResource($event)" />
+    </div>
+    }
+
+    <!-- Load More Button (if has more) -->
+    @if (resourcesStore.hasMoreResources()) {
+    <div class="col-span-12 flex justify-center">
+      <button
+        type="button"
+        (click)="loadMore()"
+        [disabled]="resourcesStore.isLoading()"
+        class="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        @if (resourcesStore.isLoading()) {
+        <span>Chargement...</span>
+        } @else {
+        <span>Charger plus</span>
+        }
+      </button>
+    </div>
+    } }
+    <!-- Empty State -->
+    @else {
+    <div class="col-span-12">
+      <div class="dashboard-card p-12 text-center">
+        <div
+          class="w-20 h-20 rounded-2xl bg-linear-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center mx-auto mb-4 shadow-inner">
+          <i-lucide class="text-4xl text-slate-400 dark:text-slate-500" [name]="icons.file" />
+        </div>
+        <h3 class="dashboard-heading-5 mb-2">Aucune ressource disponible</h3>
+        <p class="dashboard-text-body max-w-md mx-auto mb-6">
+          Commencez par ajouter des ressources pour vos projets mentorés.
+        </p>
+        <button
+          type="button"
+          (click)="openCreateModal()"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
+          <i-lucide [name]="icons.plus" [size]="18" />
+          Ajouter une ressource
+        </button>
+      </div>
+    </div>
     }
   </div>
 </div>
 
 <!-- TODO: Create Modal Component -->
 @if (showCreateModal()) {
-  <div role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" (click)="closeCreateModal()" (keydown.escape)="closeCreateModal()">
-    <div role="document" class="bg-white dark:bg-slate-800 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto" (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()">
-      <h2 id="modal-title" class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Créer une ressource</h2>
-      <app-resource-form
-        mode="create"
-        [mentoredProjects]="mentoredProjects()"
-        [isLoading]="resourcesStore.isCreating()"
-        (submitForm)="onSubmitCreate($event)"
-        (cancelForm)="closeCreateModal()" />
-    </div>
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  tabindex="-1"
+  class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+  (click)="closeCreateModal()"
+  (keydown.escape)="closeCreateModal()">
+  <div
+    role="document"
+    class="bg-white dark:bg-slate-800 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+    (click)="$event.stopPropagation()"
+    (keydown)="$event.stopPropagation()">
+    <h2 id="modal-title" class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Créer une ressource</h2>
+    <app-resource-form
+      mode="create"
+      [contextProjectId]="selectedProjectId() || undefined"
+      [isLoading]="resourcesStore.isCreating()"
+      (submitForm)="onSubmitCreate($event)"
+      (cancelForm)="closeCreateModal()" />
   </div>
+</div>
 }

@@ -33,7 +33,7 @@ export interface ResourceFormValue {
 })
 export class ResourceForm implements OnInit, OnChanges {
   @Input() mode: ResourceFormMode = 'create';
-  @Input() mentoredProjects: { id: string; name: string }[] = [];
+  @Input() contextProjectId?: string; // When set, the form is used in project context (no project selector)
   @Input() initialValue?: ResourceFormValue;
   @Input() isLoading = false;
 
@@ -61,15 +61,15 @@ export class ResourceForm implements OnInit, OnChanges {
   ];
 
   ngOnInit(): void {
+    const projectId = this.contextProjectId || this.initialValue?.projectId || '';
+
     this.form = this._fb.group({
       title: [this.initialValue?.title || '', [Validators.required, Validators.minLength(3)]],
       description: [this.initialValue?.description || '', [Validators.required, Validators.minLength(10)]],
       category: [this.initialValue?.category || ResourceCategory.OTHER, [Validators.required]],
-      projectId: [this.initialValue?.projectId || this.mentoredProjects[0]?.id || '', [Validators.required]],
+      projectId: [projectId, [Validators.required]],
       phaseId: [this.initialValue?.phaseId || '']
     });
-
-    this.ensureProjectSelection();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -80,13 +80,13 @@ export class ResourceForm implements OnInit, OnChanges {
         title: this.initialValue?.title || '',
         description: this.initialValue?.description || '',
         category: this.initialValue?.category || ResourceCategory.OTHER,
-        projectId: this.initialValue?.projectId || '',
+        projectId: this.initialValue?.projectId || this.contextProjectId || '',
         phaseId: this.initialValue?.phaseId || ''
       });
     }
 
-    if (changes['mentoredProjects']) {
-      this.ensureProjectSelection();
+    if (changes['contextProjectId'] && this.contextProjectId) {
+      this.form.get('projectId')?.setValue(this.contextProjectId);
     }
   }
 
@@ -130,14 +130,5 @@ export class ResourceForm implements OnInit, OnChanges {
       return `Minimum ${min} caractères requis`;
     }
     return 'Champ invalide';
-  }
-
-  private ensureProjectSelection(): void {
-    const projectControl = this.form.get('projectId');
-    if (!projectControl) return;
-
-    if (!projectControl.value && this.mentoredProjects.length > 0) {
-      projectControl.setValue(this.mentoredProjects[0].id);
-    }
   }
 }
