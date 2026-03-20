@@ -14,55 +14,69 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mentored-project-resources',
-  standalone: true,
   imports: [CommonModule, ResourceCard, ResourceFilters, ResourceForm, LucideAngularModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="space-y-6">
-      <!-- Header -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/20 flex items-center justify-center">
-            <i-lucide class="text-primary-600 dark:text-primary-400" [name]="icons.file" [size]="20" />
+      <div class="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white">
+        <div class="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-amber-200/40 blur-2xl"></div>
+        <div class="absolute -bottom-16 -left-12 h-52 w-52 rounded-full bg-sky-200/40 blur-2xl"></div>
+        <div class="relative p-6 sm:p-7">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center shadow-sm">
+                <i-lucide class="text-amber-700" [name]="icons.file" [size]="22" />
+              </div>
+              <div>
+                <h3 class="text-lg sm:text-xl font-semibold tracking-tight text-slate-900">
+                  Bibliotheque de ressources
+                </h3>
+                <p class="text-sm text-slate-600">
+                  {{ resourcesStore.totalResources() }} ressource{{ resourcesStore.totalResources() !== 1 ? 's' : '' }}
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span
+                class="inline-flex items-center gap-2 rounded-full bg-amber-100 text-amber-800 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                Mentorat
+              </span>
+              <button
+                type="button"
+                (click)="openCreateModal()"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold transition-colors shadow-sm">
+                <i-lucide [name]="icons.plus" [size]="18" />
+                <span>Ajouter</span>
+              </button>
+            </div>
           </div>
-          <div>
-            <h3 class="dashboard-heading-5">Ressources du projet</h3>
-            <p class="dashboard-text-tiny">
-              {{ resourcesStore.totalResources() }} ressource{{ resourcesStore.totalResources() !== 1 ? 's' : '' }}
-            </p>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="text-xs text-slate-500 uppercase tracking-widest">Filtres rapides</span>
           </div>
         </div>
-        <button
-          type="button"
-          (click)="openCreateModal()"
-          class="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
-          <i-lucide [name]="icons.plus" [size]="18" />
-          <span>Ajouter</span>
-        </button>
       </div>
 
-      <!-- Filters -->
-      <app-resource-filters (filterChange)="onFilterChange($event)" />
+      <div class="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
+        <app-resource-filters (filterChange)="onFilterChange($event)" />
+      </div>
 
-      <!-- Loading State -->
       @if (resourcesStore.isLoading() && resourcesStore.isEmpty()) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           @for (i of [1, 2, 3]; track i) {
-            <div class="dashboard-card p-6 animate-pulse">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 animate-pulse">
               <div class="flex gap-4 mb-4">
-                <div class="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 shrink-0"></div>
+                <div class="w-10 h-10 rounded-xl bg-slate-200 shrink-0"></div>
                 <div class="flex-1 space-y-2">
-                  <div class="h-4 bg-slate-200 dark:bg-slate-700 rounded w-2/3"></div>
-                  <div class="h-3 bg-slate-100 dark:bg-slate-600 rounded w-full"></div>
+                  <div class="h-4 bg-slate-200 rounded w-2/3"></div>
+                  <div class="h-3 bg-slate-100 rounded w-full"></div>
                 </div>
               </div>
+              <div class="h-2 bg-slate-100 rounded w-1/2"></div>
             </div>
           }
         </div>
-      }
-
-      <!-- Resources Grid -->
-      @else if (!resourcesStore.isEmpty()) {
+      } @else if (!resourcesStore.isEmpty()) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           @for (resource of resourcesStore.resources(); track resource.id) {
             <app-resource-card
@@ -74,7 +88,6 @@ import { Router } from '@angular/router';
           }
         </div>
 
-        <!-- Load More -->
         @if (resourcesStore.hasMoreResources()) {
           <div class="flex justify-center">
             <button
@@ -86,21 +99,17 @@ import { Router } from '@angular/router';
             </button>
           </div>
         }
-      }
-
-      <!-- Empty State -->
-      @else {
-        <div class="dashboard-card p-12 text-center">
-          <div
-            class="w-16 h-16 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
-            <i-lucide class="text-3xl text-slate-400" [name]="icons.file" />
+      } @else {
+        <div class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-12 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mx-auto mb-4">
+            <i-lucide class="text-3xl text-slate-500" [name]="icons.file" />
           </div>
-          <h4 class="dashboard-heading-5 mb-2">Aucune ressource disponible</h4>
-          <p class="dashboard-text-body mb-4">Ajoutez des ressources pour ce projet.</p>
+          <h4 class="text-lg font-semibold text-slate-900 mb-2">Aucune ressource disponible</h4>
+          <p class="text-sm text-slate-600 mb-4">Ajoutez des ressources pour guider les participants.</p>
           <button
             type="button"
             (click)="openCreateModal()"
-            class="inline-flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-600 text-white text-sm font-semibold hover:bg-primary-700 transition-colors">
             <i-lucide [name]="icons.plus" [size]="18" />
             Ajouter une ressource
           </button>
@@ -108,7 +117,6 @@ import { Router } from '@angular/router';
       }
     </div>
 
-    <!-- Create Modal -->
     @if (showCreateModal()) {
       <div
         role="button"

@@ -20,11 +20,12 @@ import {
   Users
 } from 'lucide-angular';
 import { ProjectStore } from '@features/projects/store/project.store';
+import { MentoredProjectResources } from "./components/mentored-project-resources";
 
 @Component({
   selector: 'app-mentored-project-detail',
   providers: [ProjectStore],
-  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule],
+  imports: [RouterLink, NgClass, FormsModule, ApiImgPipe, CommonModule, LucideAngularModule, MentoredProjectResources],
   templateUrl: './mentored-project-detail.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

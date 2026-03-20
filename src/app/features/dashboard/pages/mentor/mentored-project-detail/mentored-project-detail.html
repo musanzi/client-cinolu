@@ -264,14 +264,9 @@
     </div>
     }
   </div>
-  }
-
-  <!-- Tab Content: Resources -->
-  <!-- @if (activeTab() === 'resources' && project) {
-    <app-mentored-project-resources [projectId]="project.id" />
-  } -->
-
-  } @else {
+  } @if (activeTab() === 'resources' && project) {
+  <app-mentored-project-resources [projectId]="project.id" />
+  } } @else {
   <div class="dashboard-card p-12 text-center">
     <div class="w-16 h-16 rounded-xl bg-slate-100 flex items-center justify-center mx-auto mb-3">
       <i-lucide class="text-3xl text-slate-400" [name]="icons.error" />

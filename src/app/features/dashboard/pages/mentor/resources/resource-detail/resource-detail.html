@@ -1,174 +1,140 @@
 @if (resourcesStore.selectedResource(); as resource) {
-  <div class="pb-20">
-    <div class="dashboard-grid dashboard-grid-cols-12">
-      <!-- Back Button & Header -->
-      <div class="col-span-12">
-        <button
-          type="button"
-          (click)="goBack()"
-          class="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 mb-6 transition-colors">
-          <i-lucide [name]="icons.back" [size]="20" />
-          <span class="text-sm font-medium">Retour aux ressources</span>
-        </button>
-      </div>
+<div class="pb-20">
+  <div class="dashboard-grid dashboard-grid-cols-12">
+    <!-- Back Button & Header -->
 
-      <!-- Main Content Card -->
-      <div class="col-span-12 lg:col-span-8">
-        <div class="dashboard-card p-8">
-          <!-- Title & Category -->
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex-1">
-              <h1 class="dashboard-heading-3 mb-2">{{ resource.title }}</h1>
-              <app-resource-category-badge [category]="resource.category" />
-            </div>
-            <div
-              class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-700 shrink-0">
-              <span class="text-xs font-bold text-slate-600 dark:text-slate-300">
-                {{ getFileExtension() }}
-              </span>
-            </div>
+    <!-- Main Content Card -->
+    <div class="col-span-12 lg:col-span-8">
+      <div class="dashboard-card p-8 bg-white">
+        <!-- Title & Category -->
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div class="flex-1">
+            <h1 class="dashboard-heading-3 mb-2">{{ resource.title }}</h1>
+            <app-resource-category-badge [category]="resource.category" />
           </div>
-
-          <!-- Description -->
-          <div class="mb-6">
-            <h2 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Description</h2>
-            <p class="dashboard-text-body whitespace-pre-line">{{ resource.description }}</p>
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 shrink-0">
+            <span class="text-xs font-bold text-slate-700"> {{ getFileExtension() }} </span>
           </div>
+        </div>
 
-          <!-- Project & Phase -->
-          @if (resource.project || resource.phase) {
-            <div class="border-t border-slate-200 dark:border-slate-700 pt-6">
-              <h2 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Informations contextuelles</h2>
-              <div class="space-y-3">
-                @if (resource.project) {
-                  <div class="flex items-center gap-3">
-                    <i-lucide
-                      [name]="icons.folder"
-                      [size]="18"
-                      class="text-slate-500 dark:text-slate-400" />
-                    <div>
-                      <p class="text-xs text-slate-500 dark:text-slate-400">Projet</p>
-                      <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
-                        {{ resource.project.name }}
-                      </p>
-                    </div>
-                  </div>
-                }
-                @if (resource.phase) {
-                  <div class="flex items-center gap-3">
-                    <i-lucide
-                      [name]="icons.calendar"
-                      [size]="18"
-                      class="text-slate-500 dark:text-slate-400" />
-                    <div>
-                      <p class="text-xs text-slate-500 dark:text-slate-400">Phase</p>
-                      <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
-                        {{ resource.phase.name }}
-                      </p>
-                    </div>
-                  </div>
-                }
+        <!-- Description -->
+        <div class="mb-6">
+          <h2 class="text-sm font-semibold text-slate-800 mb-2">Description</h2>
+          <p class="text-sm text-slate-700 leading-relaxed whitespace-pre-line">{{ resource.description }}</p>
+        </div>
+
+        <!-- Project & Phase -->
+        @if (resource.project || resource.phase) {
+        <div class="border-t border-slate-200 pt-6">
+          <h2 class="text-sm font-semibold text-slate-800 mb-3">Informations contextuelles</h2>
+          <div class="space-y-3">
+            @if (resource.project) {
+            <div class="flex items-center gap-3">
+              <i-lucide [name]="icons.folder" [size]="18" class="text-slate-500" />
+              <div>
+                <p class="text-xs text-slate-500">Projet</p>
+                <p class="text-sm font-medium text-slate-900">{{ resource.project.name }}</p>
               </div>
             </div>
-          }
+            } @if (resource.phase) {
+            <div class="flex items-center gap-3">
+              <i-lucide [name]="icons.calendar" [size]="18" class="text-slate-500" />
+              <div>
+                <p class="text-xs text-slate-500">Phase</p>
+                <p class="text-sm font-medium text-slate-900">{{ resource.phase.name }}</p>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-span-12 lg:col-span-4 space-y-4">
+      <!-- Metadata Card -->
+      <div class="dashboard-card p-6 bg-white">
+        <h2 class="text-sm font-semibold text-slate-800 mb-4">Informations</h2>
+        <div class="space-y-3">
+          <div>
+            <p class="text-xs text-slate-500 mb-1">Date d'ajout</p>
+            <p class="text-sm font-medium text-slate-900">{{ formatDate(resource.created_at) }}</p>
+          </div>
+          <div>
+            <p class="text-xs text-slate-500 mb-1">Dernière modification</p>
+            <p class="text-sm font-medium text-slate-900">{{ formatDate(resource.updated_at) }}</p>
+          </div>
         </div>
       </div>
 
-      <!-- Sidebar -->
-      <div class="col-span-12 lg:col-span-4 space-y-4">
-        <!-- Metadata Card -->
-        <div class="dashboard-card p-6">
-          <h2 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">Informations</h2>
-          <div class="space-y-3">
-            <div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Date d'ajout</p>
-              <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
-                {{ formatDate(resource.created_at) }}
-              </p>
-            </div>
-            <div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Dernière modification</p>
-              <p class="text-sm font-medium text-slate-900 dark:text-slate-100">
-                {{ formatDate(resource.updated_at) }}
-              </p>
-            </div>
-          </div>
-        </div>
+      <!-- Actions Card -->
+      <div class="dashboard-card p-6 bg-white">
+        <h2 class="text-sm font-semibold text-slate-800 mb-4">Actions</h2>
+        <div class="space-y-3">
+          <!-- Download Button -->
+          <button
+            type="button"
+            (click)="onDownload()"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
+            <i-lucide [name]="icons.download" [size]="18" />
+            Télécharger
+          </button>
 
-        <!-- Actions Card -->
-        <div class="dashboard-card p-6">
-          <h2 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">Actions</h2>
-          <div class="space-y-3">
-            <!-- Download Button -->
-            <button
-              type="button"
-              (click)="onDownload()"
-              class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
-              <i-lucide [name]="icons.download" [size]="18" />
-              Télécharger
-            </button>
+          <!-- Edit Button -->
+          <button
+            type="button"
+            (click)="onEdit()"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-medium rounded-lg transition-colors">
+            <i-lucide [name]="icons.edit" [size]="18" />
+            Modifier
+          </button>
 
-            <!-- Edit Button -->
-            <button
-              type="button"
-              (click)="onEdit()"
-              class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg transition-colors">
-              <i-lucide [name]="icons.edit" [size]="18" />
-              Modifier
-            </button>
-
-            <!-- Delete Button -->
-            <button
-              type="button"
-              (click)="onDelete()"
-              class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-medium rounded-lg transition-colors">
-              <i-lucide [name]="icons.trash" [size]="18" />
-              Supprimer
-            </button>
-          </div>
+          <!-- Delete Button -->
+          <button
+            type="button"
+            (click)="onDelete()"
+            class="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-red-50 hover:bg-red-100 text-red-700 text-sm font-medium rounded-lg transition-colors">
+            <i-lucide [name]="icons.trash" [size]="18" />
+            Supprimer
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>
 } @else {
-  <!-- Loading or Not Found State -->
-  <div class="pb-20">
-    <div class="dashboard-card p-12 text-center">
-      <h3 class="dashboard-heading-5 mb-2">Ressource introuvable</h3>
-      <p class="dashboard-text-body mb-6">Cette ressource n'existe pas ou a été supprimée.</p>
-      <button
-        type="button"
-        (click)="goBack()"
-        class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-lg transition-colors">
-        <i-lucide [name]="icons.back" [size]="18" />
-        Retour aux ressources
-      </button>
-    </div>
+<!-- Loading or Not Found State -->
+<div class="pb-20">
+  <div class="dashboard-card p-12 text-center bg-white">
+    <h3 class="text-lg font-semibold text-slate-900 mb-2">Ressource introuvable</h3>
+    <p class="text-sm text-slate-600 mb-6">Cette ressource n'existe pas ou a été supprimée.</p>
   </div>
+</div>
 }
 
 <!-- Edit Modal -->
 @if (showEditModal() && resourcesStore.selectedResource()) {
-  <div 
-    role="dialog" 
-    aria-modal="true" 
-    aria-labelledby="edit-modal-title" 
-    tabindex="-1"
-    class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" 
-    (click)="closeEditModal()"
-    (keydown.escape)="closeEditModal()">
-    <div 
-      role="document"
-      class="bg-white dark:bg-slate-800 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto" 
-      (click)="$event.stopPropagation()"
-      (keydown)="$event.stopPropagation()">
-      <h2 id="edit-modal-title" class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6">Modifier la ressource</h2>
-      <app-resource-form
-        mode="update"
-        [initialValue]="getInitialFormValue()"
-        [isLoading]="resourcesStore.isUpdating()"
-        (submitForm)="onSubmitEdit($event)"
-        (cancelForm)="closeEditModal()" />
-    </div>
+<div
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="edit-modal-title"
+  tabindex="-1"
+  class="fixed inset-0 bg-slate-900/40 z-50 flex items-center justify-center p-4"
+  (click)="closeEditModal()"
+  (keydown.escape)="closeEditModal()">
+  <div
+    role="document"
+    class="bg-white rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+    (click)="$event.stopPropagation()"
+    (keydown)="$event.stopPropagation()">
+    <h2 id="edit-modal-title" class="text-xl font-bold text-slate-900 mb-6">Modifier la ressource</h2>
+    <app-resource-form
+      mode="update"
+      [initialValue]="getInitialFormValue()"
+      [isLoading]="resourcesStore.isUpdating()"
+      (submitForm)="onSubmitEdit($event)"
+      (cancelForm)="closeEditModal()" />
   </div>
+</div>
 }
