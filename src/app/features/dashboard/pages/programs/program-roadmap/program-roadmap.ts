@@ -1,12 +1,19 @@
-import { Component, inject, OnInit, signal, computed } from '@angular/core';
+import { Component, inject, OnInit, signal, computed, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProjectStore } from '../../../../projects/store/project.store';
 import { ParticipationsStore } from '../../../store/participations.store';
 import { DeliverablesStore } from '../../../store/deliverables.store';
 import { ToastrService } from '@core/services/toast/toastr.service';
-import { IPhase } from '@shared/models/entities.models';
+import { IPhase, type IResource, type ResourcesFilter } from '@shared/models/entities.models';
 import { DELIVERABLE_UPLOAD } from '../../../config/deliverable-upload.config';
+import { ResourceCard } from '../../mentor/resources/components/resource-card/resource-card';
+import {
+  ResourceFilters,
+  type ResourceFilterValue
+} from '../../mentor/resources/components/resource-filters/resource-filters';
+import { ResourcesService } from '../../../services/resources.service';
+import { ResourcesStore } from '../../../store/resources.store';
 import {
   Calendar,
   Check,
@@ -24,7 +31,7 @@ import {
 
 @Component({
   selector: 'app-program-roadmap',
-  imports: [CommonModule, RouterLink, LucideAngularModule],
+  imports: [CommonModule, RouterLink, LucideAngularModule, ResourceCard, ResourceFilters],
   providers: [ProjectStore],
   templateUrl: './program-roadmap.html'
 })
@@ -33,6 +40,8 @@ export class ProgramRoadmap implements OnInit {
   projectStore = inject(ProjectStore);
   participationsStore = inject(ParticipationsStore);
   deliverablesStore = inject(DeliverablesStore);
+  resourcesStore = inject(ResourcesStore);
+  private _resourcesService = inject(ResourcesService);
   toastr = inject(ToastrService);
   uploadMaxLabel = DELIVERABLE_UPLOAD.maxLabel;
 
@@ -68,10 +77,59 @@ export class ProgramRoadmap implements OnInit {
     return new Set(participation?.phases?.map((p) => p.id) ?? []);
   });
 
+  constructor() {
+    effect(() => {
+      const project = this.projectStore.project();
+      const participation = this.currentParticipation();
+      if (!project || !participation) {
+        this.resourcesStore.clearResources();
+        return;
+      }
+
+      this.loadResourcesForProject(project.id, { page: 1 });
+    });
+  }
+
   ngOnInit(): void {
     const slug = this.route.snapshot.params['slug'];
     this.projectStore.loadProject(slug);
     this.participationsStore.myParticipations();
+  }
+
+  onResourcesFilterChange(filter: ResourceFilterValue): void {
+    const project = this.projectStore.project();
+    if (!project) return;
+
+    const resourcesFilter: ResourcesFilter = {
+      category: filter.category ?? undefined,
+      page: 1
+    };
+
+    this.resourcesStore.setFilter(filter.category);
+    this.loadResourcesForProject(project.id, resourcesFilter);
+  }
+
+  loadMoreResources(): void {
+    const project = this.projectStore.project();
+    if (!project) return;
+
+    const nextPage = this.resourcesStore.currentPage() + 1;
+    const filter: ResourcesFilter = {
+      page: nextPage,
+      category: this.resourcesStore.filterCategory() ?? undefined
+    };
+
+    this.loadResourcesForProject(project.id, filter);
+  }
+
+  onDownloadResource(resource: IResource): void {
+    const url = this._resourcesService.getResourceFileUrl(resource);
+    window.open(url, '_blank');
+  }
+
+  onViewResource(resource: IResource): void {
+    const url = this._resourcesService.getResourceFileUrl(resource);
+    window.open(url, '_blank');
   }
 
   togglePhase(phaseId: string): void {
@@ -172,5 +230,9 @@ export class ProgramRoadmap implements OnInit {
       default:
         return this.icons.lock;
     }
+  }
+
+  private loadResourcesForProject(projectId: string, filter: ResourcesFilter): void {
+    this.resourcesStore.loadResourcesByProject({ projectId, filter });
   }
 }

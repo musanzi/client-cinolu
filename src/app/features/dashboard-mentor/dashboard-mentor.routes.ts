@@ -41,19 +41,8 @@ export const dashboardMentorRoutes: Routes = [
           import('../dashboard/pages/mentor/mentored-participation-detail/mentored-participation-detail').then(
             (c) => c.MentoredParticipationDetail
           )
-      },
-      {
-        path: 'resources',
-        title: 'Ressources',
-        loadComponent: () =>
-          import('../dashboard/pages/mentor/resources/resources-list/resources-list').then((c) => c.ResourcesList)
-      },
-      {
-        path: 'resources/:id',
-        title: 'Détail ressource',
-        loadComponent: () =>
-          import('../dashboard/pages/mentor/resources/resource-detail/resource-detail').then((c) => c.ResourceDetail)
       }
+      // Routes "resources" removed - resources are now managed within mentored projects
     ]
   }
 ];
