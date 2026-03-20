@@ -1,0 +1,80 @@
+<div class="pb-20">
+  <div class="flex flex-col gap-6">
+    <div class="dashboard-card p-6">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-start gap-3">
+          <div class="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center">
+            <i-lucide [name]="icons.file" class="text-primary-600" [size]="22" />
+          </div>
+          <div>
+            <h1 class="text-lg sm:text-xl font-semibold text-slate-900">Ressources</h1>
+            <p class="text-sm text-slate-600">Accedez aux ressources de vos programmes.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <i-lucide [name]="icons.folder" class="text-slate-400" [size]="18" />
+          <select
+            class="px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-primary-300"
+            [disabled]="projects().length === 0"
+            [ngModel]="selectedProjectId()"
+            (ngModelChange)="onProjectChange($event)">
+            @for (project of projects(); track project.id) {
+            <option [value]="project.id">{{ project.name }}</option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-card p-4">
+      <app-resource-filters (filterChange)="onFilterChange($event)" />
+    </div>
+
+    @if (resourcesStore.isLoading() && resourcesStore.isEmpty()) {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      @for (i of [1, 2, 3]; track i) {
+      <div class="dashboard-card p-6 animate-pulse">
+        <div class="flex gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-slate-200 shrink-0"></div>
+          <div class="flex-1 space-y-2">
+            <div class="h-4 bg-slate-200 rounded w-2/3"></div>
+            <div class="h-3 bg-slate-100 rounded w-full"></div>
+          </div>
+        </div>
+        <div class="h-2 bg-slate-100 rounded w-1/2"></div>
+      </div>
+      }
+    </div>
+    } @else if (!resourcesStore.isEmpty()) {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      @for (resource of resourcesStore.resources(); track resource.id) {
+      <app-resource-card
+        [resource]="resource"
+        (download)="onDownloadResource($event)"
+        (view)="onViewResource($event)" />
+      }
+    </div>
+
+    @if (resourcesStore.hasMoreResources()) {
+    <div class="flex justify-center">
+      <button
+        type="button"
+        (click)="loadMore()"
+        [disabled]="resourcesStore.isLoading()"
+        class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-lg transition-colors disabled:opacity-50">
+        {{ resourcesStore.isLoading() ? 'Chargement...' : 'Charger plus' }}
+      </button>
+    </div>
+    } } @else {
+    <div class="dashboard-card p-10 text-center">
+      <div class="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center mx-auto mb-3">
+        <i-lucide [name]="icons.file" class="text-2xl text-slate-400" />
+      </div>
+      <h3 class="text-base font-semibold text-slate-900 mb-2">Aucune ressource disponible</h3>
+      <p class="text-sm text-slate-600">
+        Ajoutez une participation a un programme pour acceder aux ressources associees.
+      </p>
+    </div>
+    }
+  </div>
+</div>
