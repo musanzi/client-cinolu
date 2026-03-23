@@ -1,9 +1,20 @@
 <header
   class="py-4 fixed top-0 w-full right-0 left-0 flex flex-col text-base justify-center z-20 font-satoshi transition-colors duration-300"
   [ngClass]="{
-    'bg-white shadow-sm text-gray-800': isFixed() || fixed(),
+    'text-gray-800': isFixed() || fixed(),
     'text-white': !isFixed() && !fixed(),
   }">
+  <div
+    class="absolute inset-0 -z-10 transition-opacity duration-300"
+    [ngClass]="{
+      'opacity-100': isFixed() || fixed(),
+      'opacity-0': !isFixed() && !fixed()
+    }">
+    <div class="absolute inset-0 bg-white/80 backdrop-blur-md"></div>
+    <div class="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary-300/80 to-transparent"></div>
+    <div class="absolute -left-16 -top-10 size-40 rounded-full bg-primary-100/70 blur-3xl"></div>
+    <div class="absolute -right-10 -top-8 size-32 rounded-full bg-primary-200/60 blur-3xl"></div>
+  </div>
   <nav class="flex justify-between items-center w-full px-8 lg:px-16 xl:px-24 2xl:px-32 max-w-screen-2xl mx-auto">
     <div class="flex gap-3 items-center">
       <a routerLink="/" aria-label="logo" class="inline-block">

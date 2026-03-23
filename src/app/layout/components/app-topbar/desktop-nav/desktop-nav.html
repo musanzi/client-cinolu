@@ -75,6 +75,10 @@
               <span class="block text-base font-normal text-gray-500">
                 {{ translateField()(p?.category?.name, 'name', p.category) }}
               </span>
+              <span class="block text-[11px] uppercase tracking-wide text-primary-500">Secteur</span>
+              <span class="block text-base font-normal text-gray-500">
+                {{ translateField()(p?.sector?.name, 'name', p.sector) }}
+              </span>
             </a>
           </div>
           }
@@ -99,7 +103,7 @@
               fill />
             }@else {
             <div
-              class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500/90 to-primary-600/90 flex items-center justify-center font-bold text-white text-xs shadow-sm ring-2 ring-slate-200 group-hover:ring-primary-300 transition-all">
+              class="w-8 h-8 rounded-full bg-linear-to-br from-primary-500/90 to-primary-600/90 flex items-center justify-center font-bold text-white text-xs shadow-sm ring-2 ring-slate-200 group-hover:ring-primary-300 transition-all">
               {{ getUserInitials() }}
             </div>
             }
@@ -140,7 +144,7 @@
 
       <a
         routerLink="/sign-in"
-        class="relative inline-flex items-center justify-center px-6 py-2 rounded-full border-1 border-primary-500 font-semibold text-primary-500 overflow-hidden group transition duration-300 ease-out hover:text-white">
+        class="relative inline-flex items-center justify-center px-6 py-2 rounded-full border border-primary-500 font-semibold text-primary-500 overflow-hidden group transition duration-300 ease-out hover:text-white">
         <span
           class="absolute inset-0 bg-primary-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out">
         </span>
