@@ -8,26 +8,27 @@
         class="group flex items-center relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 hover:text-primary-500 hover:transition-colors hover:duration-200 before:content-[''] before:absolute before:left-0 before:top-full before:w-full before:h-4 before:z-20">
         {{ link.translationKey ? (link.translationKey | translate) : link.name }}
         <i-lucide
-          class="size-5 transition-transform duration-300 ml-0.5"
+          class="size-5 transition-transform duration-300 ease-out ml-0.5"
           [ngClass]="{'rotate-90': isDropdownOpen('link-' + $index)}"
           [name]="icons.chevronRight" />
         @if (link.children?.length) {
         <div
-          class="absolute left-0 top-full pt-3 w-80 z-50 transition-all duration-300 origin-top"
+          class="absolute left-0 top-full pt-4 w-96 z-50 transition-all duration-300 origin-top"
           [ngClass]="{
-            'opacity-100 visible': isDropdownOpen('link-' + $index),
-            'opacity-0 invisible': !isDropdownOpen('link-' + $index)
+            'opacity-100 visible translate-y-0 scale-100': isDropdownOpen('link-' + $index),
+            'opacity-0 invisible -translate-y-2 scale-95': !isDropdownOpen('link-' + $index)
           }">
-          <div class="flex text-left flex-col divide-y divide-gray-200 py-2 bg-white shadow-xl rounded-lg">
+          <div
+            class="flex text-left flex-col gap-1 px-3 py-3 bg-white/95 backdrop-blur-md shadow-2xl shadow-slate-200/60 rounded-xl border border-white/70 ring-1 ring-black/5">
             @for (sublink of link.children; track sublink.path || sublink.name) {
-            <div class="relative group/sub px-4 py-2">
+            <div class="relative group/sub px-2">
               <a
                 routerLinkActive="bg-primary-100 text-primary-600"
                 [routerLink]="sublink.path"
                 [routerLinkActiveOptions]="{
                           exact: sublink.exactUrl || false,
                         }"
-                class="block px-4 py-2 text-gray-700 font-medium hover:bg-primary-100 hover:text-primary-600 rounded-lg transition-colors duration-200">
+                class="block px-4 py-3 text-gray-700 font-medium rounded-lg transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400">
                 {{ sublink.translationKey ? (sublink.translationKey | translate) : sublink.name }}
               </a>
             </div>
@@ -53,30 +54,34 @@
       class="group flex items-center relative hover:text-primary-500 hover:transition-colors hover:duration-200 before:content-[''] before:absolute before:left-0 before:top-full before:w-full before:h-4 before:z-20">
       {{ 'nav.programs' | translate }}
       <i-lucide
-        class="size-5 ml-0.5 transition-transform duration-300"
+        class="size-5 ml-0.5 transition-transform duration-300 ease-out"
         [ngClass]="{'rotate-90': isDropdownOpen('programs')}"
         [name]="icons.chevronRight" />
       @if (programs()) {
       <div
-        class="absolute right-0 top-full pt-3 w-80 z-50 transition-all duration-300 origin-top"
+        class="absolute right-0 top-full pt-4 w-96 z-50 transition-all duration-300 origin-top"
         [ngClass]="{
-          'opacity-100 visible': isDropdownOpen('programs'),
-          'opacity-0 invisible': !isDropdownOpen('programs')
+          'opacity-100 visible translate-y-0 scale-100': isDropdownOpen('programs'),
+          'opacity-0 invisible -translate-y-2 scale-95': !isDropdownOpen('programs')
         }">
-        <div class="flex flex-col divide-y divide-gray-200 py-2 bg-white shadow-xl rounded-lg">
+        <div
+          class="flex flex-col gap-1 px-3 py-3 bg-white/95 backdrop-blur-md shadow-2xl shadow-slate-200/60 rounded-xl border border-white/70 ring-1 ring-black/5">
           @for (p of programs(); track p.slug) {
-          <div class="relative group/sub px-4 py-2 text-left">
+          <div class="relative group/sub px-2 text-left">
             <a
               routerLinkActive="bg-primary-100 text-primary-600"
               [routerLink]="['/our-programs/' + p.slug]"
               [routerLinkActiveOptions]="{ exact: true }"
-              class="block px-4 py-2 text-gray-700 font-medium hover:bg-primary-100 hover:text-primary-600 rounded-lg transition-colors duration-200">
-              {{ translateField()(p.name, 'name', p) }}
-              <span class="block text-base font-normal text-gray-500">
-                {{ translateField()(p?.category?.name, 'name', p.category) }}
-              </span>
-              <span class="block text-[11px] uppercase tracking-wide text-primary-500">Secteur</span>
-              <span class="block text-base font-normal text-gray-500">
+              class="block px-4 py-3 text-gray-700 font-medium rounded-lg transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400">
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-gray-900">{{ translateField()(p.name, 'name', p) }}</span>
+                <span
+                  class="shrink-0 rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-600">
+                  {{ translateField()(p?.category?.name, 'name', p.category) }}
+                </span>
+              </div>
+              <span class="mt-1 block text-[11px] uppercase tracking-wide text-primary-500">Secteur</span>
+              <span class="block text-sm font-normal text-gray-500">
                 {{ translateField()(p?.sector?.name, 'name', p.sector) }}
               </span>
             </a>
@@ -110,26 +115,26 @@
           </div>
           <i-lucide
             [name]="icons.chevronRight"
-            class="transition-transform size-5 ml-0.5 duration-300"
+            class="transition-transform size-5 ml-0.5 duration-300 ease-out"
             [ngClass]="{'rotate-90': isDropdownOpen('mycinolu')}" />
         </div>
         <div
-          class="absolute right-0 top-full mt-2 w-56 rounded-lg bg-white shadow-xl transition-all duration-300 z-50"
+          class="absolute right-0 top-full mt-3 w-64 rounded-xl bg-white/95 backdrop-blur-md shadow-2xl shadow-slate-200/60 transition-all duration-300 z-50 border border-white/70 ring-1 ring-black/5"
           [ngClass]="{
-            'visible opacity-100': isDropdownOpen('mycinolu'),
-            'invisible opacity-0': !isDropdownOpen('mycinolu')
+            'visible opacity-100 translate-y-0 scale-100': isDropdownOpen('mycinolu'),
+            'invisible opacity-0 -translate-y-2 scale-95': !isDropdownOpen('mycinolu')
           }">
-          <div class="text-left flex flex-col divide-y divide-gray-200 py-2">
-            <div class="flex flex-col px-4 py-2">
+          <div class="text-left flex flex-col gap-1 px-3 py-3">
+            <div class="flex flex-col px-2">
               <a
                 routerLink="/dashboard"
-                class="block rounded-lg px-4 py-2 font-medium text-gray-700 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600">
+                class="block rounded-lg px-4 py-3 font-medium text-gray-700 transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 hover:scale-[1.02]">
                 {{ 'auth.myAccount' | translate }}
               </a>
             </div>
-            <div class="flex flex-col px-4 py-2">
+            <div class="flex flex-col px-2">
               <button
-                class="flex rounded-lg px-4 py-2 font-medium text-gray-700 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600"
+                class="flex rounded-lg px-4 py-3 font-medium text-gray-700 transition-all duration-200 hover:bg-primary-50 hover:text-primary-600 hover:scale-[1.02]"
                 (click)="onSignOut()">
                 {{ 'auth.signOut' | translate }}
               </button>

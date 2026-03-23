@@ -41,38 +41,38 @@
     (keydown)="($event.key === 'Enter' || $event.key === ' ') && $event.preventDefault()"></div>
 
   <div
-    class="fixed h-dvh top-0 right-0 w-[85vw] max-w-sm bg-white shadow-2xl transition-transform duration-300 ease-in-out z-50 mobile-nav-panel"
+    class="fixed h-dvh top-0 right-0 w-[92vw] max-w-md bg-white/95 backdrop-blur-md shadow-2xl transition-transform duration-300 ease-in-out z-50 mobile-nav-panel"
     [ngClass]="isOpen() ? 'translate-x-0' : 'translate-x-full'">
     <div class="flex flex-col h-full">
-      <div class="flex items-center justify-between px-6 py-5 border-b border-gray-200 shrink-0">
+      <div class="flex items-center justify-between px-7 py-6 border-b border-gray-200/70 shrink-0">
         <a routerLink="/" (click)="closeNav()" class="inline-block">
           <img [ngSrc]="'images/logo/logo-g.png'" width="64" height="68" alt="logo" class="w-8 h-9" />
         </a>
         <button
           (click)="closeNav()"
-          class="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+          class="p-2.5 hover:bg-gray-100 rounded-xl transition-colors duration-200"
           aria-label="Fermer le menu">
           <i-lucide [name]="icons.close" class="size-5 text-gray-600" />
         </button>
       </div>
 
       <div class="flex-1 overflow-y-auto overscroll-contain min-h-0">
-        <div class="flex flex-col py-2">
+        <div class="flex flex-col py-3">
           @for (link of links(); track link.path || link.name; let i = $index) {
           <div>
             @if (link.children?.length) {
             <button
-              class="flex justify-between items-center w-full px-6 py-4 text-base font-medium text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+              class="flex justify-between items-center w-full px-7 py-4 text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200"
               (click)="toggleLink(i)">
               <span>{{ link.translationKey ? (link.translationKey | translate) : link.name }}</span>
               <i-lucide
-                class="size-4 text-gray-500 transition-transform duration-300"
+                class="size-4 text-gray-500 transition-transform duration-300 ease-out"
                 [ngClass]="{ 'rotate-180': isLinkOpen(i) }"
                 [name]="icons.chevronDown" />
             </button>
 
             <div
-              class="bg-gray-50 transition-all duration-300 ease-in-out"
+              class="bg-gray-50/80 transition-all duration-300 ease-in-out"
               [ngClass]="{
                 'max-h-0 opacity-0': !isLinkOpen(i),
                 'max-h-screen opacity-100': isLinkOpen(i)
@@ -86,7 +86,7 @@
                 [routerLinkActiveOptions]="{
                   exact: sublink.exactUrl || false
                 }"
-                class="flex items-center gap-3 px-6 py-3 pl-12 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200">
+                class="flex items-center gap-3 px-7 py-3.5 pl-12 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200">
                 <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
                 <span>{{ sublink.translationKey ? (sublink.translationKey | translate) : sublink.name }}</span>
               </a>
@@ -98,7 +98,7 @@
               (click)="closeNav()"
               routerLinkActive="bg-primary-50 text-primary-600"
               [routerLinkActiveOptions]="{ exact: link.exactUrl || false }"
-              class="flex items-center px-6 py-4 text-base font-medium text-gray-800 hover:bg-gray-50 transition-colors duration-200">
+              class="flex items-center px-7 py-4 text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200">
               {{ link.translationKey ? (link.translationKey | translate) : link.name }}
             </a>
             }
@@ -107,17 +107,17 @@
 
           <div>
             <button
-              class="flex justify-between items-center w-full px-6 py-4 text-base font-medium text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+              class="flex justify-between items-center w-full px-7 py-4 text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200"
               (click)="togglePrograms()">
               <span>{{ 'nav.programs' | translate }}</span>
               <i-lucide
-                class="size-4 text-gray-500 transition-transform duration-300"
+                class="size-4 text-gray-500 transition-transform duration-300 ease-out"
                 [ngClass]="{ 'rotate-180': programsOpen() }"
                 [name]="icons.chevronDown" />
             </button>
 
             <div
-              class="bg-gray-50 transition-all duration-300 ease-in-out"
+              class="bg-gray-50/80 transition-all duration-300 ease-in-out"
               [ngClass]="{
                 'max-h-0 opacity-0': !programsOpen(),
                 'max-h-screen opacity-100': programsOpen()
@@ -129,12 +129,12 @@
                 [routerLink]="['/our-programs/' + p.slug]"
                 (click)="closeNav()"
                 [routerLinkActiveOptions]="{ exact: true }"
-                class="block px-6 py-3 pl-12 hover:bg-primary-50 text-gray-700 hover:text-primary-600 transition-all duration-200">
-                <span class="font-medium text-sm">{{ translateField()(p.name, 'name', p) }}</span>
-                <span class="block text-xs text-gray-500 mt-0.5">
+                class="block px-7 py-3.5 pl-12 hover:bg-primary-50 text-gray-700 hover:text-primary-600 transition-all duration-200">
+                <span class="font-semibold text-sm">{{ translateField()(p.name, 'name', p) }}</span>
+                <span class="block text-xs text-gray-500 mt-1">
                   {{ translateField()(p?.category?.name, 'name', p.category) }}
                 </span>
-                <span class="block text-[10px] uppercase tracking-wide text-primary-500 mt-0.5">Secteur</span>
+                <span class="block text-[10px] uppercase tracking-wide text-primary-500 mt-1">Secteur</span>
                 <span class="block text-xs text-gray-500">
                   {{ translateField()(p?.sector?.name, 'name', p.sector) }}
                 </span>
@@ -145,7 +145,7 @@
         </div>
       </div>
 
-      <div class="border-t border-gray-200 bg-gray-50 px-6 py-5 shrink-0">
+      <div class="border-t border-gray-200 bg-gray-50/80 px-7 py-6 shrink-0">
         <div class="flex justify-center mb-4">
           <app-language-switcher />
         </div>
