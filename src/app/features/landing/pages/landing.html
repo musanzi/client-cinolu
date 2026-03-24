@@ -5,6 +5,10 @@
   <app-onestop />
   <app-services />
   @defer (on viewport) {
+  <app-sectors />
+  } @placeholder {
+  <div class="h-96 bg-gray-50" aria-hidden="true"></div>
+  } @defer (on viewport) {
   <app-programs />
   } @placeholder {
   <div class="h-96 bg-gray-50" aria-hidden="true"></div>

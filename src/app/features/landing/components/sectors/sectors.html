@@ -1,0 +1,109 @@
+<section class="relative min-h-fit bg-white overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 bg-grid opacity-[0.02] pointer-events-none"></div>
+
+  <div class="relative py-16 lg:py-24 px-8 lg:px-16 xl:px-24 2xl:px-32 max-w-screen-2xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16 lg:mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 rounded-full mb-6">
+        <span class="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
+        <span class="text-sm font-semibold text-primary-700 uppercase tracking-wide">Nos Secteurs</span>
+      </div>
+      <h2 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 font-satoshi leading-tight">
+        Nos secteurs d'<span class="text-primary-600">intervention</span>
+      </h2>
+      <p class="text-gray-600 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
+        Nous structurons nos programmes en pôles thématiques spécialisés, tout en maintenant un accompagnement
+        généraliste.
+      </p>
+    </div>
+
+    <!-- Sectors Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+      @for (sector of sectors(); track trackBySectorId($index, sector)) {
+      <div class="sector-card group relative opacity-0">
+        <!-- Card Container -->
+        <div
+          class="relative h-full bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-primary-200 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+          <!-- Image Container with Gradient Overlay -->
+          <div class="relative h-64 overflow-hidden bg-linear-to-br from-primary-50 to-primary-100">
+            <div class="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent z-10"></div>
+            <img
+              [src]="sector.image"
+              [alt]="sector.name"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+
+            <!-- Floating Icon Badge -->
+            <div
+              class="absolute top-6 left-6 z-20 flex items-center justify-center w-16 h-16 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <i-lucide [name]="sector.icon" class="size-8 text-primary-600" />
+            </div>
+
+            <!-- Category Tag -->
+            <div class="absolute bottom-6 left-6 z-20 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full shadow-lg">
+              <span class="text-sm font-semibold text-gray-900">{{ sector.tag }}</span>
+            </div>
+          </div>
+
+          <!-- Content Section -->
+          <div class="p-8 space-y-4">
+            <h3 class="text-2xl font-bold text-gray-900 font-satoshi group-hover:text-primary-600 transition-colors">
+              {{ sector.name }}
+            </h3>
+
+            <p class="text-gray-600 text-base leading-relaxed line-clamp-3">{{ sector.description }}</p>
+
+            <!-- Stats or Features -->
+            <div class="pt-4 flex items-center gap-4 text-sm">
+              <div class="flex items-center gap-2 text-gray-500">
+                <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                <span>{{ sector.programs }} programmes</span>
+              </div>
+              <div class="flex items-center gap-2 text-gray-500">
+                <div class="w-2 h-2 bg-primary-500 rounded-full"></div>
+                <span>{{ sector.participants }}+ participants</span>
+              </div>
+            </div>
+
+            <!-- CTA Arrow -->
+            <div class="pt-2">
+              <div
+                class="inline-flex items-center gap-2 text-primary-600 font-semibold group-hover:gap-4 transition-all duration-300">
+                <span>Découvrir</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hover Gradient Effect -->
+          <div
+            class="absolute inset-0 bg-linear-to-br from-primary-500/0 via-primary-500/0 to-primary-600/0 group-hover:from-primary-500/5 group-hover:via-primary-500/3 group-hover:to-primary-600/5 pointer-events-none transition-all duration-500 rounded-3xl"></div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- Footer Info Card -->
+    <div class="mt-16 lg:mt-20 max-w-4xl mx-auto">
+      <div
+        class="relative bg-linear-to-br from-primary-50 via-white to-primary-50 rounded-3xl p-8 lg:p-12 border border-primary-100 overflow-hidden">
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-primary-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="relative text-center space-y-4">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 font-satoshi">Accompagnement Généraliste</h3>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+            En plus de nos secteurs spécialisés, nous offrons un accompagnement personnalisé sector-agnostic pour tous
+            types de projets innovants.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
