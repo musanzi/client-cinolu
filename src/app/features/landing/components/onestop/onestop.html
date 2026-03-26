@@ -10,12 +10,7 @@
 
   <div class="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-10 xl:gap-14 items-start mt-10">
     <div class="max-w-xl">
-      <h3 class="text-2xl sm:text-3xl lg:text-[2.35rem] leading-[1.05] font-black tracking-tight text-slate-950 font-satoshi">
-        {{ 'onestop.heading' | translate }}
-        <span class="text-primary-600">{{ 'onestop.heading_highlight' | translate }}</span>
-      </h3>
-
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+      <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
         <article class="rounded-lg border border-slate-200 bg-white p-4 lg:p-5">
           <div class="flex items-start gap-3">
             <div class="flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary-100 text-primary-600">
@@ -25,9 +20,7 @@
               <h3 class="text-sm sm:text-base font-bold text-slate-950">
                 {{ 'onestop.cards.resources.title' | translate }}
               </h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">
-                {{ 'onestop.cards.resources.subtitle' | translate }}
-              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">{{ 'onestop.cards.resources.subtitle' | translate }}</p>
             </div>
           </div>
         </article>
@@ -57,9 +50,7 @@
               <h3 class="text-sm sm:text-base font-bold text-slate-950">
                 {{ 'onestop.categories.formation' | translate }}
               </h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">
-                {{ 'onestop.programs_button' | translate }}
-              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">{{ 'onestop.programs_button' | translate }}</p>
             </div>
           </div>
         </article>
@@ -73,9 +64,7 @@
               <h3 class="text-sm sm:text-base font-bold text-slate-950">
                 {{ 'onestop.cards.mentorship.title' | translate }}
               </h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">
-                {{ 'onestop.cards.mentorship.subtitle' | translate }}
-              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">{{ 'onestop.cards.mentorship.subtitle' | translate }}</p>
             </div>
           </div>
         </article>
@@ -115,7 +104,8 @@
       </p>
       <div class="flex flex-wrap gap-2">
         @for (categoryKey of categoryKeys; track trackByCategoryKey($index, categoryKey)) {
-        <span class="inline-flex items-center rounded-lg border border-primary-200 bg-primary-50 px-3 py-1.5 text-xs font-medium text-slate-700">
+        <span
+          class="inline-flex items-center rounded-lg border border-primary-200 bg-primary-50 px-3 py-1.5 text-xs font-medium text-slate-700">
           {{ 'onestop.categories.' + categoryKey | translate }}
         </span>
         }
