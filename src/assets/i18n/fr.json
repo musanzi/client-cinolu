@@ -7,7 +7,6 @@
       "no_event": "Pas d'événement!"
     }
   },
-
   "event_detail": {
     "detail": {
       "dates": "Dates",
@@ -35,7 +34,6 @@
       "empty": "Non renseigné"
     }
   },
-
   "common": {
     "welcome": "Bienvenue",
     "loading": "Chargement...",
@@ -54,7 +52,6 @@
     "ambassador": "Ambassadeur",
     "verified": "Vérifié"
   },
-
   "sub_programs": {
     "projects_of": "Projets de",
     "events_of": "Événements de",
@@ -68,7 +65,7 @@
   },
   "nav": {
     "home": "Accueil",
-    "about": "À propos",
+    "about": "ì propos",
     "programs": "Programmes",
     "projects": "Projets",
     "events": "Événements",
@@ -322,8 +319,8 @@
       }
     },
     "quote": "Cinolu est une infrastructure d'impact : un hub qui coordonne les talents, les partenariats et les outils nécessaires pour faire émerger des entreprises compétitives et un écosystème d'innovation durable.",
-    "author": "Cinolu — Hub d'innovation",
-    "author_role": "Lubumbashi • RDC • Afrique",
+    "author": "Cinolu - Hub d'innovation",
+    "author_role": "Lubumbashi ⬢ RDC ⬢ Afrique",
     "stats": {
       "projects": "Entrepreneurs accompagnés",
       "partners": "Partenaires actifs"
@@ -343,30 +340,30 @@
     }
   },
   "services": {
-    "badge": "Open Innovation",
+    "badge": "Leviers d'action",
     "title": "Notre approche",
     "titleHighlight": "d'Open Innovation",
-    "description": "Nous nous engageons à transformer les défis locaux en opportunités de marché en collaborant avec des startups, des entrepreneurs et des partenaires locaux.",
+    "description": "Cinolu agit comme un hub d'innovation qui connecte les talents, structure les collaborations et transforme les défis locaux en projets, opportunités et dynamiques d'écosystème.",
     "items": {
       "innovative_solutions": {
-        "title": "Innovative Solutions",
-        "description": "Identifier des solutions innovantes à des défis spécifiques"
+        "title": "Détecter des solutions à fort potentiel",
+        "description": "Identifier des réponses innovantes à des défis concrets et les relier aux besoins du terrain."
       },
       "co_creation": {
-        "title": "Co-Creation de Startups",
-        "description": "Co-créer avec des startups ou talents locaux"
+        "title": "Co-construire avec les talents et startups",
+        "description": "Faire émerger des initiatives avec des entrepreneurs, porteurs de projet et partenaires locaux."
       },
       "innovation_challenges": {
-        "title": "Innovation Challenges",
-        "description": "Lancer des appels à innovation ou défis thématiques"
+        "title": "Lancer des défis et appels ciblés",
+        "description": "Mobiliser l'écosystème autour de thématiques stratégiques pour faire remonter des solutions utiles."
       },
       "project_management": {
-        "title": "Project Management",
-        "description": "Piloter des projets de transformation ou d'impact"
+        "title": "Structurer des projets catalytiques",
+        "description": "Piloter des projets de transformation à fort impact, de la coordination aux résultats."
       },
       "ecosystem_mapping": {
-        "title": "Ecosystem Mapping",
-        "description": "Cartographier ou renforcer un écosystème local"
+        "title": "Renforcer l'écosystème local",
+        "description": "Cartographier les acteurs, créer des connexions utiles et consolider les dynamiques de collaboration."
       }
     }
   },
@@ -392,8 +389,8 @@
   },
   "about_us": {
     "hero": {
-      "badge_text": "À propos de nous",
-      "title": "À propos de",
+      "badge_text": "ì propos de nous",
+      "title": "ì propos de",
       "title_highlight": "nous.",
       "description": "Notre histoire et notre passion guident une équipe engagée, dédiée à vous offrir un service irréprochable."
     },
@@ -401,7 +398,7 @@
       "badge": "Notre Histoire",
       "title": "Qui",
       "title_highlight": "sommes-nous ?",
-      "paragraph_1": "<strong class=\"font-bold text-gray-900\">Cinolu – Centre d'Innovation de Lubumbashi</strong> est un espace d'innovation, d'incubation et d'accompagnement né en <strong class=\"font-bold text-primary-600\">2015</strong>, dédié à catalyser le potentiel entrepreneurial et technologique en République Démocratique du Congo.",
+      "paragraph_1": "<strong class=\"font-bold text-gray-900\">Cinolu - Centre d'Innovation de Lubumbashi</strong> est un espace d'innovation, d'incubation et d'accompagnement né en <strong class=\"font-bold text-primary-600\">2015</strong>, dédié à catalyser le potentiel entrepreneurial et technologique en République Démocratique du Congo.",
       "paragraph_2": "Nous agissons comme un <strong class=\"font-bold text-primary-600\">guichet unique (OneStop)</strong> pour connecter les talents aux opportunités à travers l'innovation, la technologie et l'entrepreneuriat pour un impact social.",
       "paragraph_3": "La plateforme numérique Cinolu OneStop a été conçue pour centraliser les parcours d'accompagnement, automatiser les processus (adhésion, candidature, mentorat) et valoriser l'impact collectif.",
       "quote": "Connecter les talents aux opportunités pour transformer nos villes africaines à travers l'innovation, la technologie et l'entrepreneuriat."
@@ -431,8 +428,8 @@
         },
         "item_2": {
           "status": "Programmes",
-          "date": "2017–2020",
-          "description": "Mise en œuvre de programmes genre & jeunesse (F360, civic tech…)"
+          "date": "2017-2020",
+          "description": "Mise en œuvre de programmes genre & jeunesse (F360, civic tech...)"
         },
         "item_3": {
           "status": "Incubateur",
@@ -441,8 +438,8 @@
         },
         "item_4": {
           "status": "Expansion",
-          "date": "2023–2024",
-          "description": "Déploiement régional (SOPA+, Afrilabs, Fikiri…) et création du Cinolu OneStop"
+          "date": "2023-2024",
+          "description": "Déploiement régional (SOPA+, Afrilabs, Fikiri⬦) et création du Cinolu OneStop"
         },
         "item_5": {
           "status": "Structuration",
@@ -536,7 +533,7 @@
       "vote_registered": "Vote enregistré",
       "vote_action": "Voter",
       "vote_remove": "Retirer",
-      "participations_loading": "Chargement des candidatures…",
+      "participations_loading": "Chargement des candidatures⬦",
       "participations_empty": "Aucune candidature pour le moment.",
       "sign_in_to_vote": "Se connecter pour voter",
       "validation": {
@@ -573,7 +570,7 @@
     "badge": "Secteurs",
     "title": "Nos pôles ",
     "title_highlight": "sectoriels",
-    "description": "Des domaines d’intervention structurés pour rendre notre offre plus lisible et plus impactante."
+    "description": "Des domaines d'intervention structurés pour rendre notre offre plus lisible et plus impactante."
   },
   "recent_projects": {
     "badge": "Programmes récents",
@@ -733,7 +730,7 @@
     "activity_sector": "Secteur d'activité",
     "not_defined": "Non défini",
     "project_phase": "Phase du projet",
-    "about": "À propos",
+    "about": "ì propos",
     "venture_of": "Entreprise de",
     "discover": "Découvrir",
     "no_project_published": "Aucun projet publié pour le moment",
@@ -772,7 +769,7 @@
       "filter_status_all": "Tous",
       "filter_status_past": "Passés",
       "filter_status_current": "En cours",
-      "filter_status_future": "À venir",
+      "filter_status_future": "ì venir",
       "filter_all": "Tous",
       "filter_published": "Publiés",
       "filter_drafts": "Brouillons",
@@ -929,7 +926,6 @@
       }
     }
   },
-
   "ambassadors": {
     "badge": "Ambassadeurs",
     "landing": {
@@ -990,7 +986,6 @@
     "viewAll": "Découvrir tous les ambassadeurs",
     "noData": "Aucune donnée disponible"
   },
-
   "compare": {
     "badge": "Deux perspectives",
     "title": "Choisissez votre",

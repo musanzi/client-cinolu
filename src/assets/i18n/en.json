@@ -320,8 +320,8 @@
       }
     },
     "quote": "Cinolu is an impact infrastructure: a hub that coordinates talent, partnerships and tools to help competitive ventures and a durable innovation ecosystem emerge.",
-    "author": "Cinolu — Innovation Hub",
-    "author_role": "Lubumbashi • DRC • Africa",
+    "author": "Cinolu â€” Innovation Hub",
+    "author_role": "Lubumbashi â€¢ DRC â€¢ Africa",
     "stats": {
       "projects": "Entrepreneurs supported",
       "partners": "Active partners"
@@ -347,24 +347,24 @@
     "description": "We are committed to turning local challenges into market opportunities by working with startups, entrepreneurs and local partners.",
     "items": {
       "innovative_solutions": {
-        "title": "Innovative Solutions",
-        "description": "Identify innovative solutions to specific challenges"
+        "title": "Spot high-potential solutions",
+        "description": "Identify innovative responses to concrete challenges and connect them to real field needs."
       },
       "co_creation": {
-        "title": "Startup Co-Creation",
-        "description": "Co-create with startups or local talents"
+        "title": "Co-build with talent and startups",
+        "description": "Develop initiatives with entrepreneurs, founders and local partners around shared priorities."
       },
       "innovation_challenges": {
-        "title": "Innovation Challenges",
-        "description": "Launch innovation calls or thematic challenges"
+        "title": "Launch focused calls and challenges",
+        "description": "Mobilize the ecosystem around strategic themes to surface useful and relevant solutions."
       },
       "project_management": {
-        "title": "Project Management",
-        "description": "Lead transformation or impact projects"
+        "title": "Structure catalytic projects",
+        "description": "Lead high-impact transformation projects from coordination to outcomes."
       },
       "ecosystem_mapping": {
-        "title": "Ecosystem Mapping",
-        "description": "Map or strengthen a local ecosystem"
+        "title": "Strengthen the local ecosystem",
+        "description": "Map key actors, create useful connections and reinforce collaboration across the ecosystem."
       }
     }
   },
@@ -399,7 +399,7 @@
       "badge": "Our Story",
       "title": "Who",
       "title_highlight": "are we?",
-      "paragraph_1": "<strong class=\"font-bold text-gray-900\">Cinolu – Lubumbashi Innovation Center</strong> is an innovation, incubation and support space founded in <strong class=\"font-bold text-primary-600\">2015</strong>, dedicated to catalyzing entrepreneurial and technological potential in the Democratic Republic of Congo.",
+      "paragraph_1": "<strong class=\"font-bold text-gray-900\">Cinolu â€“ Lubumbashi Innovation Center</strong> is an innovation, incubation and support space founded in <strong class=\"font-bold text-primary-600\">2015</strong>, dedicated to catalyzing entrepreneurial and technological potential in the Democratic Republic of Congo.",
       "paragraph_2": "We act as a <strong class=\"font-bold text-primary-600\">one-stop shop (OneStop)</strong> to connect talents to opportunities through innovation, technology and entrepreneurship for social impact.",
       "paragraph_3": "The Cinolu OneStop digital platform was designed to centralize support pathways, automate processes (membership, application, mentoring) and enhance collective impact.",
       "quote": "Connecting talents to opportunities to transform our African cities through innovation, technology and entrepreneurship."
@@ -429,8 +429,8 @@
         },
         "item_2": {
           "status": "Programs",
-          "date": "2017–2020",
-          "description": "Implementation of gender & youth programs (F360, civic tech…)"
+          "date": "2017â€“2020",
+          "description": "Implementation of gender & youth programs (F360, civic techâ€¦)"
         },
         "item_3": {
           "status": "Incubator",
@@ -439,8 +439,8 @@
         },
         "item_4": {
           "status": "Expansion",
-          "date": "2023–2024",
-          "description": "Regional deployment (SOPA+, Afrilabs, Fikiri…) and creation of Cinolu OneStop"
+          "date": "2023â€“2024",
+          "description": "Regional deployment (SOPA+, Afrilabs, Fikiriâ€¦) and creation of Cinolu OneStop"
         },
         "item_5": {
           "status": "Structuring",
@@ -746,7 +746,7 @@
     "emailPlaceholder": "Your email",
     "subscribe": "Subscribe",
     "subscribeSuccess": "Thank you! You are now subscribed to our newsletter.",
-    "copyright": "© {{year}} Cinolu. All rights reserved.",
+    "copyright": "Â© {{year}} Cinolu. All rights reserved.",
     "allRightsReserved": "All rights reserved"
   },
   "projects": {
