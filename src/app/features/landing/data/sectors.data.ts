@@ -21,8 +21,7 @@ export const SECTOR_SHOWCASE: SectorShowcase = {
   title: 'Des secteurs plus lisibles, plus clairs, plus crédibles.',
   description: "Une présentation resserrée pour mieux structurer l'offre sans alourdir la landing page.",
   imageAlt: 'Secteurs stratégiques Cinolu',
-  imageUrl:
-    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=1400&fit=crop&crop=faces'
+  imageUrl: '/images/hero.jpg'
 };
 
 export const SECTORS: readonly SectorCard[] = [
@@ -36,14 +35,16 @@ export const SECTORS: readonly SectorCard[] = [
   {
     id: 'greentech',
     name: 'GreenTech & AgriTech',
-    description: "Des solutions concrètes pour l'agriculture, le climat et la transition écologique à fort impact local.",
+    description:
+      "Des solutions concrètes pour l'agriculture, le climat et la transition écologique à fort impact local.",
     icon: Sprout,
     tag: 'Innovation verte'
   },
   {
     id: 'gender-inclusion',
     name: 'Gender Inclusion',
-    description: "Des initiatives qui réduisent les barrières et ouvrent plus d'opportunités aux femmes entrepreneures.",
+    description:
+      "Des initiatives qui réduisent les barrières et ouvrent plus d'opportunités aux femmes entrepreneures.",
     icon: Users,
     tag: 'Égalité & inclusion'
   }
