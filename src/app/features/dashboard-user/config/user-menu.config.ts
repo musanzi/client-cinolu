@@ -60,17 +60,17 @@ export const USER_MENU_CONFIG: MenuSection[] = [
           },
           {
             id: 'programs-applications',
-            label: 'Mes candidatures',
+            label: 'Mes participations',
             icon: FolderOpen,
             path: `${USER_BASE}/programs/my-applications`,
-            tooltip: 'Suivre mes candidatures actives'
+            tooltip: 'Suivre mes candidatures et leurs statuts'
           },
           {
             id: 'programs-accepted',
-            label: 'Programmes acceptés',
+            label: 'Mes parcours',
             icon: CircleCheckBig,
             path: `${USER_BASE}/programs/accepted`,
-            tooltip: 'Accéder à mes programmes acceptés'
+            tooltip: 'Accéder à mes programmes qualifiés et actifs'
           }
         ]
       }

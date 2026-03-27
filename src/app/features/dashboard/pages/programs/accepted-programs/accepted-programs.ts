@@ -79,6 +79,10 @@ export class AcceptedPrograms implements OnInit {
   }
 
   private isQualifiedParticipation(participation: IParticipation): boolean {
+    if (participation.status) {
+      return participation.status === 'qualified';
+    }
+
     const latestReview = [...(participation.reviews ?? [])].sort(
       (a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
     )[0];
@@ -87,7 +91,7 @@ export class AcceptedPrograms implements OnInit {
       return latestReview.score >= 60;
     }
 
-    return participation.status === 'qualified';
+    return false;
   }
 
   private isValidForAcceptedPrograms(participation: IParticipation): boolean {

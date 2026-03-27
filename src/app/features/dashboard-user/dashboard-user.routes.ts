@@ -106,13 +106,13 @@ export const dashboardUserRoutes: Routes = [
       },
       {
         path: 'programs/my-applications',
-        title: 'Mes Candidatures',
+        title: 'Mes participations',
         loadComponent: () =>
           import('../dashboard/pages/programs/my-applications/my-applications').then((c) => c.MyApplications)
       },
       {
         path: 'programs/accepted',
-        title: 'Programmes Acceptés',
+        title: 'Mes parcours',
         loadComponent: () =>
           import('../dashboard/pages/programs/accepted-programs/accepted-programs').then((c) => c.AcceptedPrograms)
       },

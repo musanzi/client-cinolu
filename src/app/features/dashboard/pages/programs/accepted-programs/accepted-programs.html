@@ -1,7 +1,7 @@
 <div class="w-full mx-auto py-8">
   <header class="mb-8">
-    <h1 class="text-xl font-bold text-slate-900">Programmes acceptés</h1>
-    <p class="text-sm text-slate-600 mt-1">Suivez votre progression et accédez au détail ou à la roadmap</p>
+    <h1 class="text-xl font-bold text-slate-900">Mes parcours</h1>
+    <p class="text-sm text-slate-600 mt-1">Retrouvez les programmes où votre participation est qualifiée et active</p>
   </header>
 
   @if (participationsStore.isLoading()) {
@@ -108,7 +108,7 @@
     <i-lucide class="text-4xl text-slate-300 mb-3 block" [name]="icons.folder" />
     <p class="font-medium text-slate-700 mb-1">Aucun programme accepté</p>
     <p class="text-sm text-slate-500 mb-6">
-      Les programmes avec phases apparaîtront ici une fois votre candidature acceptée.
+      Les parcours qualifiés apparaîtront ici dès que votre participation est validée par l'API.
     </p>
     <a
       routerLink="/dashboard/user/programs/discover"
