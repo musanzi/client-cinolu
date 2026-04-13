@@ -38,6 +38,11 @@ export class ResourceFilters {
     this.emitFilter();
   }
 
+  onCategoryChangeFromEvent(event: Event): void {
+    const select = event.target as HTMLSelectElement | null;
+    this.onCategoryChange(select?.value ?? '');
+  }
+
   resetFilters(): void {
     this.selectedCategory.set(null);
     this.emitFilter();

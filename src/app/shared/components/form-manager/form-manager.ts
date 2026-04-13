@@ -10,7 +10,7 @@ import {
   inject,
   signal
 } from '@angular/core';
-import { AbstractControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ButtonComponent } from '@shared/ui';
 import { ArrowLeft, ArrowRight, Check, LucideAngularModule } from 'lucide-angular';
@@ -200,34 +200,26 @@ export class FormManager implements OnInit {
     }
   }
 
-  #countControls(group: FormGroup): number {
-    let count = 0;
-    for (const key of Object.keys(group.controls)) {
-      const c = group.controls[key];
-      const maybeGroup = c as unknown as { controls?: Record<string, unknown> };
-      if (maybeGroup.controls && typeof maybeGroup.controls === 'object') {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        count += this.#countControls(c as any);
-      } else if (this.#shouldTrackControl(c)) {
-        count += 1;
-      }
+  #countControls(control: AbstractControl): number {
+    if (control instanceof FormGroup || control instanceof FormArray) {
+      return Object.values(control.controls).reduce(
+        (count, childControl) => count + this.#countControls(childControl),
+        0
+      );
     }
-    return count;
+
+    return this.#shouldTrackControl(control) ? 1 : 0;
   }
 
-  #countValidControls(group: FormGroup): number {
-    let count = 0;
-    for (const key of Object.keys(group.controls)) {
-      const c = group.controls[key];
-      const maybeGroup = c as unknown as { controls?: Record<string, unknown> };
-      if (maybeGroup.controls && typeof maybeGroup.controls === 'object') {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        count += this.#countValidControls(c as any);
-      } else if (this.#shouldTrackControl(c) && !c.disabled && c.valid) {
-        count += 1;
-      }
+  #countValidControls(control: AbstractControl): number {
+    if (control instanceof FormGroup || control instanceof FormArray) {
+      return Object.values(control.controls).reduce(
+        (count, childControl) => count + this.#countValidControls(childControl),
+        0
+      );
     }
-    return count;
+
+    return this.#shouldTrackControl(control) && !control.disabled && control.valid ? 1 : 0;
   }
 
   #shouldTrackControl(control: AbstractControl): boolean {

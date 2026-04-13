@@ -8,11 +8,11 @@
       <select
         id="category-filter"
         [value]="selectedCategory() ?? ''"
-        (change)="onCategoryChange($any($event.target).value)"
+        (change)="onCategoryChangeFromEvent($event)"
         class="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 text-sm focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors">
         <option value="">Toutes les catégories</option>
         @for (cat of categories; track cat.value) {
-          <option [value]="cat.value">{{ cat.label }}</option>
+        <option [value]="cat.value">{{ cat.label }}</option>
         }
       </select>
     </div>

@@ -14,7 +14,7 @@ import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@ang
 import { httpInterceptor } from './core/interceptors/http.interceptor';
 import { LoadingInterceptor } from './core/services/loading';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader, TranslationObject } from '@ngx-translate/core';
 import { importProvidersFrom, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
 import { provideServiceWorker } from '@angular/service-worker';
@@ -31,9 +31,8 @@ export function provideLocaleInitializer() {
 export class CustomTranslateLoader implements TranslateLoader {
   constructor(private http: HttpClient) {}
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getTranslation(lang: string): Observable<any> {
-    return this.http.get(`/assets/i18n/${lang}.json`);
+  getTranslation(lang: string): Observable<TranslationObject> {
+    return this.http.get<TranslationObject>(`/assets/i18n/${lang}.json`);
   }
 }
 

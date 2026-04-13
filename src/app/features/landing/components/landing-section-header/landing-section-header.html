@@ -5,14 +5,14 @@
       <div class="w-2 h-2 bg-primary-500 rounded-full mr-2"></div>
       {{ badgeKey() | translate }}
     </div>
-    <h3
+    <h2
       class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-800 font-satoshi mb-4 tracking-tight leading-tight hyphens-none">
       {{ titleKey() | translate }} @if (titleHighlightKey()) {
       <span class="text-transparent bg-clip-text bg-linear-to-r from-primary-500 to-primary-700"
         >{{ titleHighlightKey() | translate }}</span
       >
       }
-    </h3>
+    </h2>
   </div>
   @if (descriptionKey()) {
   <p

@@ -45,13 +45,12 @@ export class MobileNav {
   // Helper computed pour traduire les champs selon la langue active (remplace pipe impure)
   translateField = computed(() => {
     const currentLang = this.languageService.currentLanguage();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return (value: string | null | undefined, fieldName: string, obj: any): string => {
+    return (value: string | null | undefined, fieldName: string, obj: unknown): string => {
       if (!value) return '';
       if (currentLang === 'fr') return value;
-      if (obj && fieldName) {
+      if (obj && fieldName && typeof obj === 'object') {
         const translatedField = `${fieldName}_${currentLang}`;
-        const translatedValue = obj[translatedField];
+        const translatedValue = (obj as Record<string, unknown>)[translatedField];
         return (translatedValue as string) || value;
       }
       return value;
