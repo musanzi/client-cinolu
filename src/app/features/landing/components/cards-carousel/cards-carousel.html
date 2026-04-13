@@ -55,8 +55,8 @@
           [class.w-7]="index === activeIndex()"
           [class.bg-primary-600]="index === activeIndex()"
           [class.w-2.5]="index !== activeIndex()"
-          [attr.aria-label]="'Aller a l element ' + (index + 1)"
           [attr.aria-current]="index === activeIndex() ? 'true' : null"
+          [attr.aria-label]="'Aller à la diapositive ' + (index + 1)"
           (click)="goTo(index)"></button>
       }
     </div>
