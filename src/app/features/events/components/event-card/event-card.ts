@@ -1,7 +1,7 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideAngularModule, MoveRight, CalendarCheck, CalendarX } from 'lucide-angular';
+import { LucideAngularModule, MoveRight, CalendarCheck, MapPin } from 'lucide-angular';
 import { ApiImgPipe } from '../../../../shared/pipes/api-img.pipe';
 import { IEvent } from '../../../../shared/models/entities.models';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,5 +15,5 @@ import { TranslateModule } from '@ngx-translate/core';
 export class EventCard {
   event = input.required<IEvent>();
   buttonTextKey = input<string>('recent_events.explore');
-  icons = { MoveRight, CalendarCheck, CalendarX };
+  icons = { MoveRight, CalendarCheck, MapPin };
 }
