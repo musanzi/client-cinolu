@@ -1,0 +1,64 @@
+<div class="space-y-5 lg:space-y-6">
+  @if (showControls()) {
+    <div class="flex items-center justify-end gap-3">
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-200 hover:text-primary-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0"
+        [disabled]="!canGoPrev()"
+        [attr.aria-label]="'Defiler vers la gauche dans ' + ariaLabel()"
+        (click)="goPrev()">
+        <i-lucide class="size-5" [name]="icons.arrowLeft" />
+      </button>
+
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-200 hover:text-primary-700 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0"
+        [disabled]="!canGoNext()"
+        [attr.aria-label]="'Defiler vers la droite dans ' + ariaLabel()"
+        (click)="goNext()">
+        <i-lucide class="size-5" [name]="icons.arrowRight" />
+      </button>
+    </div>
+  }
+
+  <div class="relative">
+    <div
+      #viewport
+      class="landing-card-carousel-track flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 scrollbar-hide [scrollbar-width:none] touch-pan-x overscroll-x-contain"
+      role="region"
+      aria-roledescription="carousel"
+      [attr.aria-label]="ariaLabel()"
+      (scroll)="onTrackScroll()">
+      @for (item of items(); track trackBy()($index, item)) {
+        <div
+          class="landing-card-carousel-slide snap-start"
+          data-carousel-slide
+          role="group"
+          aria-roledescription="slide"
+          [attr.aria-label]="'Element ' + ($index + 1) + ' sur ' + items().length">
+          <div class="h-full">
+            <ng-container
+              [ngTemplateOutlet]="itemTemplate()"
+              [ngTemplateOutletContext]="{ $implicit: item, index: $index }" />
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  @if (showControls()) {
+    <div class="flex items-center justify-center gap-2 pt-1">
+      @for (index of slideIndexes(); track index) {
+        <button
+          type="button"
+          class="h-2.5 rounded-full bg-slate-200 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+          [class.w-7]="index === activeIndex()"
+          [class.bg-primary-600]="index === activeIndex()"
+          [class.w-2.5]="index !== activeIndex()"
+          [attr.aria-label]="'Aller a l element ' + (index + 1)"
+          [attr.aria-current]="index === activeIndex() ? 'true' : null"
+          (click)="goTo(index)"></button>
+      }
+    </div>
+  }
+</div>
