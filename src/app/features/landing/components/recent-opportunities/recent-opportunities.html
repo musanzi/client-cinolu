@@ -1,0 +1,46 @@
+<section class="bg-white px-6 py-20 sm:px-8 lg:px-16 xl:px-24 2xl:px-32">
+  <div class="mx-auto max-w-screen-2xl">
+    <app-landing-section-header
+      [badgeKey]="'opportunities.list.badge'"
+      [titleKey]="'opportunities.list.title'"
+      [descriptionKey]="'opportunities.list.description'" />
+
+    <div class="mt-10 flex items-center justify-between gap-4">
+      <div
+        class="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-semibold text-primary-700">
+        <i-lucide class="size-4" [name]="icons.briefcase" />
+        <span>{{ store.opportunities().length }} {{ 'opportunities.list.total' | translate }}</span>
+      </div>
+
+      <a
+        routerLink="/opportunities"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 transition hover:text-primary-800">
+        <span>{{ 'opportunities.list.view_details' | translate }}</span>
+        <i-lucide class="size-4" [name]="icons.arrowRight" />
+      </a>
+    </div>
+
+    @if (store.isLoading()) {
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for (item of [1, 2, 3]; track item) {
+      <app-opportunity-card-skeleton />
+      }
+    </div>
+    } @else if (visibleOpportunities().length > 0) {
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for (opportunity of visibleOpportunities(); track opportunity.id) {
+      <app-opportunity-card [opportunity]="opportunity" />
+      }
+    </div>
+    } @else {
+    <div class="mt-10 rounded-3xl border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
+      <h3 class="font-satoshi text-2xl font-black text-slate-950">
+        {{ 'opportunities.list.empty_title' | translate }}
+      </h3>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
+        {{ 'opportunities.list.empty_description' | translate }}
+      </p>
+    </div>
+    }
+  </div>
+</section>

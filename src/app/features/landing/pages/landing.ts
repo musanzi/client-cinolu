@@ -9,11 +9,24 @@ import { Sectors } from '../components/sectors/sectors';
 import { Onestop } from '../components/onestop/onestop';
 import { Services } from '../components/services/services';
 import { Hero } from '../components/hero/hero';
+import { RecentOpportunities } from '../components/recent-opportunities/recent-opportunities';
 // import { TopAmbassadors } from '../components/top-ambassadors/top-ambassadors';
 
 @Component({
   selector: 'app-landing',
-  imports: [RecentProjects, RecentEvents, Networks, Partners, WhyJoinUs, Programs, Sectors, Onestop, Services, Hero],
+  imports: [
+    RecentProjects,
+    RecentEvents,
+    RecentOpportunities,
+    Networks,
+    Partners,
+    WhyJoinUs,
+    Programs,
+    Sectors,
+    Onestop,
+    Services,
+    Hero
+  ],
   templateUrl: './landing.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

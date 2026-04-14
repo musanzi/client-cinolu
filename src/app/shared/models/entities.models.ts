@@ -120,6 +120,21 @@ export interface IEvent extends IBase {
   participants: IUser[];
 }
 
+export enum OpportunityLanguage {
+  FR = 'fr',
+  EN = 'en'
+}
+
+export interface IOpportunity extends IBase {
+  title: string;
+  slug: string;
+  description: string;
+  cover: string | null;
+  due_date: Date | string;
+  link: string;
+  language: OpportunityLanguage;
+}
+
 export interface IVenture extends IBase {
   name: string;
   slug: string;

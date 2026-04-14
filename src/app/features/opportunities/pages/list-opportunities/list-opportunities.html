@@ -1,0 +1,99 @@
+<section class="min-h-screen bg-slate-50 px-6 py-16 pt-32 sm:px-8 lg:px-16 xl:px-24 2xl:px-32">
+  <div class="mx-auto max-w-screen-2xl">
+    <div class="grid gap-8 lg:grid-cols-[1.4fr_0.9fr] lg:items-end">
+      <div>
+        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-semibold text-primary-700">
+          <i-lucide class="size-4" [name]="icons.briefcase" />
+          <span>{{ 'opportunities.list.badge' | translate }}</span>
+        </div>
+        <h1 class="font-satoshi text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+          {{ 'opportunities.list.title' | translate }}
+        </h1>
+        <p class="mt-4 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
+          {{ 'opportunities.list.description' | translate }}
+        </p>
+      </div>
+
+      <div class="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-2">
+        <div class="rounded-2xl bg-slate-50 p-4">
+          <p class="text-sm font-medium text-slate-500">{{ 'opportunities.list.total' | translate }}</p>
+          <p class="mt-2 text-3xl font-black text-slate-950">{{ store.opportunities().length }}</p>
+        </div>
+        <div class="rounded-2xl bg-slate-50 p-4">
+          <p class="text-sm font-medium text-slate-500">{{ 'opportunities.list.open_now' | translate }}</p>
+          <p class="mt-2 text-3xl font-black text-slate-950">{{ openCount() }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="grid gap-4 lg:grid-cols-[1fr_1fr_1fr_auto] lg:items-end">
+        <label class="grid gap-2 text-sm font-medium text-slate-700">
+          <span>{{ 'opportunities.list.language' | translate }}</span>
+          <select
+            [(ngModel)]="query().language"
+            (ngModelChange)="query.update((value) => ({ ...value, language: $event }))"
+            class="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-primary-400 focus:ring-4 focus:ring-primary-100">
+            <option [ngValue]="null">{{ 'opportunities.list.all_languages' | translate }}</option>
+            @for (language of languages; track language) {
+            <option [ngValue]="language">{{ ('opportunities.language.' + language) | translate }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="grid gap-2 text-sm font-medium text-slate-700">
+          <span>{{ 'opportunities.list.from' | translate }}</span>
+          <input
+            type="date"
+            [ngModel]="query().from"
+            (ngModelChange)="query.update((value) => ({ ...value, from: $event }))"
+            class="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-primary-400 focus:ring-4 focus:ring-primary-100" />
+        </label>
+
+        <label class="grid gap-2 text-sm font-medium text-slate-700">
+          <span>{{ 'opportunities.list.to' | translate }}</span>
+          <input
+            type="date"
+            [ngModel]="query().to"
+            (ngModelChange)="query.update((value) => ({ ...value, to: $event }))"
+            class="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none transition focus:border-primary-400 focus:ring-4 focus:ring-primary-100" />
+        </label>
+
+        <div class="flex flex-wrap gap-3">
+          <ui-button type="button" size="sm" (click)="onFilterChange()">
+            {{ 'common.search' | translate }}
+          </ui-button>
+          <ui-button type="button" size="sm" variant="secondary" (click)="clearFilters()">
+            {{ 'opportunities.list.reset' | translate }}
+          </ui-button>
+        </div>
+      </div>
+    </div>
+
+    @if (store.isLoading()) {
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for (item of [1, 2, 3, 4, 5, 6]; track item) {
+      <app-opportunity-card-skeleton />
+      }
+    </div>
+    } @else if (store.opportunities().length > 0) {
+    <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      @for (opportunity of store.opportunities(); track opportunity.id) {
+      <app-opportunity-card [opportunity]="opportunity" />
+      }
+    </div>
+    } @else {
+    <div class="mt-12 rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-14 text-center shadow-sm">
+      <div class="mx-auto flex size-16 items-center justify-center rounded-full bg-slate-100 text-slate-500">
+        <i-lucide class="size-7" [name]="icons.empty" />
+      </div>
+      <h2 class="mt-5 font-satoshi text-2xl font-black text-slate-950">
+        {{ 'opportunities.list.empty_title' | translate }}
+      </h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
+        {{ 'opportunities.list.empty_description' | translate }}
+      </p>
+    </div>
+    }
+  </div>
+</section>

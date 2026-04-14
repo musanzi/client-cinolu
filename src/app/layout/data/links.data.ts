@@ -29,6 +29,11 @@ export const PARCOURIR_LINKS: ILink[] = [
     name: 'Programmes',
     translationKey: 'nav.programs',
     path: '/programs'
+  },
+  {
+    name: 'Opportunités',
+    translationKey: 'nav.opportunities',
+    path: '/opportunities'
   }
 ];
 
@@ -82,6 +87,12 @@ export const EXPLORATION_LINKS: ILink[] = [
     name: 'Évènements',
     translationKey: 'nav.events',
     path: '/events'
+  },
+  {
+    icon: BookOpen,
+    name: 'Opportunités',
+    translationKey: 'nav.opportunities',
+    path: '/opportunities'
   }
 ];
 

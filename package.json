@@ -13,7 +13,7 @@
     "prepare": "husky",
     "lint": "ng lint",
     "db:seed": "node scripts/seed-database.mjs",
-    "db:seed:extended": "node scripts/seed-database-extended.mjs"
+    "db:seed:extended": "node scripts/seed-database.mjs"
   },
   "private": true,
   "license": "MIT",

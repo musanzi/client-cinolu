@@ -1,0 +1,63 @@
+<a
+  [routerLink]="['/opportunities', opportunity().slug]"
+  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl hover:shadow-primary-500/10">
+  <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+    <img
+      fill
+      [ngSrc]="opportunity() | apiIMG: 'opportunity'"
+      [alt]="opportunity().title"
+      class="object-cover transition-transform duration-700 group-hover:scale-105" />
+    <div class="absolute inset-0 bg-linear-to-t from-slate-950/75 via-slate-900/10 to-transparent"></div>
+
+    <div class="absolute left-4 top-4 flex gap-2">
+      <ui-badge [variant]="isExpired() ? 'danger' : 'success'">
+        {{ (isExpired() ? 'opportunities.list.expired' : 'opportunities.list.open') | translate }}
+      </ui-badge>
+      <ui-badge variant="secondary">{{ ('opportunities.language.' + opportunity().language) | translate }}</ui-badge>
+    </div>
+
+    <div class="absolute bottom-0 left-0 right-0 p-5 text-white">
+      <h2 class="font-satoshi text-2xl font-black leading-tight line-clamp-2">{{ opportunity().title }}</h2>
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col justify-between gap-5 p-5">
+    <div>
+      <p class="line-clamp-4 text-sm leading-6 text-slate-600">{{ opportunity().description }}</p>
+
+      <div class="mt-5 grid gap-3 rounded-xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-700">
+        <div class="flex items-center gap-3">
+          <div class="flex size-8 items-center justify-center rounded-full bg-primary-100 text-primary-700">
+            <i-lucide class="size-4" [name]="icons.calendar" />
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {{ 'opportunities.list.deadline' | translate }}
+            </p>
+            <p class="font-medium">{{ opportunity().due_date | date: 'longDate' }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="flex size-8 items-center justify-center rounded-full bg-amber-100 text-amber-700">
+            <i-lucide class="size-4" [name]="icons.languages" />
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {{ 'opportunities.list.language' | translate }}
+            </p>
+            <p class="font-medium">{{ ('opportunities.language.' + opportunity().language) | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between gap-3 text-sm font-semibold text-primary-700">
+      <span>{{ 'opportunities.list.view_details' | translate }}</span>
+      <div class="flex items-center gap-2">
+        <span class="hidden sm:inline">{{ 'opportunities.list.apply_link' | translate }}</span>
+        <i-lucide class="size-4 transition-transform group-hover:translate-x-1" [name]="icons.arrowRight" />
+      </div>
+    </div>
+  </div>
+</a>

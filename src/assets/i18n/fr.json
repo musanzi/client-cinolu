@@ -76,7 +76,8 @@
     "entrepreneurs": "Nos entrepreneurs",
     "myCinolu": "My Cinolu",
     "vision": "Vision",
-    "blogResources": "Blog"
+    "blogResources": "Blog",
+    "opportunities": "Opportunités"
   },
   "auth": {
     "signIn": "Connexion",
@@ -1018,6 +1019,43 @@
         "coinvestment": "Opportunités co-investissement"
       },
       "cta": "Nos Partenaires"
+    }
+  },
+  "opportunities": {
+    "language": {
+      "fr": "Français",
+      "en": "Anglais"
+    },
+    "list": {
+      "badge": "Appels & opportunités",
+      "title": "Découvrez les opportunités ouvertes",
+      "description": "Explorez les appels, concours, financements et autres opportunités relayés par Cinolu. Filtrez-les par langue et par échéance pour trouver celles qui correspondent à votre profil.",
+      "total": "Total d'opportunités",
+      "open_now": "Ouvertes actuellement",
+      "language": "Langue",
+      "all_languages": "Toutes les langues",
+      "from": "À partir du",
+      "to": "Jusqu'au",
+      "deadline": "Date limite",
+      "reset": "Réinitialiser",
+      "empty_title": "Aucune opportunité trouvée",
+      "empty_description": "Aucune opportunité ne correspond à vos filtres pour le moment. Essayez une autre période ou revenez plus tard.",
+      "view_details": "Voir les détails",
+      "apply_link": "Lien de candidature",
+      "open": "Ouverte",
+      "expired": "Expirée"
+    },
+    "detail": {
+      "back": "Retour aux opportunités",
+      "informations": "Informations clés",
+      "deadline": "Date limite",
+      "language": "Langue",
+      "application_link": "Lien de candidature",
+      "cta_title": "Prêt à candidater ?",
+      "cta_description": "Consultez attentivement les détails de l'opportunité puis finalisez votre candidature via le lien officiel.",
+      "apply_now": "Accéder à la candidature",
+      "not_found_title": "Opportunité introuvable",
+      "not_found_description": "Cette opportunité n'existe pas, a été supprimée ou n'est plus disponible."
     }
   }
 }
