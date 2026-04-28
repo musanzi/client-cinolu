@@ -1,6 +1,6 @@
 <a
   [routerLink]="['/opportunities', opportunity().slug]"
-  class="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl hover:shadow-primary-500/10">
+  class="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-primary-300 hover:shadow-xl hover:shadow-primary-500/10">
   <div class="relative aspect-16/10 overflow-hidden bg-slate-100">
     <img
       fill
@@ -23,7 +23,7 @@
 
   <div class="flex flex-1 flex-col justify-between gap-5 p-5">
     <div>
-      <p class="line-clamp-3 text-sm leading-6 text-slate-600">{{ opportunity().description }}</p>
+      <p class="line-clamp-3 text-sm leading-6 text-slate-600 sm:text-[15px]">{{ opportunity().description }}</p>
 
       <div
         class="mt-5 gap-3 flex justify-between rounded-xl border border-slate-100 bg-slate-50 p-4 text-sm text-slate-700">

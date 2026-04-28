@@ -13,7 +13,8 @@
       titleHighlightKey="networks.title_highlight"
       descriptionKey="networks.description" />
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 mb-12 lg:mb-16 max-w-7xl mx-auto">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 lg:gap-6 mb-12 lg:mb-16 max-w-7xl mx-auto">
       @for (network of networks; track network.name) {
       <div class="group h-full">
         <div
@@ -41,7 +42,9 @@
                 {{ network.name }}
               </h4>
 
-              <p class="text-sm text-gray-500 line-clamp-2 leading-relaxed">{{ network.descriptionKey | translate }}</p>
+              <p class="text-sm leading-6 text-slate-600 sm:text-[15px] line-clamp-2">
+                {{ network.descriptionKey | translate }}
+              </p>
             </div>
 
             @if (network.website) {
@@ -74,7 +77,9 @@
             </div>
             <div class="text-left">
               <div class="text-xl lg:text-2xl font-black text-gray-900 font-satoshi">{{ networks.length }}</div>
-              <div class="text-sm font-medium text-gray-600 uppercase tracking-wide">{{ 'networks.stats.networks_label' | translate }}</div>
+              <div class="text-sm font-medium text-gray-600 uppercase tracking-wide">
+                {{ 'networks.stats.networks_label' | translate }}
+              </div>
             </div>
           </div>
 
@@ -88,8 +93,12 @@
               <i-lucide [name]="icons.globe" class="size-4 lg:size-5 text-white" />
             </div>
             <div class="text-left">
-              <div class="text-xl lg:text-2xl font-black text-gray-900 font-satoshi">{{ 'networks.stats.global' | translate }}</div>
-              <div class="text-sm font-medium text-gray-600 uppercase tracking-wide">{{ 'networks.stats.global_label' | translate }}</div>
+              <div class="text-xl lg:text-2xl font-black text-gray-900 font-satoshi">
+                {{ 'networks.stats.global' | translate }}
+              </div>
+              <div class="text-sm font-medium text-gray-600 uppercase tracking-wide">
+                {{ 'networks.stats.global_label' | translate }}
+              </div>
             </div>
           </div>
 
@@ -103,8 +112,12 @@
               <i-lucide [name]="icons.users" class="size-4 lg:size-5 text-white" />
             </div>
             <div class="text-left">
-              <div class="text-xl lg:text-2xl font-black text-gray-900 font-satoshi">{{ 'networks.stats.active' | translate }}</div>
-              <div class="text-sm font-medium text-gray-600 uppercase tracking-wide">{{ 'networks.stats.collaboration_label' | translate }}</div>
+              <div class="text-xl lg:text-2xl font-black text-gray-900 font-satoshi">
+                {{ 'networks.stats.active' | translate }}
+              </div>
+              <div class="text-sm font-medium text-gray-600 uppercase tracking-wide">
+                {{ 'networks.stats.collaboration_label' | translate }}
+              </div>
             </div>
           </div>
         </div>
