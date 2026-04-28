@@ -5,7 +5,7 @@
    ═══════════════════════════════════════════════════════════════════════ */
 
 .sidebar-item-active {
-  @apply bg-gradient-to-br from-primary-50 to-primary-100/70 text-primary-700 shadow-sm border border-primary-200/50;
+  @apply bg-linear-to-br from-primary-50 to-primary-100/70 text-primary-700 shadow-sm border border-primary-200/50;
   position: relative;
 }
 
