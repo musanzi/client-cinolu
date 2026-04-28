@@ -1,13 +1,6 @@
 @if (store.opportunity(); as opportunity) {
 <section class="min-h-screen bg-slate-50 pb-16 pt-32">
   <div class="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-    <a
-      routerLink="/opportunities"
-      class="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-primary-700 transition hover:text-primary-800">
-      <i-lucide class="size-4" [name]="icons.back" />
-      <span>{{ 'opportunities.detail.back' | translate }}</span>
-    </a>
-
     <div class="overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
       <div class="relative aspect-16/7 overflow-hidden bg-slate-200">
         <img fill [ngSrc]="opportunity | apiIMG: 'opportunity'" [alt]="opportunity.title" class="object-cover" />
@@ -146,7 +139,3 @@
   </div>
 </section>
 }
-
-
-
-
