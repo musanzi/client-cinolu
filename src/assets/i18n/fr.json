@@ -65,7 +65,7 @@
   },
   "nav": {
     "home": "Accueil",
-    "about": "ì propos",
+    "about": "A propos",
     "programs": "Programmes",
     "projects": "Projets",
     "events": "Événements",
@@ -390,8 +390,8 @@
   },
   "about_us": {
     "hero": {
-      "badge_text": "ì propos de nous",
-      "title": "ì propos de",
+      "badge_text": "À propos de nous",
+      "title": "À propos de",
       "title_highlight": "nous.",
       "description": "Notre histoire et notre passion guident une équipe engagée, dédiée à vous offrir un service irréprochable."
     },
@@ -731,7 +731,7 @@
     "activity_sector": "Secteur d'activité",
     "not_defined": "Non défini",
     "project_phase": "Phase du projet",
-    "about": "ì propos",
+    "about": "À propos",
     "venture_of": "Entreprise de",
     "discover": "Découvrir",
     "no_project_published": "Aucun projet publié pour le moment",
@@ -770,7 +770,7 @@
       "filter_status_all": "Tous",
       "filter_status_past": "Passés",
       "filter_status_current": "En cours",
-      "filter_status_future": "ì venir",
+      "filter_status_future": "A venir",
       "filter_all": "Tous",
       "filter_published": "Publiés",
       "filter_drafts": "Brouillons",

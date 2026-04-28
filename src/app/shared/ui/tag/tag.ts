@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 @Component({
   selector: 'ui-tag',
   template: `<span
-    class="inline-flex items-center rounded-lg border px-2.5 py-1 text-xs font-bold uppercase tracking-wide"
+    class="inline-flex items-center rounded-lg border px-2.5 py-1.5 text-xs font-bold leading-[1.2] uppercase tracking-wide"
     [class]="variantClasses[variant()]"
     ><ng-content
   /></span>`,

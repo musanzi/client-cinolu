@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 @Component({
   selector: 'ui-badge',
   template: `<span
-    class="inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-semibold"
+    class="inline-flex items-center rounded-full border px-2.5 py-1.5 text-xs font-semibold leading-[1.2]"
     [class]="variantClasses[variant()]"
     ><ng-content
   /></span>`,

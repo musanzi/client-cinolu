@@ -5,7 +5,7 @@
       @if (link.children?.length) {
       <button
         (click)="toggleDropdown('link-' + $index, $event)"
-        class="group flex items-center relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 hover:text-primary-500 hover:transition-colors hover:duration-200 before:content-[''] before:absolute before:left-0 before:top-full before:w-full before:h-4 before:z-20">
+        class="group flex items-center relative leading-[1.2] after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 hover:text-primary-500 hover:transition-colors hover:duration-200 before:content-[''] before:absolute before:left-0 before:top-full before:w-full before:h-4 before:z-20">
         {{ link.translationKey ? (link.translationKey | translate) : link.name }}
         <i-lucide
           class="size-5 transition-transform duration-300 ease-out ml-0.5"
@@ -42,7 +42,7 @@
         [routerLink]="link.path"
         routerLinkActive="after:bg-primary-500"
         [routerLinkActiveOptions]="{ exact: link.exactUrl || false }"
-        class="group flex items-center relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 hover:text-primary-500 hover:transition-colors hover:duration-200">
+        class="group flex items-center relative leading-[1.2] after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 hover:text-primary-500 hover:transition-colors hover:duration-200">
         {{ link.translationKey ? (link.translationKey | translate) : link.name }}
       </a>
       }
@@ -51,7 +51,7 @@
 
     <button
       (click)="toggleDropdown('programs', $event)"
-      class="group flex items-center relative hover:text-primary-500 hover:transition-colors hover:duration-200 before:content-[''] before:absolute before:left-0 before:top-full before:w-full before:h-4 before:z-20">
+      class="group flex items-center relative leading-[1.2] hover:text-primary-500 hover:transition-colors hover:duration-200 before:content-[''] before:absolute before:left-0 before:top-full before:w-full before:h-4 before:z-20">
       {{ 'nav.programs' | translate }}
       <i-lucide
         class="size-5 ml-0.5 transition-transform duration-300 ease-out"
@@ -76,7 +76,7 @@
               <div class="flex items-start justify-between gap-3">
                 <span class="text-gray-900">{{ translateField()(p.name, 'name', p) }}</span>
                 <span
-                  class="shrink-0 rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary-600">
+                  class="shrink-0 rounded-full bg-primary-50 px-2 py-1 text-[10px] font-semibold leading-none uppercase tracking-wide text-primary-600">
                   {{ translateField()(p?.category?.name, 'name', p.category) }}
                 </span>
               </div>

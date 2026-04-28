@@ -62,7 +62,7 @@
           <div>
             @if (link.children?.length) {
             <button
-              class="flex justify-between items-center w-full px-7 py-4 text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+              class="flex justify-between items-center w-full px-7 py-4 text-base font-semibold leading-[1.2] text-gray-800 hover:bg-gray-50 transition-colors duration-200"
               (click)="toggleLink(i)">
               <span>{{ link.translationKey ? (link.translationKey | translate) : link.name }}</span>
               <i-lucide
@@ -86,7 +86,7 @@
                 [routerLinkActiveOptions]="{
                   exact: sublink.exactUrl || false
                 }"
-                class="flex items-center gap-3 px-7 py-3.5 pl-12 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200">
+                class="flex items-center gap-3 px-7 py-3.5 pl-12 text-sm font-medium leading-[1.2] text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200">
                 <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
                 <span>{{ sublink.translationKey ? (sublink.translationKey | translate) : sublink.name }}</span>
               </a>
@@ -98,7 +98,7 @@
               (click)="closeNav()"
               routerLinkActive="bg-primary-50 text-primary-600"
               [routerLinkActiveOptions]="{ exact: link.exactUrl || false }"
-              class="flex items-center px-7 py-4 text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200">
+              class="flex items-center px-7 py-4 text-base font-semibold leading-[1.2] text-gray-800 hover:bg-gray-50 transition-colors duration-200">
               {{ link.translationKey ? (link.translationKey | translate) : link.name }}
             </a>
             }
@@ -107,7 +107,7 @@
 
           <div>
             <button
-              class="flex justify-between items-center w-full px-7 py-4 text-base font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200"
+              class="flex justify-between items-center w-full px-7 py-4 text-base font-semibold leading-[1.2] text-gray-800 hover:bg-gray-50 transition-colors duration-200"
               (click)="togglePrograms()">
               <span>{{ 'nav.programs' | translate }}</span>
               <i-lucide
@@ -129,7 +129,7 @@
                 [routerLink]="['/our-programs/' + p.slug]"
                 (click)="closeNav()"
                 [routerLinkActiveOptions]="{ exact: true }"
-                class="block px-7 py-3.5 pl-12 hover:bg-primary-50 text-gray-700 hover:text-primary-600 transition-all duration-200">
+                class="block px-7 py-3.5 pl-12 leading-[1.2] hover:bg-primary-50 text-gray-700 hover:text-primary-600 transition-all duration-200">
                 <span class="font-semibold text-sm">{{ translateField()(p.name, 'name', p) }}</span>
                 <span class="block text-xs text-gray-500 mt-1">
                   {{ translateField()(p?.category?.name, 'name', p.category) }}
