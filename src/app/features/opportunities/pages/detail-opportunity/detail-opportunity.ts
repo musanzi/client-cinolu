@@ -56,7 +56,7 @@ export class DetailOpportunity {
   }
 
   protected onExternalLinkClick(url: string): void {
-    this.#analytics.trackOutboundLink(url);
+    this.#analytics.trackOutboundLink(this.normalizeExternalUrl(url));
   }
 
   protected isOpportunityExpired(dueDate?: string | Date | null): boolean {
@@ -65,5 +65,19 @@ export class DetailOpportunity {
     }
 
     return new Date(dueDate).getTime() < Date.now();
+  }
+
+  protected normalizeExternalUrl(url?: string | null): string {
+    const trimmedUrl = url?.trim();
+
+    if (!trimmedUrl) {
+      return '#';
+    }
+
+    if (/^https?:\/\//i.test(trimmedUrl)) {
+      return trimmedUrl;
+    }
+
+    return `https://${trimmedUrl}`;
   }
 }
