@@ -30,7 +30,7 @@ export const routes: Route[] = [
   {
     path: 'opportunities',
     component: Layout,
-    data: { layout: 'fixed-layout' },
+    data: { layout: 'full-layout' },
     loadChildren: () => import('./features/opportunities/opportunities.routes').then((m) => m.opportunitiesRoutes)
   },
   {
@@ -49,7 +49,7 @@ export const routes: Route[] = [
   {
     path: 'entrepreneurs',
     component: Layout,
-    data: { layout: 'fixed-layout' },
+    data: { layout: 'full-layout' },
     loadChildren: () => import('./features/entrepreneurs/entrepreneurs.routes').then((m) => m.entrepreneursRoutes)
   },
   {

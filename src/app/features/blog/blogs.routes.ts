@@ -9,6 +9,7 @@ export const blogsRoutes: Routes = [
   {
     path: ':slug',
     title: 'Article - Details',
+    data: { topbarFixed: true },
     loadComponent: () => import('./pages/detail-article/detail-article').then((c) => c.DetailArticle)
   }
 ];
