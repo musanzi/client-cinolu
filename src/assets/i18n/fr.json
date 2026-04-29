@@ -44,6 +44,7 @@
     "delete": "Supprimer",
     "edit": "Modifier",
     "search": "Rechercher",
+    "clear": "Effacer",
     "close": "Fermer",
     "submit": "Soumettre",
     "back": "Retour",
@@ -589,6 +590,12 @@
     "view_all": "Liste des événements",
     "explore": "Voir l'événement"
   },
+  "recent_opportunities": {
+    "badge": "Appels & opportunités",
+    "title": "Opportunités ",
+    "title_highlight": "récentes",
+    "description": "Explorez les appels, concours, financements et autres opportunités récemment relayés par Cinolu."
+  },
   "networks": {
     "badge": "Réseaux Partenaires",
     "title": "Réseaux dont",
@@ -657,10 +664,13 @@
     "title_highlight": "Articles",
     "description": "Le blog de Cinolu, un espace d'idées, de récits et de ressources au service des innovateurs d'Afrique.",
     "choose_tag": "Choisir un tag",
+    "selected_count": "{{count}} sélectionné(s)",
     "no_articles": "Pas d'articles disponibles",
     "recent_articles": "Articles récents",
     "gallery": "Galerie",
     "article_badge": "Article",
+    "like": "J'aime",
+    "liked": "Aimé",
     "read_article": "Lire l'article",
     "comments": {
       "title": "Commentaires",
