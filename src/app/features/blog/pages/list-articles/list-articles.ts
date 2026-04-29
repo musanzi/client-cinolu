@@ -33,7 +33,12 @@ export class ListArticles implements OnInit {
   #router = inject(Router);
   tagsStore = inject(TagsStore);
   #analytics = inject(AnalyticsService);
-  arrSkeleton = Array.from({ length: 12 }).fill(0);
+  arrSkeleton = Array.from({ length: 12 }, (_, index) => index);
+  selectedTags: string[] = this.#route.snapshot.queryParamMap
+    .get('tags')
+    ?.split(',')
+    .map((tag) => tag.trim())
+    .filter(Boolean) ?? [];
   queryParams = signal<FilterArticlesDto>({
     page: this.#route.snapshot.queryParamMap.get('page'),
     tags: this.#route.snapshot.queryParamMap.get('tags')
@@ -48,22 +53,39 @@ export class ListArticles implements OnInit {
     return article.id || index.toString();
   }
 
-  async onFilterChange(event: Event, filter: 'page' | 'tags'): Promise<void> {
-    const value = Array.from((event.target as HTMLSelectElement).selectedOptions).map((option) => option.value);
+  async onFilterChange(event: Event | string[], filter: 'page' | 'tags'): Promise<void> {
+    const value = Array.isArray(event)
+      ? event
+      : Array.from((event.target as HTMLSelectElement).selectedOptions).map((option) => option.value);
+
     this.queryParams().page = null;
     this.queryParams()[filter] = value.length ? value.join(',') : null;
+
     if (filter === 'tags') {
-      const raw = value as unknown[];
-      const tags = raw.map((t) => (typeof t === 'string' ? t : ((t as { name?: string }).name ?? String(t))));
-      this.#analytics.trackBlogFilter(tags);
+      this.selectedTags = [...value];
+      this.#analytics.trackBlogFilter(this.selectedTags);
     }
+
     await this.updateRouteAndArticles();
   }
 
   async onClear(): Promise<void> {
+    this.selectedTags = [];
     this.queryParams().page = null;
     this.queryParams().tags = null;
     await this.updateRouteAndArticles();
+  }
+
+  async toggleTag(tagId: string): Promise<void> {
+    this.selectedTags = this.isTagSelected(tagId)
+      ? this.selectedTags.filter((selectedTagId) => selectedTagId !== tagId)
+      : [...this.selectedTags, tagId];
+
+    await this.onFilterChange(this.selectedTags, 'tags');
+  }
+
+  isTagSelected(tagId: string): boolean {
+    return this.selectedTags.includes(tagId);
   }
 
   async onPageChange(currentPage: number): Promise<void> {
