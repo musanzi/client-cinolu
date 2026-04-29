@@ -9,6 +9,7 @@ export const opportunitiesRoutes: Routes = [
   {
     path: ':slug',
     title: 'Opportunity Details',
+    data: { topbarFixed: true },
     loadComponent: () => import('./pages/detail-opportunity/detail-opportunity').then((c) => c.DetailOpportunity)
   }
 ];

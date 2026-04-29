@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LucideAngularModule, BriefcaseBusiness, CalendarRange, SearchX } from 'lucide-angular';
@@ -10,6 +10,7 @@ import { OpportunityCardSkeleton } from '../../components/opportunity-card-skele
 import { FilterOpportunitiesDto } from '../../dto/filter-opportunities.dto';
 import { OpportunityLanguage } from '../../../../shared/models';
 import { ButtonComponent } from '../../../../shared/ui';
+import { HeroCard } from '../../../../layout/components/hero-card/hero-card';
 
 @Component({
   selector: 'app-list-opportunities',
@@ -21,7 +22,8 @@ import { ButtonComponent } from '../../../../shared/ui';
     TranslateModule,
     OpportunityCard,
     OpportunityCardSkeleton,
-    ButtonComponent
+    ButtonComponent,
+    HeroCard
   ],
   templateUrl: './list-opportunities.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -42,9 +44,6 @@ export class ListOpportunities {
     empty: SearchX
   };
   protected readonly languages = [OpportunityLanguage.FR, OpportunityLanguage.EN];
-  protected readonly openCount = computed(
-    () => this.store.opportunities().filter((item) => new Date(item.due_date).getTime() >= Date.now()).length
-  );
 
   constructor() {
     this.store.load(this.query());

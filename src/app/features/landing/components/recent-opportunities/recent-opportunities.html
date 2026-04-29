@@ -1,24 +1,10 @@
 <section class="bg-white px-6 py-20 sm:px-8 lg:px-16 xl:px-24 2xl:px-32">
   <div class="mx-auto max-w-screen-2xl">
     <app-landing-section-header
-      [badgeKey]="'opportunities.list.badge'"
-      [titleKey]="'opportunities.list.title'"
-      [descriptionKey]="'opportunities.list.description'" />
-
-    <div class="mt-10 flex items-center justify-between gap-4">
-      <div
-        class="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-semibold text-primary-700">
-        <i-lucide class="size-4" [name]="icons.briefcase" />
-        <span>{{ store.opportunities().length }} {{ 'opportunities.list.total' | translate }}</span>
-      </div>
-
-      <a
-        routerLink="/opportunities"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 transition hover:text-primary-800">
-        <span>{{ 'opportunities.list.view_details' | translate }}</span>
-        <i-lucide class="size-4" [name]="icons.arrowRight" />
-      </a>
-    </div>
+      badgeKey="recent_opportunities.badge"
+      titleKey="recent_opportunities.title"
+      titleHighlightKey="recent_opportunities.title_highlight"
+      descriptionKey="recent_opportunities.description" />
 
     @if (store.isLoading()) {
     <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -42,5 +28,18 @@
       </p>
     </div>
     }
+  </div>
+
+  <div class="w-full flex justify-center items-center mt-12">
+    <a routerLink="opportunities" class="group relative">
+      <button
+        class="relative flex items-center gap-3 px-8 py-4 bg-white border-2 border-primary-500 text-primary-600 text-base font-semibold rounded-full hover:bg-primary-50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25">
+        <span>{{ 'recent_projects.view_all' | translate }}</span>
+
+        <i-lucide
+          class="size-5 group-hover:translate-x-1 transition-transform duration-300"
+          [name]="icons.arrowRight" />
+      </button>
+    </a>
   </div>
 </section>
